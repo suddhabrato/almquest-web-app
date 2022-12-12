@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 
-const donorSchema = new mongoose.Schema({
+const distributorSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -14,15 +14,6 @@ const donorSchema = new mongoose.Schema({
   },
   phone: {
     type: String,
-    required: true,
-  },
-  donorType: {
-    type: String,
-    enum: {
-      values: ["Organisation", "Individual", "Food Chain"],
-      message: "Not a valid role",
-    },
-    default: "Individual",
     required: true,
   },
   location: {
@@ -40,12 +31,20 @@ const donorSchema = new mongoose.Schema({
     default: 2,
     required: true,
   },
-  lifetimeDonation: {
+  maxCapacity: {
+    type: Number,
+    required: true,
+  },
+  availableCapacity: {
+    type: Number,
+    default: 0,
+  },
+  totalPackagesDistributed: {
     type: Number,
     default: 0,
   },
 });
 
-const Donor = mongoose.model("Donor", donorSchema);
+const Distributor = mongoose.model("Distributor", distributorSchema);
 
-module.exports = Donor;
+module.exports = Distributor;
