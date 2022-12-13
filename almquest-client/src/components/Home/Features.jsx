@@ -3,7 +3,7 @@ import React from "react";
 const Features = () => {
   return (
     <section className="bg-white dark:bg-gray-900">
-      <div className="container px-32 py-10 mx-auto">
+      <div className="container lg:px-32 px-6 py-10 mx-auto">
         <div className="lg:flex lg:items-center">
           <div className="w-full space-y-12 lg:w-1/2 ">
             <div>
