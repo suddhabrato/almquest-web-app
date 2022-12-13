@@ -7,7 +7,7 @@ const Navbar = () => {
     setOpen(!isOpen);
   };
   return (
-    <nav className="sticky top-0 bg-white shadow dark:bg-gray-800">
+    <nav className="sticky top-0 bg-white shadow dark:bg-gray-900">
       <div className="container px-6 py-4 mx-auto">
         <div className="lg:flex lg:items-center lg:justify-between">
           <div className="flex items-center justify-between">
