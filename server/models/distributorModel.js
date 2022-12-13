@@ -43,7 +43,7 @@ const distributorSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  isOpen: {
+  isActive: {
     type: Boolean,
     default: true,
   },
