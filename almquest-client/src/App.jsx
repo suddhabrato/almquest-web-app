@@ -1,9 +1,28 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
+import { useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
 import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
+
+  const login = useGoogleLogin({
+    onSuccess: async (response) => {
+      try {
+        const res = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
+          headers: {
+            "Authorization": `Bearer ${response.access_token}`
+          }
+        });
+
+        console.log(res.data);
+        const { name, email } = res.data;
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  });
 
   return (
     <div className="bg-white h-[100vh] dark:bg-gray-700 overflow-auto mx-auto">
@@ -11,6 +30,7 @@ function App() {
         <section className="flex flex-col items-center justify-center px-6 mx-auto">
           <div className="flex items-center h-[80vh]">
             <button
+              onClick = { login }
               type="button"
               className="flex items-center justify-center px-6 py-3 text-gray-600 transition-colors duration-300 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
             >

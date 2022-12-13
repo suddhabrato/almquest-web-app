@@ -43,6 +43,10 @@ const distributorSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  isOpen: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 const Distributor = mongoose.model("Distributor", distributorSchema);
