@@ -4,6 +4,7 @@ import Navbar from "./components/Common/Navbar";
 import Footer from "./components/Common/Footer";
 import Home from "./components/Home";
 import Contacts from "./components/Contacts";
+import Logintest from "./logintest";
 
 const App = () => {
   const [darkMode, setDarkMode] = React.useState(true);
@@ -13,12 +14,16 @@ const App = () => {
   return (
     <div className={`${darkMode ? "dark" : "light"}`}>
       <BrowserRouter>
-        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/contact" element={<Contacts />} />
-        </Routes>
-        <Footer />
+        <div className="bg-white dark:bg-gray-900">
+          <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/contact" element={<Contacts />} />
+            <Route path="/register" element={<RegForm />} />
+            <Route path="/login" element={<Logintest />} />
+          </Routes>
+          <Footer />
+        </div>
       </BrowserRouter>
     </div>
   );

@@ -13,21 +13,11 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
       <div className="container px-6 py-4 mx-auto">
         <div className="lg:flex lg:items-center lg:justify-between">
           <div className="flex items-center justify-between">
-            <div className="text-xl font-semibold text-gray-700">
-              <a
-                className="text-2xl font-bold text-gray-800 transition-colors duration-300 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
-                href="#"
-              >
-                AlmQuest
-              </a>
-            </div>
-
-            <div className="flex lg:hidden">
-              <NotifTray />
+            <div className="text-xl font-semibold text-gray-700 flex items-center">
               <button
                 onClick={toggle}
                 type="button"
-                className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
+                className="lg:hidden text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
                 aria-label="toggle menu"
               >
                 {!isOpen ? (
@@ -62,6 +52,17 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                   </svg>
                 )}
               </button>
+              <a
+                className="mx-4 lg:mx-0 text-2xl font-bold text-gray-800 transition-colors duration-300 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
+                href="/"
+              >
+                AlmQuest
+              </a>
+            </div>
+
+            <div className="flex lg:hidden items-center">
+              <NotifTray />
+              <Avatar />
             </div>
           </div>
 
@@ -101,8 +102,8 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             <div className="flex items-center mt-4 lg:mt-0">
               <div className="hidden lg:flex">
                 <NotifTray />
+                <Avatar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
               </div>
-              <Avatar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             </div>
           </div>
         </div>

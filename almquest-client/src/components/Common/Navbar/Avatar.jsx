@@ -5,33 +5,29 @@ import { useState } from "react";
 const Avatar = ({ darkMode, toggleDarkMode }) => {
   const [isOpen, setOpen] = useState(false);
   const toggle = () => {
-    setOpen(!isOpen);
+    setOpen((prev) => !prev);
   };
   const handleClickAway = () => {
     setOpen(false);
   };
   return (
-    <div className="relative inline-block ">
-      <button
-        onClick={toggle}
-        type="button"
-        className="flex items-center focus:outline-none"
-        aria-label="toggle profile dropdown"
-      >
-        <div className="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
-          <img
-            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
-            className="object-cover w-full h-full"
-            alt="avatar"
-          />
-        </div>
-
-        <h3 className="mx-2 text-gray-700 dark:text-gray-200 lg:hidden">
-          Khatab wedaa
-        </h3>
-      </button>
-      {isOpen && (
-        <ClickAwayListener onClickAway={handleClickAway}>
+    <ClickAwayListener onClickAway={handleClickAway}>
+      <div className="relative inline-block">
+        <button
+          onClick={toggle}
+          type="button"
+          className="flex items-center focus:outline-none"
+          aria-label="toggle profile dropdown"
+        >
+          <div className="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
+            <img
+              src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+              className="object-cover w-full h-full"
+              alt="avatar"
+            />
+          </div>
+        </button>
+        {isOpen && (
           <div
             x-transition:enter="transition ease-out duration-100"
             x-transition:enter-start="opacity-0 scale-90"
@@ -64,11 +60,13 @@ const Avatar = ({ darkMode, toggleDarkMode }) => {
               <span className="mx-1">view profile</span>
             </a>
 
-            <a
-              href="#"
-              className="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
-            >
-              <button id="theme-toggle" type="button" onClick={toggleDarkMode}>
+            <a className="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+              <button
+                id="theme-toggle"
+                type="button"
+                onClick={toggleDarkMode}
+                className="flex"
+              >
                 {!darkMode ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -100,8 +98,8 @@ const Avatar = ({ darkMode, toggleDarkMode }) => {
                     ></path>
                   </svg>
                 )}
+                <span className="mx-1">Change Theme</span>
               </button>
-              <span className="mx-1">Change Theme</span>
             </a>
 
             <a
@@ -233,9 +231,9 @@ const Avatar = ({ darkMode, toggleDarkMode }) => {
               <span className="mx-1">Sign Out</span>
             </a>
           </div>
-        </ClickAwayListener>
-      )}
-    </div>
+        )}
+      </div>
+    </ClickAwayListener>
   );
 };
 
