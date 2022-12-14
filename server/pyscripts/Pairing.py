@@ -10,6 +10,7 @@ connectionString = "mongodb+srv://admin:12345@almquest.toauhu5.mongodb.net/?retr
 def pair():
     client = MongoClient(connectionString, tls=True,
                          tlsAllowInvalidCertificates=True)
+
     database1 = client["almquest"]
     collection1 = database1["donatedpackages"]
     collection2 = database1["activedistributor"]
@@ -34,8 +35,7 @@ def pair():
             lon_dist = distributor_object["location"]["coordinates"][1]
             distance = haversine((lat_donor, lon_donor), (lat_dist, lon_dist))
             distance_list.append([x, y, distance])
-
-    print(distance_list)
+            print(distance_list)
 
 
 def main():
