@@ -2,11 +2,10 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
-import "./App.css";
 import Navbar from "./components/Common/Navbar";
 import Footer from "./components/Common/Footer";
 
-function App() {
+function Logintest() {
   const login = useGoogleLogin({
     onSuccess: async (response) => {
       try {
@@ -29,8 +28,6 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <Footer />
       <div className="bg-white h-[100vh] dark:bg-gray-700 overflow-auto mx-auto">
         <div className="my-[2.5vh] w-full md:w-2/3 mx-auto bg-white dark:bg-gray-900 rounded-lg">
           <section className="flex flex-col items-center justify-center px-6 mx-auto">
@@ -69,4 +66,4 @@ function App() {
   );
 }
 
-export default App;
+export default Logintest;
