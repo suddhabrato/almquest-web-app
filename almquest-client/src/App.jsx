@@ -8,7 +8,7 @@ import Logintest from "./logintest";
 import RegForm from "./components/Forms/RegForm";
 
 const App = () => {
-  const [darkMode, setDarkMode] = React.useState(true);
+  const [darkMode, setDarkMode] = React.useState(false);
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };

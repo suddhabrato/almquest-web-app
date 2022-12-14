@@ -68,13 +68,13 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                     href="#"
                     class="px-3 py-1.5 text-sm font-semibold text-white transition-colors duration-300 transform border-2 rounded-md hover:bg-gray-700"
                   >
-                    Sign In
+                    Log In
                   </a>
                   <a
                     href="#"
                     class="px-3 py-2 mx-2 text-sm font-semibold text-white transition-colors duration-300 transform bg-black rounded-md hover:bg-gray-800"
                   >
-                    Sign Up
+                    Register
                   </a>
                 </div>
               ) : (
@@ -127,13 +127,13 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                       href="#"
                       class="px-3 py-1 text-sm font-semibold text-white transition-colors duration-300 transform border-2 rounded-md hover:bg-gray-700"
                     >
-                      Sign In
+                      Log In
                     </a>
                     <a
                       href="#"
                       class="px-3 py-2 mx-2 text-sm font-semibold text-white transition-colors duration-300 transform bg-black rounded-md hover:bg-gray-800"
                     >
-                      Sign Up
+                      Register
                     </a>
                   </div>
                 ) : (
