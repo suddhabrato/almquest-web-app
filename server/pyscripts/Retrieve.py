@@ -54,9 +54,6 @@ def getDataFromDonors():
             print("---------")
 
 
-
-
-
 def main():
     print("\nDistributors: \n")
     getDataFromDistributors()
