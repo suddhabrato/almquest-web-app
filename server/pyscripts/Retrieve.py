@@ -1,6 +1,5 @@
 import certifi
 from pymongo import MongoClient
-from math import sin, cos, sqrt, atan2
 from haversine import haversine, Unit
 
 
@@ -35,7 +34,6 @@ def getDataFromDonors():
     collection2 = database1["distributors"]
 
     donors = collection1.find()
-    distributors = collection2.find()
 
     for res in donors:
         print("----------------------------------")
