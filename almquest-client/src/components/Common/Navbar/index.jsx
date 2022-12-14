@@ -4,6 +4,7 @@ import NotifTray from "./NotifTray";
 import Avatar from "./Avatar";
 
 const Navbar = ({ darkMode, toggleDarkMode }) => {
+  const [isLoggedIn, setLoggedIn] = useState(false);
   const [isOpen, setOpen] = useState(false);
   const toggle = () => {
     setOpen(!isOpen);
@@ -61,8 +62,27 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             </div>
 
             <div className="flex lg:hidden items-center">
-              <NotifTray />
-              <Avatar />
+              {!isLoggedIn ? (
+                <div class="flex items-baseline -mx-2 sm:mt-0">
+                  <a
+                    href="#"
+                    class="px-3 py-1.5 text-sm font-semibold text-white transition-colors duration-300 transform border-2 rounded-md hover:bg-gray-700"
+                  >
+                    Sign In
+                  </a>
+                  <a
+                    href="#"
+                    class="px-3 py-2 mx-2 text-sm font-semibold text-white transition-colors duration-300 transform bg-black rounded-md hover:bg-gray-800"
+                  >
+                    Sign Up
+                  </a>
+                </div>
+              ) : (
+                <div className="flex items-center">
+                  <NotifTray />
+                  <Avatar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+                </div>
+              )}
             </div>
           </div>
 
@@ -101,8 +121,30 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             </div>
             <div className="flex items-center mt-4 lg:mt-0">
               <div className="hidden lg:flex">
-                <NotifTray />
-                <Avatar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+                {!isLoggedIn ? (
+                  <div class="flex items-center -mx-2 sm:mt-0">
+                    <a
+                      href="#"
+                      class="px-3 py-1 text-sm font-semibold text-white transition-colors duration-300 transform border-2 rounded-md hover:bg-gray-700"
+                    >
+                      Sign In
+                    </a>
+                    <a
+                      href="#"
+                      class="px-3 py-2 mx-2 text-sm font-semibold text-white transition-colors duration-300 transform bg-black rounded-md hover:bg-gray-800"
+                    >
+                      Sign Up
+                    </a>
+                  </div>
+                ) : (
+                  <div className="flex items-center">
+                    <NotifTray />
+                    <Avatar
+                      darkMode={darkMode}
+                      toggleDarkMode={toggleDarkMode}
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </div>

@@ -19,7 +19,10 @@ const RegForm = () => {
         <div
           className="hidden bg-cover lg:block lg:w-2/5"
           style={{
-            backgroundImage: userType == "Distributor" ? `url('https://images.pexels.com/photos/4604599/pexels-photo-4604599.jpeg')` : `url('https://images.pexels.com/photos/6995247/pexels-photo-6995247.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
+            backgroundImage:
+              userType == "Distributor"
+                ? `url('https://images.pexels.com/photos/4604599/pexels-photo-4604599.jpeg')`
+                : `url('https://images.pexels.com/photos/6995247/pexels-photo-6995247.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
           }}
         ></div>
 
@@ -87,8 +90,7 @@ const RegForm = () => {
               </div>
             </div>
 
-            <form
-            className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
+            <form className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
               <div>
                 <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
                   Your Name
@@ -135,61 +137,64 @@ const RegForm = () => {
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
-
-              <div>
-                <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                  How Far can you Travel?
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter Value in Kilometres"
-                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                />
-              </div>
-
-              <div>
-                <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                  How much Food can you Carry?
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter Value in Kilograms"
-                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                />
-              </div>
-
-              <div>
-                <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                  How much Area can you Cover?
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter Value in Kilometres"
-                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                />
-              </div>
-
-              <div class="p-1.5 w-full inline-block sm:w-auto overflow-hidden bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-700">
-                <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                  Are you a/an Food Chain, Organisation or Individual?
-                </label>
-                <div class="space-y-2 sm:space-y-0 sm:flex sm:-mx-1">
-                    <button class="w-full px-4 py-1 text-white transition-colors duration-300 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40">
+              {userType == "Donor" ? (
+                <div>
+                  <div>
+                    <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                      How Far can you Travel?
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Enter Value in Kilometres"
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                    />
+                  </div>
+                  <div class="p-1.5 w-full inline-block sm:w-auto overflow-hidden bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-700">
+                    <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                      Are you a/an Food Chain, Organisation or Individual?
+                    </label>
+                    <div class="space-y-2 sm:space-y-0 sm:flex sm:-mx-1">
+                      <button class="w-full px-4 py-1 text-white transition-colors duration-300 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40">
                         Food Chain
-                    </button>
+                      </button>
 
-                    <button class="w-full px-4 py-1 text-white transition-colors duration-300 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40">
+                      <button class="w-full px-4 py-1 text-white transition-colors duration-300 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40">
                         Organisation
-                    </button>
+                      </button>
 
-                    <button class="w-full px-4 py-1 text-white transition-colors duration-300 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40">
+                      <button class="w-full px-4 py-1 text-white transition-colors duration-300 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40">
                         Individual
-                    </button>
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              
-              <button className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
-                <span>Register as Donor</span>
+              ) : (
+                <div>
+                  <div>
+                    <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                      How much Food can you Carry?
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Enter Value in Kilograms"
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                      How much Area can you Cover?
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Enter Value in Kilometres"
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                    />
+                  </div>
+                </div>
+              )}
+              <button className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                <span>{`Register as ${userType}`}</span>
 
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
