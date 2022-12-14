@@ -63,18 +63,18 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
 
             <div className="flex lg:hidden items-center">
               {!isLoggedIn ? (
-                <div class="flex items-baseline -mx-2 sm:mt-0">
+                <div className="flex items-baseline -mx-2 sm:mt-0">
                   <a
                     href="#"
-                    class="px-3 py-1.5 text-sm font-semibold text-white transition-colors duration-300 transform border-2 rounded-md hover:bg-gray-700"
+                    className="px-3 py-1.5 text-sm font-semibold text-gray-700 dark:text-white transition-colors duration-300 transform border-2 rounded-md  hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    Sign In
+                    Log In
                   </a>
                   <a
                     href="#"
-                    class="px-3 py-2 mx-2 text-sm font-semibold text-white transition-colors duration-300 transform bg-black rounded-md hover:bg-gray-800"
+                    className="px-3 py-2 mx-2 text-sm font-semibold text-white transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-800"
                   >
-                    Sign Up
+                    Register
                   </a>
                 </div>
               ) : (
@@ -122,18 +122,18 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             <div className="flex items-center mt-4 lg:mt-0">
               <div className="hidden lg:flex">
                 {!isLoggedIn ? (
-                  <div class="flex items-center -mx-2 sm:mt-0">
+                  <div className="flex items-center -mx-2 sm:mt-0">
                     <a
                       href="#"
-                      class="px-3 py-1 text-sm font-semibold text-white transition-colors duration-300 transform border-2 rounded-md hover:bg-gray-700"
+                      className="px-3 py-1.5 text-sm font-semibold text-gray-700 dark:text-white transition-colors duration-300 transform border-2 rounded-md  hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      Sign In
+                      Log In
                     </a>
                     <a
                       href="#"
-                      class="px-3 py-2 mx-2 text-sm font-semibold text-white transition-colors duration-300 transform bg-black rounded-md hover:bg-gray-800"
+                      className="px-3 py-2 mx-2 text-sm font-semibold text-white transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-800"
                     >
-                      Sign Up
+                      Register
                     </a>
                   </div>
                 ) : (
