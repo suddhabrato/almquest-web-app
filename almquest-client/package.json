@@ -12,6 +12,7 @@
     "@react-oauth/google": "^0.5.1",
     "axios": "^1.2.1",
     "react": "^18.2.0",
+    "react-click-away-listener": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.5"
   },
