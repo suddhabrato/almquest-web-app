@@ -5,6 +5,7 @@ import Footer from "./components/Common/Footer";
 import Home from "./components/Home";
 import Contacts from "./components/Contacts";
 import Logintest from "./logintest";
+import RegForm from "./components/Forms/RegForm";
 
 const App = () => {
   const [darkMode, setDarkMode] = React.useState(true);
