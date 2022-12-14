@@ -6,17 +6,21 @@ import Home from "./components/Home";
 import Contacts from "./components/Contacts";
 
 const App = () => {
+  const [darkMode, setDarkMode] = React.useState(true);
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
   return (
-    <>
+    <div className={`${darkMode ? "dark" : "light"}`}>
       <BrowserRouter>
-        <Navbar />
+        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contacts />} />
         </Routes>
         <Footer />
       </BrowserRouter>
-    </>
+    </div>
   );
 };
 
