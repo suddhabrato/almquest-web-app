@@ -6,9 +6,10 @@ import Home from "./components/Home";
 import Contacts from "./components/Contacts";
 import Logintest from "./logintest";
 import RegForm from "./components/Forms/RegForm";
+import RegisterForm from "./components/Forms/RegisterForm";
 
 const App = () => {
-  const [darkMode, setDarkMode] = React.useState(true);
+  const [darkMode, setDarkMode] = React.useState(false);
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contacts />} />
             <Route path="/register" element={<RegForm />} />
+            <Route path="/reg" element={<RegisterForm />} />
             <Route path="/login" element={<Logintest />} />
           </Routes>
           <Footer />

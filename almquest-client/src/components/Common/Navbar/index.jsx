@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
@@ -17,14 +17,13 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
 
   useEffect(() => {
     const user = localStorage.getItem("current_user");
-    if(user) {
+    if (user) {
       setLoggedIn(true);
-    }
-    else {
+    } else {
       setLoggedIn(false);
     }
-  }, [])
-  
+  }, []);
+
   const login = useGoogleLogin({
     onSuccess: async (response) => {
       try {
@@ -44,7 +43,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
       }
     },
   });
-  
+
   const signup = useGoogleLogin({
     onSuccess: async (response) => {
       try {
@@ -59,8 +58,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
 
         localStorage.setItem("current_user", res.data);
         navigate("/register", { replace: true });
-      }
-      catch (err) {
+      } catch (err) {
         alert(err.message);
       }
     },
@@ -120,18 +118,18 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
 
             <div className="flex lg:hidden items-center">
               {!isLoggedIn ? (
-                <div class="flex items-baseline -mx-2 sm:mt-0">
+                <div className="flex items-baseline -mx-2 sm:mt-0">
                   <a
                     onClick={login}
                     class="px-3 py-1.5 text-sm font-semibold text-white transition-colors duration-300 transform border-2 rounded-md hover:bg-gray-700"
                   >
-                    Sign In
+                    Log In
                   </a>
                   <a
                     onClick={signup}
                     class="px-3 py-2 mx-2 text-sm font-semibold text-white transition-colors duration-300 transform bg-black rounded-md hover:bg-gray-800"
                   >
-                    Sign Up
+                    Register
                   </a>
                 </div>
               ) : (
@@ -179,18 +177,18 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             <div className="flex items-center mt-4 lg:mt-0">
               <div className="hidden lg:flex">
                 {!isLoggedIn ? (
-                  <div class="flex items-center -mx-2 sm:mt-0">
+                  <div className="flex items-center -mx-2 sm:mt-0">
                     <a
                       onClick={login}
                       class="px-3 py-1 text-sm font-semibold text-white transition-colors duration-300 transform border-2 rounded-md hover:bg-gray-700"
                     >
-                      Sign In
+                      Log In
                     </a>
                     <a
                       onClick={signup}
                       class="px-3 py-2 mx-2 text-sm font-semibold text-white transition-colors duration-300 transform bg-black rounded-md hover:bg-gray-800"
                     >
-                      Sign Up
+                      Register
                     </a>
                   </div>
                 ) : (
