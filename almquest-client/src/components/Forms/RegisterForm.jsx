@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const RegForm = () => {
+const RegisterForm = () => {
   const [userType, setUserType] = useState("Donor");
   const handleClickDonor = () => {
     setUserType("Donor");
@@ -9,9 +9,9 @@ const RegForm = () => {
   const handleClickDistributor = () => {
     setUserType("Distributor");
   };
-  const activeClass =
-    "flex justify-center w-full px-6 py-3 text-white bg-blue-500 rounded-lg md:w-auto md:mx-2 focus:outline-none";
-  const inactiveClass =
+  const activeclassName =
+    "flex justify-center w-full px-6 py-3 mt-4 md:mt-0 text-white bg-blue-500 rounded-lg md:w-auto md:mx-2 focus:outline-none";
+  const inactiveclassName =
     "flex justify-center w-full px-6 py-3 mt-4 text-blue-500 border border-blue-500 rounded-lg md:mt-0 md:w-auto md:mx-2 dark:border-blue-400 dark:text-blue-400 focus:outline-none";
   return (
     <section className="bg-white dark:bg-gray-900">
@@ -19,32 +19,32 @@ const RegForm = () => {
         <div
           className="hidden bg-cover lg:block lg:w-2/5"
           style={{
-            backgroundImage:
-              userType == "Distributor"
-                ? `url('https://images.pexels.com/photos/4604599/pexels-photo-4604599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`
-                : `url('https://images.pexels.com/photos/6995247/pexels-photo-6995247.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1494621930069-4fd4b2e24a11?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715&q=80')`,
           }}
         ></div>
 
         <div className="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
           <div className="w-full">
             <h1 className="text-2xl font-semibold tracking-wider text-gray-800 capitalize dark:text-white">
-              Want to help us?
+              Get your free account now.
             </h1>
 
             <p className="mt-4 text-gray-500 dark:text-gray-400">
-              Lets get you all set up!
+              Lets get you all set up so you can verify your personal account
+              and begin setting up your profile.
             </p>
 
             <div className="mt-6">
               <h1 className="text-gray-500 dark:text-gray-300">
-                How do you wish to help?
+                Select type of account
               </h1>
 
               <div className="mt-3 md:flex md:items-center md:-mx-2">
                 <button
                   onClick={handleClickDonor}
-                  className={userType == "Donor" ? activeClass : inactiveClass}
+                  className={
+                    userType == "Donor" ? activeclassName : inactiveclassName
+                  }
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,9 @@ const RegForm = () => {
                 <button
                   onClick={handleClickDistributor}
                   className={
-                    userType == "Distributor" ? activeClass : inactiveClass
+                    userType == "Distributor"
+                      ? activeclassName
+                      : inactiveclassName
                   }
                 >
                   <svg
@@ -90,111 +92,107 @@ const RegForm = () => {
               </div>
             </div>
 
-            <form className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
+            <form
+              id="donor-distributor-reg"
+              className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2"
+            >
               <div>
                 <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                  Your Name
+                  Name
                 </label>
                 <input
                   type="text"
-                  placeholder="Type Your Name Here"
+                  placeholder="John Doe"
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
 
               <div>
                 <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                  Email Address
+                  Email address
                 </label>
                 <input
                   type="email"
                   placeholder="user@example.com"
-                  className="peer block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                />
-                <p className="mt-2 text-sm invisible peer-invalid:visible text-pink-600">
-                  Please provide a valid email address.
-                </p>
-              </div>
-
-              <div>
-                <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                  Phone Number
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter 10-digit Phone Number"
-                  className="peer block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
 
               <div>
                 <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                  Your Location
+                  Phone number
+                </label>
+                <input
+                  type="tel"
+                  placeholder="XXX-XXX-XXXX"
+                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                />
+              </div>
+
+              <div>
+                <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                  Location
                 </label>
                 <input
                   type="text"
-                  placeholder="Where are you located?"
+                  placeholder="123 Main Avenue"
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
               {userType == "Donor" ? (
-                <div>
+                <>
                   <div>
                     <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                      How Far can you Travel?
+                      Select Category
+                    </label>
+                    <select
+                      name="donor-type"
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                    >
+                      <option value="Individual">Individual</option>
+                      <option value="Organization">Organization</option>
+                      <option value="Food Chain">Food Chain</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                      How far can you travel?
                     </label>
                     <input
-                      type="text"
-                      placeholder="Enter Value in Kilometres"
+                      type="number"
+                      placeholder="8 Kilometres"
                       className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
                   </div>
-                  <div class="p-1.5 w-full inline-block sm:w-auto overflow-hidden bg-white border rounded-lg dark:bg-gray-800 dark:border-gray-700">
-                    <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                      Are you a/an Food Chain, Organisation or Individual?
-                    </label>
-                    <div class="space-y-2 sm:space-y-0 sm:flex sm:-mx-1">
-                      <button class="w-full px-4 py-1 text-white transition-colors duration-300 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40">
-                        Food Chain
-                      </button>
-
-                      <button class="w-full px-4 py-1 text-white transition-colors duration-300 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40">
-                        Organisation
-                      </button>
-
-                      <button class="w-full px-4 py-1 text-white transition-colors duration-300 transform bg-blue-600 rounded-md focus:outline-none sm:w-auto sm:mx-1 hover:bg-blue-500 focus:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-40">
-                        Individual
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                </>
               ) : (
-                <div>
+                <>
                   <div>
                     <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                      How much Food can you Carry?
+                      How much food can your carry?
                     </label>
                     <input
-                      type="text"
-                      placeholder="Enter Value in Kilograms"
+                      type="number"
+                      placeholder="45 Kilograms"
                       className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
                   </div>
-
                   <div>
                     <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                      How much Area can you Cover?
+                      How much area can you cover?
                     </label>
                     <input
-                      type="text"
-                      placeholder="Enter Value in Kilometres"
+                      type="number"
+                      placeholder="15 Kilometres"
                       className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
                   </div>
-                </div>
+                </>
               )}
-              <button className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
-                <span>{`Register as ${userType}`}</span>
+
+              <button className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                <span>Sign Up </span>
 
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -203,9 +201,9 @@ const RegForm = () => {
                   fill="currentColor"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   />
                 </svg>
               </button>
@@ -217,4 +215,4 @@ const RegForm = () => {
   );
 };
 
-export default RegForm;
+export default RegisterForm;
