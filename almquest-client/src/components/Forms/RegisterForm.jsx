@@ -1,31 +1,73 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
   const [userType, setUserType] = useState("Donor");
-  const [donor, setDonor] = useState({});
-  const [distributor, setDistributor] = useState({});
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("current_user"));
+    if (user) {
+      const { name, email, picture } = user;
+      setPersonalDetails({ ...personalDetails, name, email, picture });
+    } else {
+      navigate("/", { replace: true });
+    }
+  }, []);
+  const [personalDetails, setPersonalDetails] = useState({
+    picture: "",
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
+  });
+  const [donor, setDonor] = useState({
+    donorType: "Individual",
+    distanceRange: "",
+  });
+  const [distributor, setDistributor] = useState({
+    distanceRange: "",
+    maxCapacity: "",
+  });
   const handleChange = (evt) => {
     const value = evt.target.value;
-    if (userType === "Donor") {
-      setDonor({
-        ...donor,
-        [evt.target.name]: value,
-      });
+    if (["name", "email", "address", "phone"].includes(evt.target.name)) {
+      setPersonalDetails(
+        { ...personalDetails, [evt.target.name]: value },
+        console.log(personalDetails)
+      );
     } else {
-      setDistributor({
-        ...distributor,
-        [evt.target.name]: value,
-      });
+      if (userType === "Donor") {
+        setDonor(
+          {
+            ...donor,
+            [evt.target.name]: value,
+          },
+          console.log(donor)
+        );
+      } else {
+        setDistributor(
+          {
+            ...distributor,
+            [evt.target.name]: value,
+          },
+          console.log(distributor)
+        );
+      }
     }
-    console.log(donor.name);
-    console.log(distributor.name);
   };
   const handleClickDonor = () => {
     setUserType("Donor");
   };
   const handleClickDistributor = () => {
     setUserType("Distributor");
+  };
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    console.log(personalDetails);
+    if (userType === "Donor") console.log(donor);
+    else console.log(distributor);
   };
   const activeclassName =
     "flex justify-center w-full px-6 py-3 mt-4 md:mt-0 text-white bg-blue-500 rounded-lg md:w-auto md:mx-2 focus:outline-none";
@@ -37,7 +79,10 @@ const RegisterForm = () => {
         <div
           className="hidden bg-cover lg:block lg:w-2/5"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1494621930069-4fd4b2e24a11?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715&q=80')`,
+            backgroundImage:
+              userType == "Distributor"
+                ? `url('https://images.pexels.com/photos/4604599/pexels-photo-4604599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`
+                : `url('https://images.pexels.com/photos/6995247/pexels-photo-6995247.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
           }}
         ></div>
 
@@ -65,18 +110,18 @@ const RegisterForm = () => {
                   }
                 >
                   <svg
-                    xmlns="http://www.w3.org/2000/svg"
                     className="w-6 h-6"
                     fill="none"
-                    viewBox="0 0 24 24"
                     stroke="currentColor"
-                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
+                      strokeWidth="2"
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    ></path>
                   </svg>
 
                   <span className="mx-2">Donor</span>
@@ -91,18 +136,18 @@ const RegisterForm = () => {
                   }
                 >
                   <svg
-                    xmlns="http://www.w3.org/2000/svg"
                     className="w-6 h-6"
                     fill="none"
-                    viewBox="0 0 24 24"
                     stroke="currentColor"
-                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
+                      strokeWidth="2"
+                      d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"
+                    ></path>
                   </svg>
 
                   <span className="mx-2">Distributor</span>
@@ -113,6 +158,7 @@ const RegisterForm = () => {
             <form
               id="donor-distributor-reg"
               className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2"
+              onSubmit={handleSubmit}
             >
               <div>
                 <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
@@ -122,9 +168,10 @@ const RegisterForm = () => {
                   name="name"
                   type="text"
                   placeholder="John Doe"
-                  value={userType === "Donor" ? donor.name : distributor.name}
+                  value={personalDetails.name}
                   onChange={handleChange}
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  required
                 />
               </div>
 
@@ -135,16 +182,11 @@ const RegisterForm = () => {
                 <input
                   type="email"
                   name="email"
-                  value={
-                    userType === "Donor"
-                      ? donor.email
-                        ? donor.email
-                        : ""
-                      : distributor.email
-                  }
+                  value={personalDetails.email}
                   onChange={handleChange}
-                  placeholder="user@example.com"
-                  className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  className="block w-full px-5 py-3 mt-2  disabled:text-gray-400 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:disabled:text-gray-400 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  disabled
+                  required
                 />
               </div>
 
@@ -153,9 +195,13 @@ const RegisterForm = () => {
                   Phone number
                 </label>
                 <input
+                  name="phone"
                   type="tel"
+                  value={personalDetails.phone}
+                  onChange={handleChange}
                   placeholder="XXX-XXX-XXXX"
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  required
                 />
               </div>
 
@@ -164,9 +210,13 @@ const RegisterForm = () => {
                   Location
                 </label>
                 <input
+                  name="address"
                   type="text"
                   placeholder="123 Main Avenue"
+                  value={personalDetails.address}
+                  onChange={handleChange}
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  required
                 />
               </div>
               {userType == "Donor" ? (
@@ -176,11 +226,14 @@ const RegisterForm = () => {
                       Select Category
                     </label>
                     <select
-                      name="donor-type"
+                      name="donorType"
+                      value={donor.donorType}
+                      onChange={handleChange}
                       className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                      required
                     >
                       <option value="Individual">Individual</option>
-                      <option value="Organization">Organization</option>
+                      <option value="Organisation">Organisation</option>
                       <option value="Food Chain">Food Chain</option>
                     </select>
                   </div>
@@ -190,9 +243,13 @@ const RegisterForm = () => {
                       How far can you travel?
                     </label>
                     <input
+                      name="distanceRange"
+                      value={donor.distanceRange}
                       type="number"
+                      onChange={handleChange}
                       placeholder="8 Kilometres"
                       className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                      required
                     />
                   </div>
                 </>
@@ -203,9 +260,13 @@ const RegisterForm = () => {
                       How much food can your carry?
                     </label>
                     <input
+                      name="maxCapacity"
                       type="number"
+                      value={distributor.maxCapacity}
+                      onChange={handleChange}
                       placeholder="45 Kilograms"
                       className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                      required
                     />
                   </div>
                   <div>
@@ -213,9 +274,13 @@ const RegisterForm = () => {
                       How much area can you cover?
                     </label>
                     <input
+                      name="distanceRange"
                       type="number"
+                      value={distributor.distanceRange}
+                      onChange={handleChange}
                       placeholder="15 Kilometres"
                       className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                      required
                     />
                   </div>
                 </>

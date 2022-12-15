@@ -16,7 +16,8 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   };
 
   useEffect(() => {
-    const user = localStorage.getItem("current_user");
+    const user = JSON.parse(localStorage.getItem("current_user"));
+    console.log(user);
     if (user) {
       setLoggedIn(true);
     } else {
@@ -35,8 +36,8 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             },
           }
         );
-
-        localStorage.setItem("current_user", res.data);
+        console.log(res.data);
+        localStorage.setItem("current_user", JSON.stringify(res.data));
         setLoggedIn(true);
       } catch (err) {
         alert(err.message);
@@ -56,7 +57,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
           }
         );
 
-        localStorage.setItem("current_user", res.data);
+        localStorage.setItem("current_user", JSON.stringify(res.data));
         navigate("/register", { replace: true });
       } catch (err) {
         alert(err.message);
@@ -121,13 +122,13 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                 <div className="flex items-baseline -mx-2 sm:mt-0">
                   <a
                     onClick={login}
-                    class="px-3 py-1.5 text-sm font-semibold text-white transition-colors duration-300 transform border-2 rounded-md hover:bg-gray-700"
+                    className="px-3 py-1.5 text-sm font-semibold text-gray-700 dark:text-white transition-colors duration-300 transform border-2 rounded-md  hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     Log In
                   </a>
                   <a
                     onClick={signup}
-                    class="px-3 py-2 mx-2 text-sm font-semibold text-white transition-colors duration-300 transform bg-black rounded-md hover:bg-gray-800"
+                    className="px-3 py-2 mx-2 text-sm font-semibold text-white transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-800"
                   >
                     Register
                   </a>
@@ -135,7 +136,11 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               ) : (
                 <div className="flex items-center">
                   <NotifTray />
-                  <Avatar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+                  <Avatar
+                    darkMode={darkMode}
+                    toggleDarkMode={toggleDarkMode}
+                    setLoggedIn={setLoggedIn}
+                  />
                 </div>
               )}
             </div>
@@ -180,13 +185,13 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                   <div className="flex items-center -mx-2 sm:mt-0">
                     <a
                       onClick={login}
-                      class="px-3 py-1 text-sm font-semibold text-white transition-colors duration-300 transform border-2 rounded-md hover:bg-gray-700"
+                      className="px-3 py-1.5 text-sm font-semibold text-gray-700 dark:text-white transition-colors duration-300 transform border-2 rounded-md  hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
                       Log In
                     </a>
                     <a
                       onClick={signup}
-                      class="px-3 py-2 mx-2 text-sm font-semibold text-white transition-colors duration-300 transform bg-black rounded-md hover:bg-gray-800"
+                      className="px-3 py-2 mx-2 text-sm font-semibold text-white transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-800"
                     >
                       Register
                     </a>
