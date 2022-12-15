@@ -1,14 +1,71 @@
 import React from "react";
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
+import { useGoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
 import NotifTray from "./NotifTray";
 import Avatar from "./Avatar";
 
 const Navbar = ({ darkMode, toggleDarkMode }) => {
+  const navigate = useNavigate();
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isOpen, setOpen] = useState(false);
   const toggle = () => {
     setOpen(!isOpen);
   };
+
+  useEffect(() => {
+    const user = localStorage.getItem("current_user");
+    if(user) {
+      setLoggedIn(true);
+    }
+    else {
+      setLoggedIn(false);
+    }
+  }, [])
+  
+  const login = useGoogleLogin({
+    onSuccess: async (response) => {
+      try {
+        const res = await axios.get(
+          "https://www.googleapis.com/oauth2/v3/userinfo",
+          {
+            headers: {
+              Authorization: `Bearer ${response.access_token}`,
+            },
+          }
+        );
+
+        localStorage.setItem("current_user", res.data);
+        setLoggedIn(true);
+      } catch (err) {
+        alert(err.message);
+      }
+    },
+  });
+  
+  const signup = useGoogleLogin({
+    onSuccess: async (response) => {
+      try {
+        const res = await axios.get(
+          "https://www.googleapis.com/oauth2/v3/userinfo",
+          {
+            headers: {
+              Authorization: `Bearer ${response.access_token}`,
+            },
+          }
+        );
+
+        localStorage.setItem("current_user", res.data);
+        navigate("/register", { replace: true });
+      }
+      catch (err) {
+        alert(err.message);
+      }
+    },
+  });
+
   return (
     <nav className="sticky top-0 bg-white shadow dark:bg-gray-900 z-30">
       <div className="container px-6 py-4 mx-auto">
@@ -65,13 +122,13 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               {!isLoggedIn ? (
                 <div class="flex items-baseline -mx-2 sm:mt-0">
                   <a
-                    href="#"
+                    onClick={login}
                     class="px-3 py-1.5 text-sm font-semibold text-white transition-colors duration-300 transform border-2 rounded-md hover:bg-gray-700"
                   >
                     Sign In
                   </a>
                   <a
-                    href="#"
+                    onClick={signup}
                     class="px-3 py-2 mx-2 text-sm font-semibold text-white transition-colors duration-300 transform bg-black rounded-md hover:bg-gray-800"
                   >
                     Sign Up
@@ -124,13 +181,13 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                 {!isLoggedIn ? (
                   <div class="flex items-center -mx-2 sm:mt-0">
                     <a
-                      href="#"
+                      onClick={login}
                       class="px-3 py-1 text-sm font-semibold text-white transition-colors duration-300 transform border-2 rounded-md hover:bg-gray-700"
                     >
                       Sign In
                     </a>
                     <a
-                      href="#"
+                      onClick={signup}
                       class="px-3 py-2 mx-2 text-sm font-semibold text-white transition-colors duration-300 transform bg-black rounded-md hover:bg-gray-800"
                     >
                       Sign Up
@@ -142,6 +199,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                     <Avatar
                       darkMode={darkMode}
                       toggleDarkMode={toggleDarkMode}
+                      setLoggedIn={setLoggedIn}
                     />
                   </div>
                 )}
