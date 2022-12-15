@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import ClickAwayListener from "react-click-away-listener";
 import { useState } from "react";
 
@@ -17,8 +17,10 @@ const Avatar = ({ darkMode, toggleDarkMode, setLoggedIn }) => {
     localStorage.removeItem("current_user");
     setLoggedIn(false);
     navigate("/", { replace: true });
-  }
-
+  };
+  const avatarPicture = JSON.parse(
+    localStorage.getItem("current_user")
+  ).picture;
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
       <div className="relative inline-block">
@@ -30,7 +32,7 @@ const Avatar = ({ darkMode, toggleDarkMode, setLoggedIn }) => {
         >
           <div className="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
             <img
-              src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+              src={avatarPicture}
               className="object-cover w-full h-full"
               alt="avatar"
             />

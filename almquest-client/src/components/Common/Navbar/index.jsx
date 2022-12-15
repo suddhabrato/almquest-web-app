@@ -16,7 +16,8 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   };
 
   useEffect(() => {
-    const user = localStorage.getItem("current_user");
+    const user = JSON.parse(localStorage.getItem("current_user"));
+    console.log(user);
     if (user) {
       setLoggedIn(true);
     } else {
@@ -35,8 +36,8 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             },
           }
         );
-
-        localStorage.setItem("current_user", res.data);
+        console.log(res.data);
+        localStorage.setItem("current_user", JSON.stringify(res.data));
         setLoggedIn(true);
       } catch (err) {
         alert(err.message);
@@ -56,7 +57,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
           }
         );
 
-        localStorage.setItem("current_user", res.data);
+        localStorage.setItem("current_user", JSON.stringify(res.data));
         navigate("/register", { replace: true });
       } catch (err) {
         alert(err.message);
