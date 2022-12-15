@@ -3,6 +3,24 @@ import { useState } from "react";
 
 const RegisterForm = () => {
   const [userType, setUserType] = useState("Donor");
+  const [donor, setDonor] = useState({});
+  const [distributor, setDistributor] = useState({});
+  const handleChange = (evt) => {
+    const value = evt.target.value;
+    if (userType === "Donor") {
+      setDonor({
+        ...donor,
+        [evt.target.name]: value,
+      });
+    } else {
+      setDistributor({
+        ...distributor,
+        [evt.target.name]: value,
+      });
+    }
+    console.log(donor.name);
+    console.log(distributor.name);
+  };
   const handleClickDonor = () => {
     setUserType("Donor");
   };
@@ -43,7 +61,7 @@ const RegisterForm = () => {
                 <button
                   onClick={handleClickDonor}
                   className={
-                    userType == "Donor" ? activeclassName : inactiveclassName
+                    userType === "Donor" ? activeclassName : inactiveclassName
                   }
                 >
                   <svg
@@ -67,7 +85,7 @@ const RegisterForm = () => {
                 <button
                   onClick={handleClickDistributor}
                   className={
-                    userType == "Distributor"
+                    userType === "Distributor"
                       ? activeclassName
                       : inactiveclassName
                   }
@@ -101,8 +119,11 @@ const RegisterForm = () => {
                   Name
                 </label>
                 <input
+                  name="name"
                   type="text"
                   placeholder="John Doe"
+                  value={userType === "Donor" ? donor.name : distributor.name}
+                  onChange={handleChange}
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
               </div>
@@ -113,6 +134,15 @@ const RegisterForm = () => {
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  value={
+                    userType === "Donor"
+                      ? donor.email
+                        ? donor.email
+                        : ""
+                      : distributor.email
+                  }
+                  onChange={handleChange}
                   placeholder="user@example.com"
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 />
@@ -192,7 +222,7 @@ const RegisterForm = () => {
               )}
 
               <button className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
-                <span>Sign Up </span>
+                <span>Register as {userType} </span>
 
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

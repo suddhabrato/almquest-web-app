@@ -138,7 +138,7 @@ const RegForm = () => {
                 />
               </div>
               {userType == "Donor" ? (
-                <div>
+                <>
                   <div>
                     <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
                       How Far can you Travel?
@@ -167,7 +167,7 @@ const RegForm = () => {
                       </button>
                     </div>
                   </div>
-                </div>
+                </>
               ) : (
                 <div>
                   <div>
