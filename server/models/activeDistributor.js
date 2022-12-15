@@ -6,14 +6,6 @@ const activeSchema = new mongoose.Schema({
     ref: "Distributor",
     required: true,
   },
-  availableCapacity: {
-    type: Number,
-    required: true,
-  },
-  travelCapacity: {
-    type: Number,
-    required: true,
-  },
 });
 
 const ActiveDistributor = mongoose.model("ActiveDistributor", activeSchema);
