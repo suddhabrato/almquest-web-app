@@ -4,8 +4,7 @@ import Navbar from "./components/Common/Navbar";
 import Footer from "./components/Common/Footer";
 import Home from "./components/Home";
 import Contacts from "./components/Contacts";
-import Logintest from "./logintest";
-import RegForm from "./components/Forms/RegForm";
+import RegisterForm from "./components/Forms/RegisterForm";
 
 const App = () => {
   const [darkMode, setDarkMode] = React.useState(false);
@@ -20,8 +19,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contacts />} />
-            <Route path="/register" element={<RegForm />} />
-            <Route path="/login" element={<Logintest />} />
+            <Route path="/register" element={<RegisterForm />} />
           </Routes>
           <Footer />
         </div>
