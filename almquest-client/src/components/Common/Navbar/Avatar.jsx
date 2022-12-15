@@ -1,8 +1,10 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import ClickAwayListener from "react-click-away-listener";
 import { useState } from "react";
 
-const Avatar = ({ darkMode, toggleDarkMode }) => {
+const Avatar = ({ darkMode, toggleDarkMode, setLoggedIn }) => {
+  const navigate = useNavigate();
   const [isOpen, setOpen] = useState(false);
   const toggle = () => {
     setOpen((prev) => !prev);
@@ -10,6 +12,13 @@ const Avatar = ({ darkMode, toggleDarkMode }) => {
   const handleClickAway = () => {
     setOpen(false);
   };
+
+  const signOut = () => {
+    localStorage.removeItem("current_user");
+    setLoggedIn(false);
+    navigate("/", { replace: true });
+  }
+
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
       <div className="relative inline-block">
@@ -213,7 +222,7 @@ const Avatar = ({ darkMode, toggleDarkMode }) => {
               <span className="mx-1">Help</span>
             </a>
             <a
-              href="#"
+              onClick={signOut}
               className="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
             >
               <svg
