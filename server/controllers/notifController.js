@@ -2,7 +2,15 @@ const asyncHandler = require("express-async-handler");
 const Notification = require("../models/notifModel");
 const Donor = require("../models/donorModel");
 const Distributor = require("../models/distributorModel");
-const Email = require("../utils/email");
+const Pusher = require("pusher");
+
+const pusher = new Pusher({
+  appId: "1526157",
+  key: "b369bdc486176cddddfd",
+  secret: "0f1a3034f5561ec2c060",
+  cluster: "ap2",
+  useTLS: true,
+});
 
 exports.receiveUpdate = asyncHandler(async (req, res, next) => {
   const {
@@ -16,7 +24,7 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
   const donor = await Donor.findById(donor_id);
   const distributor = await Distributor.findById(distributor_id);
 
-  const notifToDonor = await Notification.create({
+  await Notification.create({
     user_id: donor._id,
     user_type: "Donor",
     name: distributor.name,
@@ -27,7 +35,7 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
     path: donor_path,
   });
 
-  const notifToDist = await Notification.create({
+  await Notification.create({
     user_id: distributor._id,
     user_type: "Distributor",
     name: donor.name,
@@ -38,8 +46,16 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
     path: distributor_path,
   });
 
-  await new Email(donor, donor_path).mailToDonor(distributor.name);
-  await new Email(distributor, distributor_path).mailToDistributor(donor.name);
+  // await new Email(donor, donor_path).mailToDonor(distributor.name);
+  // await new Email(distributor, distributor_path).mailToDistributor(donor.name);
+
+  pusher.trigger("almquest-channel", "donor-event", {
+    message: `You've been matched with ${distributor.name}`,
+  });
+
+  pusher.trigger("almquest-channel", "distributor-event", {
+    message: `You've been matched with ${donor.name}`,
+  });
 
   res.status(200).json({
     status: "success",

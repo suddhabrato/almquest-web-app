@@ -29,7 +29,6 @@ exports.donatePackage = asyncHandler(async (req, res, next) => {
   PythonShell.run("check.py", options, (err, result) => {
     if (err) {
       console.log(err);
-      return next(new AppError(err.message, 500));
     }
   });
 

@@ -21,6 +21,7 @@
     "nodemailer": "^6.8.0",
     "nodemon": "^2.0.20",
     "pug": "^3.0.2",
+    "pusher": "^5.1.2",
     "python-shell": "^3.0.1",
     "validator": "^13.7.0"
   },
