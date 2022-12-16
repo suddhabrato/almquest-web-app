@@ -17,7 +17,6 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("current_user"));
-    console.log(user);
     if (user) {
       setLoggedIn(true);
     } else {
@@ -36,7 +35,6 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             },
           }
         );
-        console.log(res.data);
         localStorage.setItem("current_user", JSON.stringify(res.data));
         setLoggedIn(true);
       } catch (err) {
