@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
@@ -109,12 +109,12 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                   </svg>
                 )}
               </button>
-              <a
+              <Link
                 className="mx-4 lg:mx-0 text-2xl font-bold text-gray-800 transition-colors duration-300 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
-                href="/"
+                to="/"
               >
                 AlmQuest
-              </a>
+              </Link>
             </div>
 
             <div className="flex lg:hidden items-center">
@@ -172,12 +172,12 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               >
                 Random Item
               </a>
-              <a
-                href="#"
+              <Link
+                to="/contact"
                 className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
-                Experts
-              </a>
+                Contact us
+              </Link>
             </div>
             <div className="flex items-center mt-4 lg:mt-0">
               <div className="hidden lg:flex">
