@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const RegisterForm = () => {
   const [userType, setUserType] = useState("Donor");
@@ -33,27 +34,21 @@ const RegisterForm = () => {
   const handleChange = (evt) => {
     const value = evt.target.value;
     if (["name", "email", "address", "phone"].includes(evt.target.name)) {
-      setPersonalDetails(
-        { ...personalDetails, [evt.target.name]: value },
-        console.log(personalDetails)
-      );
+      setPersonalDetails((prev) => ({
+        ...prev,
+        [evt.target.name]: value,
+      }));
     } else {
       if (userType === "Donor") {
-        setDonor(
-          {
-            ...donor,
-            [evt.target.name]: value,
-          },
-          console.log(donor)
-        );
+        setDonor((prev) => ({
+          ...prev,
+          [evt.target.name]: value,
+        }));
       } else {
-        setDistributor(
-          {
-            ...distributor,
-            [evt.target.name]: value,
-          },
-          console.log(distributor)
-        );
+        setDistributor((prev) => ({
+          ...prev,
+          [evt.target.name]: value,
+        }));
       }
     }
   };
@@ -63,11 +58,56 @@ const RegisterForm = () => {
   const handleClickDistributor = () => {
     setUserType("Distributor");
   };
-  const handleSubmit = (evt) => {
+  const submitDonor = async (donor) => {
+    try {
+      console.log(donor);
+      const res = await axios.post(
+        "http://localhost:3000/api/donor/register",
+        donor
+      );
+      console.log(res);
+      navigate("/");
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  const submitDistributor = async (distributor) => {
+    try {
+      console.log(distributor);
+      const res = await axios.post(
+        "http://localhost:3000/api/distributor/register",
+        distributor
+      );
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
-    console.log(personalDetails);
-    if (userType === "Donor") console.log(donor);
-    else console.log(distributor);
+    const { name, email, picture, phone, address } = personalDetails;
+
+    if (userType === "Donor") {
+      const body = {
+        ...donor,
+        name,
+        email,
+        phone,
+        picture,
+        location: { address: address, coordinates: [89.999232, 23.232323] },
+      };
+      submitDonor(body);
+    } else {
+      const body = {
+        ...distributor,
+        name,
+        email,
+        phone,
+        picture,
+        location: { address: address, coordinates: [89.999232, 23.232323] },
+      };
+      submitDistributor(body);
+    }
   };
   const activeclassName =
     "flex justify-center w-full px-6 py-3 mt-4 md:mt-0 text-white bg-blue-500 rounded-lg md:w-auto md:mx-2 focus:outline-none";

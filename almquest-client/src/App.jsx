@@ -1,20 +1,27 @@
 import React from "react";
-import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
+import { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Common/Navbar";
 import Footer from "./components/Common/Footer";
 import Home from "./components/Home";
 import Contacts from "./components/Contacts";
 import RegisterForm from "./components/Forms/RegisterForm";
+import { useEffect } from "react";
 
 const App = () => {
-  const [darkMode, setDarkMode] = React.useState(false);
+  const [darkMode, setDarkMode] = useState(
+    JSON.parse(localStorage.getItem("darkMode")) || false
+  );
+  useEffect(() => {
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
+  }, [darkMode]);
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+    setDarkMode((prev) => !prev);
   };
   return (
     <div className={`${darkMode ? "dark" : "light"}`}>
-      <BrowserRouter>
-        <div className="bg-white dark:bg-gray-900">
+      <div className="bg-white dark:bg-gray-900">
+        <BrowserRouter>
           <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -22,8 +29,8 @@ const App = () => {
             <Route path="/register" element={<RegisterForm />} />
           </Routes>
           <Footer />
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
+      </div>
     </div>
   );
 };
