@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const axios = require("axios");
 
 const pairedSchema = new mongoose.Schema({
   donor_id: {
@@ -20,8 +21,18 @@ const pairedSchema = new mongoose.Schema({
     coordinates: [Number],
     address: String,
   },
+  donor_path: String,
+  distributor_path: String,
 });
 
 const PairedDonorDist = mongoose.model("PairedDonorDist", pairedSchema);
+
+PairedDonorDist.watch().on("change", async (data) => {
+  const res = await axios.post(
+    "http://localhost:3000/api/notifyUpdate",
+    data.fullDocument
+  );
+  console.log(res.data);
+});
 
 module.exports = PairedDonorDist;
