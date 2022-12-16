@@ -32,6 +32,7 @@ const Avatar = ({ darkMode, toggleDarkMode, setLoggedIn }) => {
         >
           <div className="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
             <img
+              referrerPolicy="no-referrer"
               src={avatarPicture}
               className="object-cover w-full h-full"
               alt="avatar"

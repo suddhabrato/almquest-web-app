@@ -1,12 +1,37 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const RegisterForm = () => {
   const [userType, setUserType] = useState("Donor");
   const navigate = useNavigate();
-
+  const autoCompleteRef = useRef();
+  const inputRef = useRef();
+  const options = {
+    componentRestrictions: { country: "in" },
+    fields: ["address_components", "geometry", "icon", "name"],
+  };
+  useEffect(() => {
+    autoCompleteRef.current = new window.google.maps.places.Autocomplete(
+      inputRef.current,
+      options
+    );
+    autoCompleteRef.current.addListener("place_changed", async function () {
+      const place = await autoCompleteRef.current.getPlace();
+      const loc = {
+        address: place.name,
+        coordinates: [
+          place.geometry.location.lat(),
+          place.geometry.location.lng(),
+        ],
+      };
+      setPersonalDetails((prev) => ({
+        ...prev,
+        location: loc,
+      }));
+    });
+  }, []);
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("current_user"));
     if (user) {
@@ -21,7 +46,6 @@ const RegisterForm = () => {
     name: "",
     email: "",
     phone: "",
-    address: "",
   });
   const [donor, setDonor] = useState({
     donorType: "Individual",
@@ -33,7 +57,7 @@ const RegisterForm = () => {
   });
   const handleChange = (evt) => {
     const value = evt.target.value;
-    if (["name", "email", "address", "phone"].includes(evt.target.name)) {
+    if (["name", "email", "phone"].includes(evt.target.name)) {
       setPersonalDetails((prev) => ({
         ...prev,
         [evt.target.name]: value,
@@ -79,32 +103,23 @@ const RegisterForm = () => {
         distributor
       );
       console.log(res);
+      navigate("/");
     } catch (e) {
       console.log(e);
     }
   };
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    const { name, email, picture, phone, address } = personalDetails;
-
     if (userType === "Donor") {
       const body = {
         ...donor,
-        name,
-        email,
-        phone,
-        picture,
-        location: { address: address, coordinates: [89.999232, 23.232323] },
+        ...personalDetails,
       };
       submitDonor(body);
     } else {
       const body = {
         ...distributor,
-        name,
-        email,
-        phone,
-        picture,
-        location: { address: address, coordinates: [89.999232, 23.232323] },
+        ...personalDetails,
       };
       submitDistributor(body);
     }
@@ -250,11 +265,9 @@ const RegisterForm = () => {
                   Location
                 </label>
                 <input
-                  name="address"
+                  ref={inputRef}
                   type="text"
                   placeholder="123 Main Avenue"
-                  value={personalDetails.address}
-                  onChange={handleChange}
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                   required
                 />
