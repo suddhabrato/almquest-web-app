@@ -10,7 +10,7 @@ const RegisterForm = () => {
   const inputRef = useRef();
   const options = {
     componentRestrictions: { country: "in" },
-    fields: ["address_components", "geometry", "icon", "name"],
+    fields: ["geometry", "name"],
   };
   useEffect(() => {
     autoCompleteRef.current = new window.google.maps.places.Autocomplete(

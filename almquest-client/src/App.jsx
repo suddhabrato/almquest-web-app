@@ -14,24 +14,27 @@ const App = () => {
   );
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
+    darkMode
+      ? (document.body.classList.add("dark"),
+        document.body.classList.add("bg-gray-900"),
+        document.body.classList.remove("bg-white"))
+      : (document.body.classList.remove("dark"),
+        document.body.classList.add("bg-white"),
+        document.body.classList.remove("bg-gray-900"));
   }, [darkMode]);
   const toggleDarkMode = () => {
     setDarkMode((prev) => !prev);
   };
   return (
-    <div className={`${darkMode ? "dark" : "light"}`}>
-      <div className="bg-white dark:bg-gray-900">
-        <BrowserRouter>
-          <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/contact" element={<Contacts />} />
-            <Route path="/register" element={<RegisterForm />} />
-          </Routes>
-          <Footer />
-        </BrowserRouter>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<Contacts />} />
+        <Route path="/register" element={<RegisterForm />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 };
 

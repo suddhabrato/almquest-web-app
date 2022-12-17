@@ -108,6 +108,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                 )}
               </button>
               <Link
+                onClick={toggle}
                 className="mx-4 lg:mx-0 text-2xl font-bold text-gray-800 transition-colors duration-300 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
                 to="/"
               >
@@ -143,7 +144,6 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               )}
             </div>
           </div>
-
           <div
             className={`${
               isOpen
@@ -172,6 +172,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               </a>
               <Link
                 to="/contact"
+                onClick={toggle}
                 className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 Contact us
