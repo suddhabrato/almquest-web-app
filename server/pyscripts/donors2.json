@@ -1,0 +1,213 @@
+{
+  "donors2": [
+    {
+      "name": "Anirban Samanta",
+      "email": "ani.wilyprometheus.official@gmail.com",
+      "phone": {
+        "$numberLong": "9830586038"
+      },
+      "donorType": "Individual",
+      "location": {
+        "coordinates": [
+          22.729948314701645,
+          87.52149981048859
+        ],
+        "address": "PGHC+WJ7, Gosai Bazar, Gopinathpur, Chandrakona, West Bengal 721201",
+        "type": "Point"
+      },
+      "distanceRange": 2,
+      "lifetimeDonation": 14,
+      "__v": 0
+    },
+    {
+      "name": "Swad Bahar",
+      "email": "ani.samanta365@gmail.com",
+      "phone": {
+        "$numberLong": "9999999999"
+      },
+      "donorType": "Food Chain",
+      "location": {
+        "coordinates": [
+          22.72966309641158,
+          87.50819784113352
+        ],
+        "address": "PGH5+R7, Gach Sitala, Chandrakona, West Bengal 721201",
+        "type": "Point"
+      },
+      "distanceRange": 5,
+      "lifetimeDonation": 52,
+      "__v": 0
+    },
+    {
+      "name": "Biswakarma Body Builders",
+      "email": "arpanhajra493@gmail.com",
+      "phone": {
+        "$numberLong": "9832491365"
+      },
+      "donorType": "Food Chain",
+      "location": {
+        "coordinates": [
+          22.728375206870922,
+          87.5063575570292
+        ],
+        "address": "PGH4+JQX, Gach Sitala, Chandrakona, West Bengal 721201",
+        "type": "Point"
+      },
+      "distanceRange": 1,
+      "lifetimeDonation": 78,
+      "__v": 0
+    },
+    {
+      "name": "Arpan Hajra",
+      "email": "apixii123@gmail.com",
+      "phone": {
+        "$numberLong": "8001541540"
+      },
+      "donorType": "Individual",
+      "location": {
+        "coordinates": [
+          22.73311426483682,
+          87.51023372582966
+        ],
+        "address": "PGM6+43X, Gach Sitala, Chandrakona, West Bengal 721201",
+        "type": "Point"
+      },
+      "distanceRange": 4,
+      "lifetimeDonation": 5,
+      "__v": 0
+    },
+    {
+      "name": "BMondal FL On & OFF Shop",
+      "email": "sayan19p@gmail.com",
+      "phone": {
+        "$numberLong": "8796548716"
+      },
+      "donorType": "Organisation",
+      "location": {
+        "coordinates": [
+          22.734598561555654,
+          87.51103838847331
+        ],
+        "address": "PGM6+P99, Gach Sitala, Chandrakona, West Bengal 721201",
+        "type": "Point"
+      },
+      "distanceRange": 3,
+      "lifetimeDonation": 1000,
+      "__v": 0
+    },
+    {
+      "name": "Sayan Pradhan",
+      "email": "sayan29p@gmail.com",
+      "phone": {
+        "$numberLong": "8697480820"
+      },
+      "donorType": "Individual",
+      "location": {
+        "coordinates": [
+          22.733057578783104,
+          87.51533145466489
+        ],
+        "address": "PGM8+44M Chandrakona, West Bengal",
+        "type": "Point"
+      },
+      "distanceRange": 1,
+      "lifetimeDonation": 17,
+      "__v": 0
+    },
+    {
+      "name": "Sayak Pradhan",
+      "email": "pradhansayak@gmail.com",
+      "phone": {
+        "$numberLong": "8584031836"
+      },
+      "donorType": "Individual",
+      "location": {
+        "coordinates": [
+          22.73373020565379,
+          87.5134106411707
+        ],
+        "address": "PGM7+C92, Unnamed Road, Gach Sitala, Chandrakona, West Bengal 721201",
+        "type": "Point"
+      },
+      "distanceRange": 2,
+      "lifetimeDonation": 21,
+      "__v": 0
+    },
+    {
+      "name": "Premsokhi Goswamir Jibanto Samadhi",
+      "email": "affinityforchemistry@gmail.com",
+      "phone": {
+        "$numberLong": "9878747514"
+      },
+      "donorType": "Organisation",
+      "location": {
+        "coordinates": [
+          22.72724861694733,
+          87.51594264626021
+        ],
+        "address": "PGG8+R83, Gopinathpur, Chandrakona, West Bengal 721201",
+        "type": "Point"
+      },
+      "distanceRange": 2,
+      "lifetimeDonation": 87,
+      "__v": 0
+    },
+    {
+      "name": "Lalubabur Paka",
+      "email": "20uch118@mail.sjctni.edu",
+      "phone": {
+        "$numberLong": "9866547123"
+      },
+      "donorType": "Food Chain",
+      "location": {
+        "coordinates": [
+          22.723359516333844,
+          87.51556713715702
+        ],
+        "address": "PGF8+66W, Gopinathpur, Chandrakona, West Bengal 721201",
+        "type": "Point"
+      },
+      "distanceRange": 3,
+      "lifetimeDonation": 47,
+      "__v": 0
+    },
+    {
+      "name": "Dr. M. K. Roy",
+      "email": "mkroy_2006@yahoo.co.in",
+      "phone": {
+        "$numberLong": "8900638574"
+      },
+      "donorType": "Individual",
+      "location": {
+        "coordinates": [
+          22.723481252625056,
+          87.51167061321952
+        ],
+        "address": "PGF6+CMM, Chandrakona, West Bengal 721201",
+        "type": "Point"
+      },
+      "distanceRange": 5,
+      "lifetimeDonation": 496,
+      "__v": 0
+    },
+    {
+      "name": "City Point",
+      "email": "roymk1971@gmail.com",
+      "phone": {
+        "$numberLong": "8745697841"
+      },
+      "donorType": "Organisation",
+      "location": {
+        "coordinates": [
+          22.72170957852061,
+          87.50868838079498
+        ],
+        "address": "PGC5+JF, Lalsagar, Chandrakona, West Bengal 721201",
+        "type": "Point"
+      },
+      "distanceRange": 3,
+      "lifetimeDonation": 76,
+      "__v": 0
+    }
+  ]
+}

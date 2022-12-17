@@ -1,0 +1,194 @@
+{"distributors":
+[
+  {
+    "name": "Montu Pilot",
+    "email": "indravo2001@gmail.com",
+    "phone": "6874547898",
+    "location": {
+      "coordinates": [
+        22.658819037229105,
+        87.73876307716137
+      ],
+      "address": "MP5Q+GGC, Konnagar, Kuspata, Ghatal, West Bengal 721212",
+      "type": "Point"
+    },
+    "distanceRange": 2,
+    "maxCapacity": 15,
+    "availableCapacity": 0,
+    "totalPackagesDistributed": 412,
+    "isActive": false,
+    "__v": 0
+  },
+  {
+    "name": "Debopriya Ghosh",
+    "email": "ghoshindravo@gmail.com",
+    "phone": "7457896475",
+    "location": {
+      "coordinates": [
+        22.646293071820285,
+        87.74749802091743
+      ],
+      "address": "JPWW+GX9, Kuspata, Katan, West Bengal 721212",
+      "type": "Point"
+    },
+    "distanceRange": 4,
+    "maxCapacity": 11,
+    "availableCapacity": 0,
+    "totalPackagesDistributed": 478,
+    "isActive": false,
+    "__v": 0
+  },
+  {
+    "name": "Indravo Ghosh",
+    "email": "2020apb011.indravo@students.iiests.ac.in",
+    "phone": "8902010310",
+    "location": {
+      "coordinates": [
+        22.67458972721672,
+        87.74124738988394
+      ],
+      "address": "Ghatal, West Bengal 721212",
+      "type": "Point"
+    },
+    "distanceRange": 6,
+    "maxCapacity": 16,
+    "availableCapacity": 0,
+    "totalPackagesDistributed": 145,
+    "isActive": false,
+    "__v": 0
+  },
+  {
+    "name": "Tunir Ma",
+    "email": "seaquin128@gmail.com",
+    "phone": "7847569821",
+    "location": {
+      "coordinates": [
+        22.677334387547425,
+        87.76006653932278
+      ],
+      "address": "MQG6+W2X, Ghatal, West Bengal",
+      "type": "Point"
+    },
+    "distanceRange": 8,
+    "maxCapacity": 8,
+    "availableCapacity": 0,
+    "totalPackagesDistributed": 214,
+    "isActive": false,
+    "__v": 0
+  },
+  {
+    "name": "Tere Naam",
+    "email": "binshita128@gmail.com",
+    "phone": "8741323254",
+    "location": {
+      "coordinates": [
+        22.752200594805768,
+        87.67527398554545
+      ],
+      "address": "QM2G+V4C, Purshuri, West Bengal",
+      "type": "Point"
+    },
+    "distanceRange": 7,
+    "maxCapacity": 10,
+    "availableCapacity": 0,
+    "totalPackagesDistributed": 45,
+    "isActive": false,
+    "__v": 0
+  },
+  {
+    "name": "Sazax",
+    "email": "soumyadeeppatra50@gmail.com",
+    "phone": "9875382694",
+    "location": {
+      "coordinates": [
+        22.729517684946977,
+        87.51134176947038
+      ],
+      "address": "PGH6+RGG, Chandrakona Town - Mugbasan - Neradauel - Keshpur - Medinipur Rd, Gach Sitala, Chandrakona, West Bengal 721201",
+      "type": "Point"
+    },
+    "distanceRange": 3,
+    "maxCapacity": 12,
+    "availableCapacity": 0,
+    "totalPackagesDistributed": 214,
+    "isActive": false,
+    "__v": 0
+  },
+  {
+    "name": "Bilal",
+    "email": "binilal128@gmail.com",
+    "phone": "7845695471",
+    "location": {
+      "coordinates": [
+        22.73103732354783,
+        87.51194556594031
+      ],
+      "address": "PGJ6+CQ8, Gach Sitala, Chandrakona, West Bengal 721201",
+      "type": "Point"
+    },
+    "distanceRange": 2,
+    "maxCapacity": 7,
+    "availableCapacity": 0,
+    "totalPackagesDistributed": 125,
+    "isActive": false,
+    "__v": 0
+  },
+  {
+    "name": "Bapi Da",
+    "email": "lalbinshita@gmail.com",
+    "phone": "7846986325",
+    "location": {
+      "coordinates": [
+        22.731125798211195,
+        87.51858199936095
+      ],
+      "address": "PGJ9+CCG, Gach Sitala, Chandrakona, West Bengal 721201",
+      "type": "Point"
+    },
+    "distanceRange": 4,
+    "maxCapacity": 15,
+    "availableCapacity": 0,
+    "totalPackagesDistributed": 44,
+    "isActive": false,
+    "__v": 0
+  },
+  {
+    "name": "Arnab Banik",
+    "email": "arnabbanik9@gmail.com",
+    "phone": "8989656523",
+    "location": {
+      "coordinates": [
+        22.661003088718658,
+        87.24612274575027
+      ],
+      "address": "M66V+XRM Chunpara, West Bengal",
+      "type": "Point"
+    },
+    "distanceRange": 7,
+    "maxCapacity": 18,
+    "availableCapacity": 0,
+    "totalPackagesDistributed": 786,
+    "isActive": false,
+    "__v": 0
+  },
+  {
+    "name": "Biswaroop Joardar",
+    "email": "joardarbiswaroop@gmail.com",
+    "phone": "8214567324",
+    "location": {
+      "coordinates": [
+        22.891211201629385,
+        87.19583554851691
+      ],
+      "address": "V5RW+F8P Barisol, West Bengal",
+      "type": "Point"
+    },
+    "distanceRange": 8,
+    "maxCapacity": 20,
+    "availableCapacity": 0,
+    "totalPackagesDistributed": 412,
+    "isActive": false,
+    "__v": 0
+  }
+]
+}

@@ -1,34 +1,35 @@
 from pymongo import MongoClient
+
+
 connectionString = "mongodb+srv://admin:12345@almquest.toauhu5.mongodb.net/?retryWrites=true&w=majority"
 
 
-def insert(post):
+def insert(post1):
     client = MongoClient(connectionString,
                          tls=True,
                          tlsAllowInvalidCertificates=True)
     database = client["almquest"]
-    collection = database["donatedpackages"]
-    collection.insert_one(post)
+    collection = database["activedistributors"]
+
+    collection.insert_one(post1)
 
 
 def main():
     client = MongoClient(connectionString,
                          tls=True,
                          tlsAllowInvalidCertificates=True)
-    database = client["almquest"]
-    collection = database["donors"]
-    donorObj = collection.find_one({"name": "Mithila Lodge"})
+    database1 = client["almquest"]
+    collection = database1["distributors"]
+    distObj1 = collection.find_one({"name": "Indravo Ghosh"})
     post1 = {
-        "donor_id": donorObj["_id"],
-        "quantity": 6,
-        "travelCapacity": 4
+        "distributor_id": distObj1["_id"],
+        "__v": 0
     }
     insert(post1)
-    donorObj2 = collection.find_one({"name": "Ishita's Collection"})
+    distObj2 = collection.find_one({"name": "Tere Naam"})
     post2 = {
-        "donor_id": donorObj2["_id"],
-        "quantity": 2,
-        "travelCapacity": 2
+        "distributor_id": distObj2["_id"],
+        "__v": 0
     }
     insert(post2)
 

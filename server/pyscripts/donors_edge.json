@@ -1,0 +1,99 @@
+{
+"donors_edge": [
+  {
+    "name": "Reeshob Borma",
+    "email": "anirban.samanta17@gmail.com",
+    "phone": {
+      "$numberLong": "6942078669"
+    },
+    "donorType": "Individual",
+    "location": {
+      "coordinates": [
+        22.59463599782209,
+        87.75876299699152
+      ],
+      "address": "HQV5+QGC Sagarpur, West Bengal",
+      "type": "Point"
+    },
+    "distanceRange": 2,
+    "lifetimeDonation": 4,
+    "__v": 0
+  },
+  {
+    "name": "Keute Khanra",
+    "email": "anirban.samanta19.ciem.cse@gmail.com",
+    "phone": {
+      "$numberLong": "8714752146"
+    },
+    "donorType": "Individual",
+    "location": {
+      "coordinates": [
+        22.60237908130342,
+        87.71735564116796
+      ],
+      "address": "HQV5+QGC Sagarpur, West Bengal",
+      "type": "Point"
+    },
+    "distanceRange": 4,
+    "lifetimeDonation": 3,
+    "__v": 0
+  },
+  {
+    "name": "Hotel Dhaba",
+    "email": "subhastar1999@gmail.com",
+    "phone": {
+      "$numberLong": "7319037973"
+    },
+    "donorType": "Food Chain",
+    "location": {
+      "coordinates": [
+        22.699650878305686,
+        87.63082523648045
+      ],
+      "address": "MJXJ+V8, Kotulpur - Panna Rd, Mohanpur, West Bengal 721212",
+      "type": "Point"
+    },
+    "distanceRange": 3,
+    "lifetimeDonation": 6,
+    "__v": 0
+  },
+  {
+    "name": "Dhyamna Dutta",
+    "email": "subhamoy2001@gmail.com",
+    "phone": {
+      "$numberLong": "7319037314"
+    },
+    "donorType": "Individual",
+    "location": {
+      "coordinates": [
+        22.686811578677716,
+        87.64344195989786
+      ],
+      "address": "MJPV+P9G Radhanagar, West Bengal",
+      "type": "Point"
+    },
+    "distanceRange": 2,
+    "lifetimeDonation": 2,
+    "__v": 0
+  },
+  {
+    "name": "Ishita's Collection",
+    "email": "pratyasapratihar2000@gmail.com",
+    "phone": {
+      "$numberLong": "7319037947"
+    },
+    "donorType": "Organisation",
+    "location": {
+      "coordinates": [
+        22.686811578677716,
+        87.64344195989786
+      ],
+      "address": "MMX2+CW, Vidyasagar Road, Ghatal, West Bengal 721212",
+      "type": "Point"
+    },
+    "distanceRange": 3,
+    "lifetimeDonation": 3,
+    "__v": 0
+  }
+]
+}

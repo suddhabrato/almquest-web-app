@@ -8,7 +8,7 @@ def pointsFromAddress(add1):
 
 def point():
     add = "27A,College Rd, Shalimar, Howrah, West Bengal 711103"
-    add2 = "Botanical Garden Area, Kolkata, West Bengal 711103"
+    add2 = "+Botanical Garden Area, Kolkata, West Bengal 711103"
     x = pointsFromAddress(add2)
     print(x['geometry'])
 
