@@ -24,6 +24,7 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
   const donor = await Donor.findById(donor_id);
   const distributor = await Distributor.findById(distributor_id);
 
+  // Notif for donor
   await Notification.create({
     user_id: donor._id,
     user_type: "Donor",
@@ -35,6 +36,7 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
     path: donor_path,
   });
 
+  // Notif for distributor
   await Notification.create({
     user_id: distributor._id,
     user_type: "Distributor",
@@ -46,15 +48,17 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
     path: distributor_path,
   });
 
-  // await new Email(donor, donor_path).mailToDonor(distributor.name);
-  // await new Email(distributor, distributor_path).mailToDistributor(donor.name);
+  donor.notif_unseen = donor.notif_unseen + 1;
+  distributor.notif_unseen = distributor.notif_unseen + 1;
+  await donor.save();
+  await distributor.save();
 
-  pusher.trigger("almquest-channel", "donor-event", {
-    message: `You've been matched with ${distributor.name}`,
+  pusher.trigger("almquest-channel", `${donor._id}`, {
+    message: "Distributor found.",
   });
 
-  pusher.trigger("almquest-channel", "distributor-event", {
-    message: `You've been matched with ${donor.name}`,
+  pusher.trigger("almquest-channel", `${distributor._id}`, {
+    message: "You've been assigned a new package.",
   });
 
   res.status(200).json({

@@ -47,3 +47,4 @@ exports.toggleActivity = asyncHandler(async (req, res, next) => {
 exports.delete = factory.deleteAccount(Distributor);
 exports.update = factory.updateAccount(Distributor);
 exports.getProfile = factory.myProfile(Distributor);
+exports.notifSeen = factory.notifSeen(Distributor);

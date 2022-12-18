@@ -76,3 +76,16 @@ exports.checkUserExist = asyncHandler(async (req, res, next) => {
     });
   }
 });
+
+exports.notifSeen = (Model) =>
+  asyncHandler(async (req, res, next) => {
+    const id = req.params.id;
+    const user = await Model.findById(id);
+
+    user.notif_unseen = 0;
+    await user.save();
+
+    res.status(200).json({
+      status: "success",
+    });
+  });
