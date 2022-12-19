@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
@@ -9,6 +9,7 @@ import Avatar from "./Avatar";
 
 const Navbar = ({ darkMode, toggleDarkMode }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isOpen, setOpen] = useState(false);
   const toggle = () => {
@@ -19,7 +20,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     const registeredUser = JSON.parse(localStorage.getItem("reg_user"));
     if (registeredUser) setLoggedIn(true);
     else setLoggedIn(false);
-  }, []);
+  }, [location.pathname]);
 
   const login = useGoogleLogin({
     onSuccess: async (response) => {
