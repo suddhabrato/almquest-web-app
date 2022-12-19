@@ -26,15 +26,20 @@ const App = () => {
     setDarkMode((prev) => !prev);
   };
   return (
-    <BrowserRouter>
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Contacts />} />
-        <Route path="/register" element={<RegisterForm />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <div className={`${darkMode ? "dark" : "light"}`}>
+      <div className="bg-white dark:bg-gray-900">
+        <BrowserRouter>
+          <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/contact" element={<Contacts />} />
+            <Route path="/register" element={<RegisterForm />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </div>
+    </div>
   );
 };
 
