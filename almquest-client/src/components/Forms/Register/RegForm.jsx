@@ -1,128 +1,27 @@
 import React from "react";
-import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useState } from "react";
 
-const RegisterForm = () => {
+const RegForm = ({
+  handleChange,
+  handleSubmit,
+  donor,
+  distributor,
+  inputRef,
+  personalDetails,
+}) => {
   const [userType, setUserType] = useState("Donor");
-  const navigate = useNavigate();
-  const autoCompleteRef = useRef();
-  const inputRef = useRef();
-  const options = {
-    componentRestrictions: { country: "in" },
-    fields: ["address_components", "geometry", "icon", "name"],
-  };
-  useEffect(() => {
-    autoCompleteRef.current = new window.google.maps.places.Autocomplete(
-      inputRef.current,
-      options
-    );
-    autoCompleteRef.current.addListener("place_changed", async function () {
-      const place = await autoCompleteRef.current.getPlace();
-      const loc = {
-        address: place.name,
-        coordinates: [
-          place.geometry.location.lat(),
-          place.geometry.location.lng(),
-        ],
-      };
-      setPersonalDetails((prev) => ({
-        ...prev,
-        location: loc,
-      }));
-    });
-  }, []);
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("current_user"));
-    if (user) {
-      const { name, email, picture } = user;
-      setPersonalDetails({ ...personalDetails, name, email, picture });
-    } else {
-      navigate("/", { replace: true });
-    }
-  }, []);
-  const [personalDetails, setPersonalDetails] = useState({
-    picture: "",
-    name: "",
-    email: "",
-    phone: "",
-  });
-  const [donor, setDonor] = useState({
-    donorType: "Individual",
-    distanceRange: "",
-  });
-  const [distributor, setDistributor] = useState({
-    distanceRange: "",
-    maxCapacity: "",
-  });
-  const handleChange = (evt) => {
-    const value = evt.target.value;
-    if (["name", "email", "phone"].includes(evt.target.name)) {
-      setPersonalDetails((prev) => ({
-        ...prev,
-        [evt.target.name]: value,
-      }));
-    } else {
-      if (userType === "Donor") {
-        setDonor((prev) => ({
-          ...prev,
-          [evt.target.name]: value,
-        }));
-      } else {
-        setDistributor((prev) => ({
-          ...prev,
-          [evt.target.name]: value,
-        }));
-      }
-    }
-  };
   const handleClickDonor = () => {
     setUserType("Donor");
   };
   const handleClickDistributor = () => {
     setUserType("Distributor");
   };
-  const submitDonor = async (donor) => {
-    try {
-      console.log(donor);
-      const res = await axios.post(
-        "http://localhost:3000/api/donor/register",
-        donor
-      );
-      console.log(res);
-      navigate("/");
-    } catch (e) {
-      console.log(e);
-    }
+
+  const handleInputChange = (evt) => {
+    handleChange(evt, userType);
   };
-  const submitDistributor = async (distributor) => {
-    try {
-      console.log(distributor);
-      const res = await axios.post(
-        "http://localhost:3000/api/distributor/register",
-        distributor
-      );
-      console.log(res);
-      navigate("/");
-    } catch (e) {
-      console.log(e);
-    }
-  };
-  const handleSubmit = async (evt) => {
-    evt.preventDefault();
-    if (userType === "Donor") {
-      const body = {
-        ...donor,
-        ...personalDetails,
-      };
-      submitDonor(body);
-    } else {
-      const body = {
-        ...distributor,
-        ...personalDetails,
-      };
-      submitDistributor(body);
-    }
+  const handleFormSubmit = (evt) => {
+    handleSubmit(evt, userType);
   };
   const activeclassName =
     "flex justify-center w-full px-6 py-3 mt-4 md:mt-0 text-white bg-blue-500 rounded-lg md:w-auto md:mx-2 focus:outline-none";
@@ -140,7 +39,6 @@ const RegisterForm = () => {
                 : `url('https://images.pexels.com/photos/6995247/pexels-photo-6995247.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
           }}
         ></div>
-
         <div className="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
           <div className="w-full">
             <h1 className="text-2xl font-semibold tracking-wider text-gray-800 capitalize dark:text-white">
@@ -213,7 +111,7 @@ const RegisterForm = () => {
             <form
               id="donor-distributor-reg"
               className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2"
-              onSubmit={handleSubmit}
+              onSubmit={handleFormSubmit}
             >
               <div>
                 <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
@@ -224,7 +122,7 @@ const RegisterForm = () => {
                   type="text"
                   placeholder="John Doe"
                   value={personalDetails.name}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                   required
                 />
@@ -238,7 +136,7 @@ const RegisterForm = () => {
                   type="email"
                   name="email"
                   value={personalDetails.email}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   className="block w-full px-5 py-3 mt-2  disabled:text-gray-400 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:disabled:text-gray-400 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                   disabled
                   required
@@ -253,7 +151,7 @@ const RegisterForm = () => {
                   name="phone"
                   type="tel"
                   value={personalDetails.phone}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   placeholder="XXX-XXX-XXXX"
                   className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                   required
@@ -281,7 +179,7 @@ const RegisterForm = () => {
                     <select
                       name="donorType"
                       value={donor.donorType}
-                      onChange={handleChange}
+                      onChange={handleInputChange}
                       className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                       required
                     >
@@ -299,7 +197,7 @@ const RegisterForm = () => {
                       name="distanceRange"
                       value={donor.distanceRange}
                       type="number"
-                      onChange={handleChange}
+                      onChange={handleInputChange}
                       placeholder="8 Kilometres"
                       className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                       required
@@ -316,7 +214,7 @@ const RegisterForm = () => {
                       name="maxCapacity"
                       type="number"
                       value={distributor.maxCapacity}
-                      onChange={handleChange}
+                      onChange={handleInputChange}
                       placeholder="45 Kilograms"
                       className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                       required
@@ -330,7 +228,7 @@ const RegisterForm = () => {
                       name="distanceRange"
                       type="number"
                       value={distributor.distanceRange}
-                      onChange={handleChange}
+                      onChange={handleInputChange}
                       placeholder="15 Kilometres"
                       className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                       required
@@ -363,4 +261,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default RegForm;
