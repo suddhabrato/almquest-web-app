@@ -5,7 +5,7 @@ import Navbar from "./components/Common/Navbar";
 import Footer from "./components/Common/Footer";
 import Home from "./components/Home";
 import Contacts from "./components/Contacts";
-import RegisterForm from "./components/Forms/RegisterForm";
+import RegisterForm from "./components/Forms/Register";
 import { useEffect } from "react";
 
 const App = () => {
