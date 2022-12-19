@@ -66,12 +66,14 @@ exports.checkUserExist = asyncHandler(async (req, res, next) => {
 
   if (doc1 || doc2) {
     res.status(200).json({
-      status: "success",
+      isRegistered:true,
       message: "User already exist",
+      userType: doc1?'donor':'distributor',
+      id: doc1 ? doc1._id : doc2._id
     });
   } else {
-    res.status(401).json({
-      status: "error",
+    res.status(200).json({
+      isRegistered:false,
       message: "User not registered",
     });
   }

@@ -16,13 +16,9 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   };
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("current_user"));
-    console.log(user);
-    if (user) {
-      setLoggedIn(true);
-    } else {
-      setLoggedIn(false);
-    }
+    const registeredUser = JSON.parse(localStorage.getItem("reg_user"));
+    if (registeredUser) setLoggedIn(true);
+    else setLoggedIn(false);
   }, []);
 
   const login = useGoogleLogin({
@@ -36,29 +32,22 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             },
           }
         );
-        console.log(res.data);
-        localStorage.setItem("current_user", JSON.stringify(res.data));
-        setLoggedIn(true);
-      } catch (err) {
-        alert(err.message);
-      }
-    },
-  });
-
-  const signup = useGoogleLogin({
-    onSuccess: async (response) => {
-      try {
-        const res = await axios.get(
-          "https://www.googleapis.com/oauth2/v3/userinfo",
-          {
-            headers: {
-              Authorization: `Bearer ${response.access_token}`,
-            },
-          }
+        const body = { email: res.data.email };
+        const checkReg = await axios.post(
+          "http://localhost:3000/api/checkExist",
+          body
         );
-
-        localStorage.setItem("current_user", JSON.stringify(res.data));
-        navigate("/register", { replace: true });
+        const { isRegistered } = checkReg.data;
+        //when registered user exists logging him in
+        if (isRegistered) {
+          res.data.userType = checkReg.data.userType;
+          res.data.id = checkReg.data.id;
+          localStorage.setItem("reg_user", JSON.stringify(res.data));
+          setLoggedIn(true);
+        } else {
+          localStorage.setItem("temp_user", JSON.stringify(res.data));
+          navigate("/register", { replace: true });
+        }
       } catch (err) {
         alert(err.message);
       }
@@ -110,6 +99,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                 )}
               </button>
               <Link
+                onClick={toggle}
                 className="mx-4 lg:mx-0 text-2xl font-bold text-gray-800 transition-colors duration-300 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
                 to="/"
               >
@@ -118,20 +108,14 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             </div>
 
             <div className="flex lg:hidden items-center">
-              {!isLoggedIn ? (
+              {!isLoggedIn && !JSON.parse(localStorage.getItem("temp_user")) ? (
                 <div className="flex items-baseline -mx-2 sm:mt-0">
-                  <a
+                  <Link
                     onClick={login}
                     className="px-3 py-1.5 text-sm font-semibold text-gray-700 dark:text-white transition-colors duration-300 transform border-2 rounded-md  hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    Log In
-                  </a>
-                  <a
-                    onClick={signup}
-                    className="px-3 py-2 mx-2 text-sm font-semibold text-white transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-800"
-                  >
-                    Register
-                  </a>
+                    Sign In
+                  </Link>
                 </div>
               ) : (
                 <div className="flex items-center">
@@ -145,7 +129,6 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               )}
             </div>
           </div>
-
           <div
             className={`${
               isOpen
@@ -174,6 +157,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               </a>
               <Link
                 to="/contact"
+                onClick={toggle}
                 className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 Contact us
@@ -181,20 +165,15 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             </div>
             <div className="flex items-center mt-4 lg:mt-0">
               <div className="hidden lg:flex">
-                {!isLoggedIn ? (
-                  <div className="flex items-center -mx-2 sm:mt-0">
-                    <a
+                {!isLoggedIn &&
+                !JSON.parse(localStorage.getItem("temp_user")) ? (
+                  <div className="flex items-center mx-2 sm:mt-0">
+                    <Link
                       onClick={login}
                       className="px-3 py-1.5 text-sm font-semibold text-gray-700 dark:text-white transition-colors duration-300 transform border-2 rounded-md  hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      Log In
-                    </a>
-                    <a
-                      onClick={signup}
-                      className="px-3 py-2 mx-2 text-sm font-semibold text-white transition-colors duration-300 transform bg-gray-900 rounded-md hover:bg-gray-800"
-                    >
-                      Register
-                    </a>
+                      Sign In
+                    </Link>
                   </div>
                 ) : (
                   <div className="flex items-center">
