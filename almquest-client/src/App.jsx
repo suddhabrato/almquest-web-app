@@ -6,6 +6,7 @@ import Footer from "./components/Common/Footer";
 import Home from "./components/Home";
 import Contacts from "./components/Contacts";
 import RegisterForm from "./components/Forms/RegisterForm";
+import Profile from "./components/Forms/Profile";
 import { useEffect } from "react";
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contacts />} />
             <Route path="/register" element={<RegisterForm />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
           <Footer />
         </BrowserRouter>
