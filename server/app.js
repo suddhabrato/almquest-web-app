@@ -7,7 +7,7 @@ const factory = require("./controllers/handlerFactory");
 const notifController = require("./controllers/notifController");
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
-
+const cors = require("cors")
 const app = express();
 
 // Development Logging
@@ -24,6 +24,7 @@ if (process.env.NODE_ENV === "development") {
   })
 }
 app.use(express.json());
+app.use(cors());
 app.use(express.static(path.join(__dirname, '../almquest-client/dist')));
 
 // Routes
