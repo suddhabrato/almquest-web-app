@@ -1,0 +1,267 @@
+{
+  "donordata1": [
+    {
+      "name": "Akanksha Bhattacharyya",
+      "email": "tamonashbhattacharyya2@gmail.com",
+      "phone": {
+        "$numberLong": "9903064796"
+      },
+      "donorType": "Individual",
+      "location": {
+        "coordinates": [
+          22.654973361277143,
+          87.74889687104634
+        ],
+        "address": "MP3X+XHJ Ghatal Monohorpur Road, Near Bislery Godown, Konnagar , Ghatal , Ward 13, West Bengal 721212",
+        "type": "Point"
+      },
+      "distanceRange": 3,
+      "lifetimeDonation": 69
+    },
+    {
+      "name": "Namaste Bangla",
+      "email": "cistro147@gmail.com",
+      "phone": {
+        "$numberLong": "9947856478"
+      },
+      "donorType": "Food Chain",
+      "location": {
+        "coordinates": [
+          22.652902154811773,
+          87.73621684358272
+        ],
+        "address": "MP3P+3F, Paul bhavan, Kuspata, Ghatal, West Bengal 721212",
+        "type": "Point"
+      },
+      "distanceRange": 2,
+      "lifetimeDonation": 420
+    },
+    {
+      "name": "Bong Pizza",
+      "email": "royanirban23@yahoo.com",
+      "phone": {
+        "$numberLong": "9784563210"
+      },
+      "donorType": "Food Chain",
+      "location": {
+        "coordinates": [
+          22.657881418622022,
+          87.73172034501285
+        ],
+        "address": "MP4J+XM, Kotulpur - Panna Rd, Kuspata, Ghatal, West Bengal 721212",
+        "type": "Point"
+      },
+      "distanceRange": 3,
+      "lifetimeDonation": 786
+    },
+    {
+      "name": "Monalisha Ghosh",
+      "email": "suddhabratoghosh@gmail.com",
+      "phone": {
+        "$numberLong": "8584920325"
+      },
+      "donorType": "Individual",
+      "location": {
+        "coordinates": [
+          22.66623028756444,
+          87.73686554138482
+        ],
+        "address": "MP8P+FQX, Konnagar, Paresh Nagar, Ghatal, West Bengal 721212",
+        "type": "Point"
+      },
+      "distanceRange": 1,
+      "lifetimeDonation": 5,
+      "__v": 0
+    },
+    {
+      "name": "Mithila Lodge",
+      "email": "2020itb001.anirban@students.iiests.ac.in",
+      "phone": {
+        "$numberLong": "8796548715"
+      },
+      "donorType": "Organisation",
+      "location": {
+        "coordinates": [
+          22.651609909368972,
+          87.73276674792136
+        ],
+        "address": "MP2M+94J, Kuspata, Ghatal, West Bengal 721212",
+        "type": "Point"
+      },
+      "distanceRange": 2,
+      "lifetimeDonation": 12,
+      "__v": 0
+    },
+    {
+      "name": "Tamonash Bhattacharyya",
+      "email": "2020itb075.tamonash@students.iiests.ac.in",
+      "phone": {
+        "$numberLong": "9679718567"
+      },
+      "donorType": "Individual",
+      "location": {
+        "coordinates": [
+          22.672281323696435,
+          87.73257026233566
+        ],
+        "address": "MPCM+W48, Gombhir Nagar, Ghatal, West Bengal 721212",
+        "type": "Point"
+      },
+      "distanceRange": 4,
+      "lifetimeDonation": 15,
+      "__v": 0
+    },
+    {
+      "name": "Rik Roy",
+      "email": "wrrikk001@gmail.com",
+      "phone": {
+        "$numberLong": "7029556464"
+      },
+      "donorType": "Individual",
+      "location": {
+        "coordinates": [
+          22.667434925857414,
+          87.74516722598078
+        ],
+        "address": "MP8W+X3F, Nischindipur, Ghatal, West Bengal 721212",
+        "type": "Point"
+      },
+      "distanceRange": 3,
+      "lifetimeDonation": 18,
+      "__v": 0
+    },
+    {
+      "name": "Ba e Bangali",
+      "email": "suddhabratog@gmail.com",
+      "phone": {
+        "$numberLong": "7845698712"
+      },
+      "donorType": "Food Chain",
+      "location": {
+        "coordinates": [
+          22.655882776095474,
+          87.74826472454835
+        ],
+        "address": "MP4X+78, Hanumanji Mandir, Manohorpur Road, near Sripur, Kuspata, Ghatal, West Bengal 721212",
+        "type": "Point"
+      },
+      "distanceRange": 2,
+      "lifetimeDonation": 30,
+      "__v": 0
+    },
+    {
+      "name": "Raj boys hostel",
+      "email": "2020itb076.suddhabrato@students.iiests.ac.in",
+      "phone": {
+        "$numberLong": "8456123785"
+      },
+      "donorType": "Organisation",
+      "location": {
+        "coordinates": [
+          22.657922518298193,
+          87.74691497710222
+        ],
+        "address": "MP5W+4Q, Kuspata, Ghatal, West Bengal 721212",
+        "type": "Point"
+      },
+      "distanceRange": 2,
+      "lifetimeDonation": 48,
+      "__v": 0
+    },
+    {
+      "name": "Aditya Das",
+      "email": "2020itb058.aditya@students.iiests.ac.in",
+      "phone": {
+        "$numberLong": "7439687597"
+      },
+      "donorType": "Individual",
+      "location": {
+        "coordinates": [
+          22.6532635717837,
+          87.75478722402683
+        ],
+        "address": "MQ33+7WC, Kuspata, Ghatal, West Bengal 721212",
+        "type": "Point"
+      },
+      "distanceRange": 3,
+      "lifetimeDonation": 775,
+      "__v": 0
+    },
+    {
+      "name": "Belpukur SSK",
+      "email": "tamonashbhattacharyya7@gmail.com",
+      "phone": {
+        "$numberLong": "8623471598"
+      },
+      "donorType": "Organisation",
+      "location": {
+        "coordinates": [
+          22.65308850163221,
+          87.75650292300759
+        ],
+        "address": "MQ34+92R, Harisinghpur, West Bengal 721212",
+        "type": "Point"
+      },
+      "distanceRange": 2,
+      "lifetimeDonation": 77,
+      "__v": 0
+    },
+    {
+      "name": "Edward Panja",
+      "email": "tamonashbhattacharyya2801@gmail.com",
+      "phone": {
+        "$numberLong": "7845712487"
+      },
+      "donorType": "Individual",
+      "location": {
+        "coordinates": [
+          22.670981980510888,
+          87.70551026666091
+        ],
+        "address": "MPC4+F66 Rathipur, West Bengal",
+        "type": "Point"
+      },
+      "distanceRange": 2,
+      "lifetimeDonation": 47,
+      "__v": 0
+    },
+    {
+      "name": "Ghatal Lions' Club",
+      "email": "adityabkp1234@gmail.com",
+      "phone": {
+        "$numberLong": "7574546547"
+      },
+      "donorType": "Organisation",
+      "location": {
+        "coordinates": [
+          22.65005717277115,
+          87.74057383305728
+        ],
+        "address": "JPXR+V6M, Kuspata, Ghatal, West Bengal 721212",
+        "type": "Point"
+      },
+      "distanceRange": 3,
+      "lifetimeDonation": 47,
+      "__v": 0
+    },
+    {
+      "name": "Saraswati Club",
+      "email": "adityadas6d@gmail.com",
+      "phone": {
+        "$numberLong": "6879412547"
+      },
+      "donorType": "Organisation",
+      "location": {
+        "coordinates": [
+          22.662242127785373,
+          87.74507169652351
+        ],
+        "address": "MP6W+M2R, Paresh Nagar, Ghatal, West Bengal 721212",
+        "type": "Point"
+      },
+      "distanceRange": 3,
+      "lifetimeDonation": 47,
+      "__v": 0
+    }
+  ]
+}
