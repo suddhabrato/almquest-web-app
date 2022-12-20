@@ -7,12 +7,21 @@ const donatedSchema = new mongoose.Schema({
     required: true,
   },
   quantity: {
-    type: String,
+    type: Number,
     required: true,
   },
   travelCapacity: {
     type: Number,
     required: true,
+  },
+  location: {
+    type: {
+      type: String,
+      default: "Point",
+      enum: ["Point"],
+    },
+    coordinates: [Number],
+    address: String,
   },
 });
 

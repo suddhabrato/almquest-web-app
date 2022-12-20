@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import Contacts from "./components/Contacts";
 import RegisterForm from "./components/Forms/Register";
 import { useEffect } from "react";
+import Package from "./components/Forms/Package";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contacts />} />
         <Route path="/register" element={<RegisterForm />} />
+        <Route path="/package" element={<Package />} />
       </Routes>
       <Footer />
     </BrowserRouter>
