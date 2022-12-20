@@ -1,4 +1,5 @@
 import React from "react";
+import Charitybro from "../../assets/Charity-bro.svg";
 
 const Hero = () => {
   return (
@@ -26,7 +27,7 @@ const Hero = () => {
           <div className="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
             <img
               className="w-3/4 h-full lg:max-w-3xl"
-              src="src/assets/Charity-bro.svg"
+              src={Charitybro}
               alt="Charity-bro.svg"
             />
           </div>
