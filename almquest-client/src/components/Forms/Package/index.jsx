@@ -60,7 +60,7 @@ const Package = () => {
         console.log(regUser);
         if (regUser) {
           const { id } = regUser;
-          const res = await axios.get(`http://localhost:3000/api/donor/${id}`);
+          const res = await axios.get(`/api/donor/${id}`);
           const { location, phone, distanceRange } = res.data.data;
           setPackageDetails({
             donor_id: id,
@@ -92,10 +92,7 @@ const Package = () => {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      const res = await axios.post(
-        "http://localhost:3000/api/donor/donate",
-        packageDetails
-      );
+      const res = await axios.post("/api/donor/donate", packageDetails);
       console.log(res);
       setOpen(false);
     } catch (err) {
