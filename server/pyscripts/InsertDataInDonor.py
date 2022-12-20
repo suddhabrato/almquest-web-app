@@ -87,7 +87,13 @@ def main():
     #         "lifetimeDonation": 10
     #     }
     # ]
-    donoredgeins()
+
+    # Already Pushed
+
+    # donor1ins()
+    # donor2ins()
+    # donoredgeins()
+    print("All Insertions Successfully Completed")
 
 
 if __name__ == "__main__":

@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5fa82b97-da56-4ee0-a132-7e012b8878fc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/almquest-web-app.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pyscripts.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pyscripts.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoordinateFromAddress.py" beforeDir="false" afterPath="$PROJECT_DIR$/CoordinateFromAddress.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InsertDataInDistributors.py" beforeDir="false" afterPath="$PROJECT_DIR$/InsertDataInDistributors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InsertDataInDonatedPackages.py" beforeDir="false" afterPath="$PROJECT_DIR$/git" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InsertDataInDonor.py" beforeDir="false" afterPath="$PROJECT_DIR$/InsertDataInDonor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pairing.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pairing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getDirectionData.py" beforeDir="false" afterPath="$PROJECT_DIR$/getDirectionData.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
