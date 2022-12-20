@@ -88,10 +88,7 @@ const Register = () => {
   const submitDonor = async (donor) => {
     try {
       console.log(donor);
-      const res = await axios.post(
-        "http://localhost:3000/api/donor/register",
-        donor
-      );
+      const res = await axios.post("/api/donor/register", donor);
       console.log(res);
     } catch (e) {
       console.log(e);
@@ -101,10 +98,7 @@ const Register = () => {
   const submitDistributor = async (distributor) => {
     try {
       console.log(distributor);
-      const res = await axios.post(
-        "http://localhost:3000/api/distributor/register",
-        distributor
-      );
+      const res = await axios.post("/api/distributor/register", distributor);
       console.log(res);
     } catch (e) {
       console.log(e);
@@ -127,10 +121,7 @@ const Register = () => {
       submitDistributor(body);
     }
     const body = { email: personalDetails.email };
-    const checkReg = await axios.post(
-      "http://localhost:3000/api/checkExist",
-      body
-    );
+    const checkReg = await axios.post("/api/checkExist", body);
     const tempUser = JSON.parse(localStorage.getItem("temp_user"));
     tempUser.userType = checkReg.data.userType;
     tempUser.id = checkReg.data.id;

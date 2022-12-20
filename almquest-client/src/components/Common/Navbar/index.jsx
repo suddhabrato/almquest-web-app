@@ -34,10 +34,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
           }
         );
         const body = { email: res.data.email };
-        const checkReg = await axios.post(
-          "http://localhost:3000/api/checkExist",
-          body
-        );
+        const checkReg = await axios.post("/api/checkExist", body);
         const { isRegistered } = checkReg.data;
         //when registered user exists logging him in
         if (isRegistered) {
