@@ -6,6 +6,9 @@ const donorSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  picture: {
+    type: String,
+  },
   email: {
     type: String,
     unique: true,
