@@ -100,7 +100,9 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                 )}
               </button>
               <Link
-                onClick={toggle}
+                onClick={() => {
+                  setOpen(false);
+                }}
                 className="mx-4 lg:mx-0 text-2xl font-bold text-gray-800 transition-colors duration-300 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
                 to="/"
               >

@@ -1,7 +1,13 @@
 import React from "react";
+import { useEffect, useRef } from "react";
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Package = () => {
+  const navigate = useNavigate();
+  const autoCompleteRef = useRef();
+  const inputRef = useRef();
   const [isOpen, setOpen] = useState(false);
   const [isDisabledLocation, setDisabledLocation] = useState(true);
   const toggleDisabled = () => {
@@ -10,22 +16,102 @@ const Package = () => {
   const toggle = () => {
     setOpen((prev) => !prev);
   };
-
+  const [contact, setContact] = useState("");
   const [packageDetails, setPackageDetails] = useState({
     donor_id: "",
-    quantity: 0,
-    travelCapacity: 0,
+    quantity: "",
+    travelCapacity: "",
     location: "",
   });
+
+  const options = {
+    componentRestrictions: { country: "in" },
+    fields: ["geometry", "name"],
+  };
+
+  //autocomplete places api util
+  useEffect(() => {
+    if (!isOpen) return;
+    console.log("MAP API CALLED!");
+    autoCompleteRef.current = new window.google.maps.places.Autocomplete(
+      inputRef.current,
+      options
+    );
+    autoCompleteRef.current.addListener("place_changed", async function () {
+      const place = await autoCompleteRef.current.getPlace();
+      const loc = {
+        address: place.name,
+        coordinates: [
+          place.geometry.location.lat(),
+          place.geometry.location.lng(),
+        ],
+      };
+      setPackageDetails((prev) => ({
+        ...prev,
+        location: loc,
+      }));
+    });
+  }, [isDisabledLocation]);
+
+  useEffect(() => {
+    const fetchDonorInfo = async () => {
+      try {
+        const regUser = await JSON.parse(localStorage.getItem("reg_user"));
+        console.log(regUser);
+        if (regUser) {
+          const { id } = regUser;
+          const res = await axios.get(`http://localhost:3000/api/donor/${id}`);
+          const { location, phone, distanceRange } = res.data.data;
+          setPackageDetails({
+            donor_id: id,
+            quantity: "",
+            travelCapacity: String(distanceRange),
+            location: location,
+          });
+          setContact(phone);
+        } else navigate("/register", { replace: true });
+      } catch (err) {
+        alert(err.message);
+      }
+    };
+    fetchDonorInfo();
+  }, []);
+
+  useEffect(() => {
+    console.log(packageDetails);
+  }, [packageDetails]);
+
+  const handleChange = (evt) => {
+    const { name, value } = evt.target;
+    setPackageDetails((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (evt) => {
+    evt.preventDefault();
+    try {
+      const res = await axios.post(
+        "http://localhost:3000/api/donor/donate",
+        packageDetails
+      );
+      console.log(res);
+      setOpen(false);
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
   return (
     <>
       <div className="relative flex justify-center">
         {!isOpen ? (
           <button
             onClick={toggle}
-            className="px-6 py-2 mx-auto tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+            className="px-6 py-2 mx-auto tracking-wide text-white transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
           >
-            Open Modal
+            Donate a Package
           </button>
         ) : (
           <div
@@ -39,7 +125,7 @@ const Package = () => {
               isOpen
                 ? "translate-y-0 opacity-100 sm:scale-100"
                 : "translate-y-4 opacity-0 sm:translate-y-0 sm:scale-95"
-            }transition duration-300 ease-in-out z-10 overflow-y-auto`}
+            }transition duration-300 ease-in-out fixed inset-0 z-10 overflow-y-auto`}
             aria-labelledby="modal-title"
             role="dialog"
             aria-modal="true"
@@ -62,9 +148,10 @@ const Package = () => {
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
                   Your new project has been created. Invite your team to
                   collaborate on this project.
+                  <br /> Here is the contact no. +91 {contact}
                 </p>
 
-                <form className="mt-4" action="#">
+                <form className="mt-4" onSubmit={handleSubmit}>
                   <label
                     htmlFor="quantity"
                     className="text-sm text-gray-700 dark:text-gray-200"
@@ -73,9 +160,11 @@ const Package = () => {
                   </label>
                   <label className="block mt-2" htmlFor="quantity">
                     <input
-                      type="number"
+                      type="text"
                       name="quantity"
                       id="quantity"
+                      value={packageDetails.quantity}
+                      onChange={handleChange}
                       placeholder="Number of meals"
                       className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
                     />
@@ -88,9 +177,11 @@ const Package = () => {
                   </label>
                   <label className="block mt-2" htmlFor="travelCapacity">
                     <input
-                      type="number"
+                      type="text"
                       name="travelCapacity"
                       id="travelCapacity"
+                      value={packageDetails.travelCapacity}
+                      onChange={handleChange}
                       placeholder="10 Kilometres"
                       className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
                     />
@@ -103,11 +194,10 @@ const Package = () => {
                   </label>
                   <label className="block mt-2" htmlFor="location">
                     <input
+                      ref={inputRef}
                       type="text"
-                      name="location"
-                      id="location"
-                      value={"94/2 c road"}
                       disabled={isDisabledLocation}
+                      placeholder={packageDetails.location.address}
                       className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300  disabled:text-gray-400"
                     />
                   </label>
@@ -118,7 +208,7 @@ const Package = () => {
                   >
                     {isDisabledLocation ? (
                       <svg
-                        class="w-4 h-4"
+                        className="w-4 h-4"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -133,7 +223,7 @@ const Package = () => {
                       </svg>
                     ) : (
                       <svg
-                        class="w-4 h-4"
+                        className="w-4 h-4"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -165,10 +255,10 @@ const Package = () => {
                     </button>
 
                     <button
-                      type="button"
+                      type="submit"
                       className="w-full px-4 py-2 mt-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md sm:mt-0 sm:w-1/2 sm:mx-2 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                     >
-                      Send invites
+                      Donate Package
                     </button>
                   </div>
                 </form>
