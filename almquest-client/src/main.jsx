@@ -5,7 +5,8 @@ import axios from "axios";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import "./index.css";
 
-axios.defaults.baseURL = "http://localhost:3000";
+// axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = "https://almquest-server.onrender.com";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
