@@ -1,6 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
-
+const path=require('path')
 const donorRouter = require("./routes/donorRoutes");
 const distributorRouter = require("./routes/distributorRoutes");
 const factory = require("./controllers/handlerFactory");
@@ -24,12 +24,17 @@ if (process.env.NODE_ENV === "development") {
   })
 }
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '../almquest-client/dist')));
 
 // Routes
 app.use("/api/donor", donorRouter);
 app.use("/api/distributor", distributorRouter);
 app.post("/api/checkExist", factory.checkUserExist);
 app.post("/api/notifyUpdate", notifController.receiveUpdate);
+
+// app.get('/*', function(req,res) {
+//   res.sendFile(path.join(__dirname, '../almquest-client/dist', 'index.html'));
+// });
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
