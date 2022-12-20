@@ -13,6 +13,7 @@ const app = express();
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
+
 app.use((req,res, next)=>{
   res.setHeader('Access-Control-Allow-Origin',"*");
   res.setHeader('Access-Control-Allow-Headers',"*");
@@ -32,10 +33,6 @@ app.use("/api/donor", donorRouter);
 app.use("/api/distributor", distributorRouter);
 app.post("/api/checkExist", factory.checkUserExist);
 app.post("/api/notifyUpdate", notifController.receiveUpdate);
-
-// app.get('/*', function(req,res) {
-//   res.sendFile(path.join(__dirname, '../almquest-client/dist', 'index.html'));
-// });
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
