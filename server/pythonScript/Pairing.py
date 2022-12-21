@@ -14,7 +14,7 @@ def selectDist(param):
     return param[2]
 
 
-def pair():
+def pair(y1):
     client = MongoClient(connectionString, tls=True,
                          tlsAllowInvalidCertificates=True)
 
@@ -29,7 +29,7 @@ def pair():
     within_range = list()
 
     #'63a203e5f377e147c60c9e8b'
-    y1 = sys.argv[1]
+    # y1 = sys.argv[1]
     x = bson.objectid.ObjectId(y1)
 
     donatedpackage_object = collection1.find_one({"donor_id": x})
@@ -54,9 +54,8 @@ def pair():
         dist_cord = [lat_dist, lon_dist]
         print(max_range)
         if donation_amt < dist_available_capacity:
-            x = float(gDD.getDirectionList((lat_donor, lon_donor), (lat_dist, lon_dist))[0]['legs'][0]["distance"]["text"].rsplit(" ")[0])
-            print(x, dist_travel_capacity+donor_travel_capacity)
-            if x <= (dist_travel_capacity+donor_travel_capacity):
+            z = float(gDD.getDirectionList((lat_donor, lon_donor), (lat_dist, lon_dist))[0]['legs'][0]["distance"]["text"].rsplit(" ")[0])
+            if z <= (dist_travel_capacity+donor_travel_capacity):
                 post1 = {
 
                         "donor_id": x,
@@ -77,7 +76,7 @@ def pair():
                 }
                 collection3.insert_one(post1)
                 print("1")
-                return
+                return post1
 
     # Create a post to push data in paireddonordist
 
