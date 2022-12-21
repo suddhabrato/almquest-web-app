@@ -1,6 +1,5 @@
 from pymongo import MongoClient
 
-
 connectionString = "mongodb+srv://admin:12345@almquest.toauhu5.mongodb.net/?retryWrites=true&w=majority"
 
 
