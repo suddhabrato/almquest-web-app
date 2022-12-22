@@ -60,6 +60,24 @@ def pair(y1):
             if hav_dist <= 80:
                 distributor_list_fiter1.append([y, lat_dist, lon_dist])
 
+    if len(distributor_list_fiter1)==0:
+        post_notif_donor = {
+            "user_id": donatedpackage_object['donor_id'],
+            'user_type': 'Donor',
+            'message': 'We could not find a pair for you',
+            'packageId': x,
+            'name': '',
+            'photo': '',
+            'desc': 'We could not find a pair for you',
+            'timestamp': datetime.datetime.now(),
+            'meet_location': {
+                'coordinates': [0, 0],
+                'address': '',
+            },
+            'path': ''
+        }
+        collection4.insert_one(post_notif_donor)
+
     # 5NN
     distributor_list_fiter2 = model.findNearestDistributor(distributor_list_fiter1)
     meet_lat, meet_lon, distributor_id = gBM.meetLocation([lat_package, lat_package], distributor_list_fiter2, donor_travel_capacity)
