@@ -1,5 +1,3 @@
-# Using flask to make an api
-# import necessary libraries and functions
 from flask import Flask, jsonify, request
 import Pairing as pair
 
@@ -15,7 +13,7 @@ app = Flask(__name__)
 
 
 def home():
-	if(request.method == 'GET'):
+	if request.method == 'GET':
 
 		data = "Donor ID Push is at /Pair/"
 		return jsonify({'data': data})
@@ -28,13 +26,13 @@ def home():
 
 @app.route('/pair/<string:donor_id>', methods=['GET'])
 def disp(donor_id):
+	#thread call
+	process(donor_id)
+	return jsonify({'message': 'Request Acknowledged'})
+
+
+def process(donor_id):
 	post1 = pair.pair(donor_id)
-	if post1 is not None:
-		return jsonify({'message': 'Success',
-						'isPaired': True})
-	else:
-		return jsonify({'message': 'Failure',
-						'isPaired': False})
 
 
 # driver function
