@@ -17,13 +17,15 @@ def getDataFromDistributors():
     collection = database["distributors"]
 
     result = collection.find()
-
+    points_list = list()
     for res in result:
         print(res)
         print(type(res["_id"]))
         print("----------------------------------")
         print('name: ', res['name'], '\nlat: ', res['location']['coordinates'][0], "\nlon: ", res['location']
         ['coordinates'][1])
+        points_list.append({"lat": res['location']['coordinates'][0], "lon": res['location']['coordinates'][1]})
+        return points_list
 
 
 def getDataFromDonors():
@@ -56,7 +58,7 @@ def getDataFromDonors():
 
 def main():
     print("\nDistributors: \n")
-    getDataFromDistributors()
+    # getDataFromDistributors()
     # print("\n\nDonors: \n")
     # getDataFromDonors()
 

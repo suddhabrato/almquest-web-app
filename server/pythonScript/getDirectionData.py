@@ -1,8 +1,9 @@
 import GetPath as path
 import googlemaps
-from datetime import datetime
+import Retrieve as rt
 
-x = ""
+
+# x = ""
 x = 'AIzaSyBbcFeq42Ad9aqnlZuQdkNahM3YmyC2Z6Y'
 
 gmaps = googlemaps.Client(key=x)
@@ -13,12 +14,6 @@ gmaps = googlemaps.Client(key=x)
 def getDirectionList(cord1, cord2):
     directionsCords = gmaps.directions(cord1, cord2)
     return directionsCords
-
-
-
-
-
-
 
 
 
