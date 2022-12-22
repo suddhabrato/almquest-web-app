@@ -52,8 +52,8 @@ const Avatar = ({ darkMode, toggleDarkMode, setLoggedIn }) => {
           >
             {JSON.parse(localStorage.getItem("reg_user")) ? (
               <>
-                <a
-                  href="#"
+                <Link
+                  to="/profile"
                   className="flex items-center px-3 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
                 >
                   <svg
@@ -73,7 +73,7 @@ const Avatar = ({ darkMode, toggleDarkMode, setLoggedIn }) => {
                   </svg>
 
                   <span className="mx-1">view profile</span>
-                </a>
+                </Link>
 
                 <a className="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
                   <button
