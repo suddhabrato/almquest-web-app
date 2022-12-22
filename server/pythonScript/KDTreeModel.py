@@ -15,6 +15,7 @@ def findNearestDistributor(x):
     tree = KDTree(coordinates, leaf_size=2, metric='haversine')
     dist, ind = tree.query(coordinates[0:1], k=10)
     nearest_neighbours = list()
+
     for i in range(1, ind[0].size, 1):
         # Get the distributor ID of the nearest distributors
         nearest_neighbours.append(distributor[ind[i]])
