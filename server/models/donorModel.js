@@ -51,6 +51,12 @@ const donorSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  packages: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "DonatedPackages",
+    },
+  ],
 });
 
 const Donor = mongoose.model("Donor", donorSchema);

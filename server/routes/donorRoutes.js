@@ -11,6 +11,4 @@ router.post("/donate", donorController.donatePackage);
 router.post("/notifSeen", donorController.notifSeen);
 router.get("/:id", donorController.getDonor);
 
-router.post("/pair", donorController.paired);
-
 module.exports = router;

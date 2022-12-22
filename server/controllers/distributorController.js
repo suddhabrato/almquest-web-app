@@ -1,6 +1,8 @@
 const asyncHandler = require("express-async-handler");
 const Distributor = require("../models/distributorModel");
 const ActiveDistributor = require("../models/activeDistributor");
+const DonatedPackages = require("../models/donatedPackages");
+const Notification = require("../models/notifModel");
 const AppError = require("../utils/appError");
 const factory = require("./handlerFactory");
 
@@ -48,3 +50,15 @@ exports.delete = factory.deleteAccount(Distributor);
 exports.update = factory.updateAccount(Distributor);
 exports.getProfile = factory.myProfile(Distributor);
 exports.notifSeen = factory.notifSeen(Distributor);
+
+exports.togglePackageState = asyncHandler(async (req, res, next) => {
+  const { package_id, state } = req.body;
+
+  const package = await DonatedPackages.findById(package_id);
+  package.current_state = state;
+  await package.save();
+
+  res.status(200).json({
+    status: "success",
+  });
+});
