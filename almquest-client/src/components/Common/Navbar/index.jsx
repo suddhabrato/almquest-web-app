@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
@@ -9,6 +9,7 @@ import Avatar from "./Avatar";
 
 const Navbar = ({ darkMode, toggleDarkMode }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isOpen, setOpen] = useState(false);
   const toggle = () => {
@@ -19,7 +20,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     const registeredUser = JSON.parse(localStorage.getItem("reg_user"));
     if (registeredUser) setLoggedIn(true);
     else setLoggedIn(false);
-  }, []);
+  }, [location.pathname]);
 
   const login = useGoogleLogin({
     onSuccess: async (response) => {
@@ -33,10 +34,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
           }
         );
         const body = { email: res.data.email };
-        const checkReg = await axios.post(
-          "http://localhost:3000/api/checkExist",
-          body
-        );
+        const checkReg = await axios.post("/api/checkExist", body);
         const { isRegistered } = checkReg.data;
         //when registered user exists logging him in
         if (isRegistered) {
@@ -99,7 +97,9 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                 )}
               </button>
               <Link
-                onClick={toggle}
+                onClick={() => {
+                  setOpen(false);
+                }}
                 className="mx-4 lg:mx-0 text-2xl font-bold text-gray-800 transition-colors duration-300 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
                 to="/"
               >
