@@ -50,6 +50,16 @@ const distributorSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  notif_unseen: {
+    type: Number,
+    default: 0,
+  },
+  packages: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "DonatedPackages",
+    },
+  ],
 });
 
 const Distributor = mongoose.model("Distributor", distributorSchema);
