@@ -23,7 +23,7 @@ def pair(y1):
 
     collection1 = database1["donatedpackages"]
     collection2 = database1["activedistributors"]
-    collection3 = database1["paireddonordists"]
+    # collection3 = database1["paireddonordists"]
     collection4 = database1["notifications"]
     collection5 = database1["distributors"]
     collection6 = database1["donor"]
@@ -123,6 +123,7 @@ def pair(y1):
             '$set': {'current_state': "Paired"
             }
         }
+
         post_donated_packages_update_2 = {
             '$set': {'pair': {
                 'distributor_id': distributor_id,
@@ -135,8 +136,17 @@ def pair(y1):
                 }
             }
         }
+
+        getPackage = distributor_obj["packages"]
+        getPackage.append(x)
+
+        post_dist = {
+            '$set': {'packages': getPackage}
+        }
+
         collection4.insert_one(post_notif_dist)
         collection4.insert_one(post_notif_donor)
+        collection5.update_one({'_id': x}, post_dist)
         collection5.update_one({'_id': x}, post_donated_packages_update_1)
         collection5.update_one({'_id': x}, post_donated_packages_update_2)
 
