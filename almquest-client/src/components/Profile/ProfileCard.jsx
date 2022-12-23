@@ -21,6 +21,7 @@ const ProfileCard = () => {
   const [donor, setDonor] = useState({
     donorType: "",
     distanceRange: "",
+    isActive: "",
   });
 
   const [distributor, setDistributor] = useState({
@@ -57,8 +58,8 @@ const ProfileCard = () => {
           setDonor({ distanceRange, donorType });
         }
         if (userType === "distributor") {
-          const { distanceRange, maxCapacity } = res.data.data;
-          setDistributor({ maxCapacity, distanceRange });
+          const { distanceRange, maxCapacity, isActive } = res.data.data;
+          setDistributor({ maxCapacity, distanceRange, isActive });
         }
       } else {
         navigate("/", { replace: true });
@@ -91,6 +92,7 @@ const ProfileCard = () => {
             toggleEditForm={toggleEditForm}
             personalDetails={personalDetails}
             userType={userType}
+            id={id}
             donor={donor}
             distributor={distributor}
           />
