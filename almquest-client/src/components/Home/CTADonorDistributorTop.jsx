@@ -5,14 +5,12 @@ const CTADonorDistributorTop = () => {
     <section className="bg-white dark:bg-gray-900">
       <div className="container flex flex-col items-center px-4 py-12 mx-auto text-center my-4">
         <h2 className="text-3xl font-bold tracking-tight text-gray-800 xl:text-4xl dark:text-white">
-          Try something really different right now.
+          Something About Us
         </h2>
 
         <p className="block max-w-4xl mt-4 text-gray-500 dark:text-gray-300">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse iure
-          tenetur commodi ipsam error voluptate magni. Adipisci repudiandae
-          ullam commodi iusto reprehenderit suscipit facere voluptatem, eaque
-          maiores minima. Neque, officiis.
+          Here on AlmQuest we bring two groups of people together - The ones who have excess food they can donate and the ones who 
+          have the opportunity and the scope to distribute that food to the under-priviledged and the ones in need.  
         </p>
 
         <div className="mt-6">
@@ -50,7 +48,7 @@ const CTADonorDistributorTop = () => {
               </g>
             </svg>
 
-            <span className="mx-2">Get it on the App Store</span>
+            <span className="mx-2">Check what a Donor is</span>
           </a>
 
           <a
@@ -65,19 +63,18 @@ const CTADonorDistributorTop = () => {
               <path d="m432.320312 215.121094-361.515624-208.722656c-14.777344-8.53125-32.421876-8.53125-47.203126 0-.121093.070312-.230468.148437-.351562.21875-.210938.125-.421875.253906-.628906.390624-14.175782 8.636719-22.621094 23.59375-22.621094 40.269532v417.445312c0 17.066406 8.824219 32.347656 23.601562 40.878906 7.390626 4.265626 15.496094 6.398438 23.601563 6.398438s16.214844-2.132812 23.601563-6.398438l361.519531-208.722656c14.777343-8.53125 23.601562-23.8125 23.601562-40.878906s-8.824219-32.347656-23.605469-40.878906zm-401.941406 253.152344c-.21875-1.097657-.351562-2.273438-.351562-3.550782v-417.445312c0-2.246094.378906-4.203125.984375-5.90625l204.324219 213.121094zm43.824219-425.242188 234.21875 135.226562-52.285156 54.539063zm-6.480469 429.679688 188.410156-196.527344 54.152344 56.484375zm349.585938-201.835938-80.25 46.332031-60.125-62.714843 58.261718-60.773438 82.113282 47.40625c7.75 4.476562 8.589844 11.894531 8.589844 14.875s-.839844 10.398438-8.589844 14.875zm0 0"></path>
             </svg>
 
-            <span className="mx-2">Get it on Google Play</span>
+            <span className="mx-2">Check Out what a Distributor is</span>
           </a>
         </div>
       </div>
       <div className="container lg:px-32 px-6 py-10 mx-auto">
         <h1 className="text-3xl font-semibold text-center text-gray-800 capitalize lg:text-4xl dark:text-white">
-          Our <span className="text-blue-500">Executive Team</span>
+          Join Us <span className="text-blue-500">In Our Quest</span>
         </h1>
 
         <p className="max-w-2xl mx-auto my-6 text-center text-gray-500 dark:text-gray-300">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo incidunt
-          ex placeat modi magni quia error alias, adipisci rem similique, at
-          omnis eligendi optio eos harum.
+          We provide this platform for bringing two kinds of people or organisation alike together who can
+          fulfil each other's needs.
         </p>
 
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-2">
@@ -85,17 +82,17 @@ const CTADonorDistributorTop = () => {
             <div className="flex flex-col sm:-mx-4 sm:flex-row">
               <img
                 className="flex-shrink-0 object-cover w-24 h-24 rounded-full sm:mx-4 ring-4 ring-gray-300"
-                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                src="https://img.freepik.com/free-vector/tiny-people-standing-near-box-donation-food-delivery-volunteers-giving-healthy-grocery-goods-charity-flat-vector-illustration-social-support-humanitarian-help-community-sharing-concept_74855-21023.jpg"
                 alt=""
               />
 
               <div className="mt-4 sm:mx-4 sm:mt-0">
                 <h1 className="text-xl font-semibold text-gray-700 capitalize md:text-2xl dark:text-white group-hover:text-white">
-                  arthur melo
+                  Donor
                 </h1>
 
                 <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
-                  design director
+                  Individual or Organisation or Food Chain
                 </p>
               </div>
             </div>
@@ -157,17 +154,17 @@ const CTADonorDistributorTop = () => {
             <div className="flex flex-col sm:-mx-4 sm:flex-row">
               <img
                 className="flex-shrink-0 object-cover w-24 h-24 rounded-full sm:mx-4 ring-4 ring-gray-300"
-                src="https://images.unsplash.com/photo-1531590878845-12627191e687?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYsTrmtki0LulwdZ0_yY70rNvRzs4xpOKGYA&usqp=CAU"
                 alt=""
               />
 
               <div className="mt-4 sm:mx-4 sm:mt-0">
                 <h1 className="text-xl font-semibold text-gray-700 capitalize md:text-2xl dark:text-white group-hover:text-white">
-                  Amelia. Anderson
+                  Distributor
                 </h1>
 
                 <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
-                  Lead Developer
+                  Individual or Organisation
                 </p>
               </div>
             </div>
