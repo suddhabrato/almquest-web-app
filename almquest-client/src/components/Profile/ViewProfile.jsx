@@ -1,4 +1,5 @@
 import React from "react";
+import ActivityToggler from "./ActivityToggler";
 
 const ViewProfile = ({
   toggleEditForm,
@@ -6,16 +7,22 @@ const ViewProfile = ({
   userType,
   donor,
   distributor,
+  id,
 }) => {
   return (
     <>
       <h1 className="text-4xl break-words text-center md:text-start font-semibold tracking-wide text-gray-800 capitalize dark:text-white">
         {personalDetails.name}
       </h1>
-      <p className="mt-4 text-gray-500 dark:text-gray-400 text-center md:text-start">
+      <div className="mt-4 md:mt-2 mx-4 flex justify-center md:justify-end">
+        {userType === "distributor" && (
+          <ActivityToggler id={id} initialActive={distributor.isActive} />
+        )}
+      </div>
+      <p className="mt-4 md:-mt-6 mb-4 text-gray-500 dark:text-gray-400 text-center md:text-start">
         <button
           type="button"
-          className="rounded-full border-2 border-gray-200 dark:border-gray-700 max-w-full px-4 bg-gray-50 dark:bg-gray-800"
+          className="rounded-full max-w-full px-4 py-1.5 bg-gray-50 dark:bg-gray-800 shadow-md"
         >
           Lifetime {userType === "donor" ? "Donation" : "Distribution"}: {42069}
         </button>
