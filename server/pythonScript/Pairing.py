@@ -27,6 +27,7 @@ def pair(y1):
     collection4 = database1["notifications"]
     collection5 = database1["distributors"]
     collection6 = database1["donor"]
+
     activeDistributors = collection2.find()
 
     x = bson.objectid.ObjectId(y1)
