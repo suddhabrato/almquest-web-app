@@ -59,13 +59,14 @@ const Package = () => {
         const regUser = await JSON.parse(localStorage.getItem("reg_user"));
         console.log(regUser);
         if (regUser) {
-          const { id } = regUser;
+          const { id, userType } = regUser;
+          if (userType !== "donor") return navigate("/");
           const res = await axios.get(`/api/donor/${id}`);
           const { location, phone, distanceRange } = res.data.data;
           setPackageDetails({
             donor_id: id,
             quantity: "",
-            travelCapacity: String(distanceRange),
+            travelCapacity: distanceRange,
             location: location,
           });
           setContact(phone);
@@ -103,14 +104,27 @@ const Package = () => {
   return (
     <>
       <div className="relative flex justify-center">
-        {!isOpen ? (
-          <button
-            onClick={toggle}
-            className="px-6 py-2 mx-auto tracking-wide text-white transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+        <button
+          onClick={toggle}
+          className="inline-flex items-center justify-center w-full px-5 py-3 mt-4 overflow-hidden text-white transition-colors duration-300 bg-blue-600 rounded-lg shadow sm:w-auto sm:mx-2 sm:mt-0 hover:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+        >
+          <svg
+            className="w-5 h-5 mx-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            Donate a Package
-          </button>
-        ) : (
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"
+            />
+          </svg>
+          <span className="mr-2">Donate a Package</span>
+        </button>
+        {isOpen && (
           <div
             x-transition:enter="transition duration-300 ease-out"
             x-transition:enter-start="translate-y-4 opacity-0 sm:translate-y-0 sm:scale-95"
