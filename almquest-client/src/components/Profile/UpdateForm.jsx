@@ -84,17 +84,16 @@ const UpdateForm = ({
         ...newDonor,
         ...newPersonalDetails,
       };
-      submitDonor(body);
+      await submitDonor(body);
     } else {
       const body = {
         ...newDistributor,
         ...newPersonalDetails,
       };
-      submitDistributor(body);
+      await submitDistributor(body);
     }
     getProfile();
     toggleEditForm();
-    navigate(0);
   };
 
   const handleChange = (evt) => {
