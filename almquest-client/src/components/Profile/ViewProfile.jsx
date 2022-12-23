@@ -14,12 +14,7 @@ const ViewProfile = ({
       <h1 className="text-4xl break-words text-center md:text-start font-semibold tracking-wide text-gray-800 capitalize dark:text-white">
         {personalDetails.name}
       </h1>
-      <div className="mt-4 md:mt-2 mx-4 flex justify-center md:justify-end">
-        {userType === "distributor" && (
-          <ActivityToggler id={id} initialActive={distributor.isActive} />
-        )}
-      </div>
-      <p className="mt-4 md:-mt-6 mb-4 text-gray-500 dark:text-gray-400 text-center md:text-start">
+      <p className="mt-4 text-gray-500 dark:text-gray-400 text-center md:text-start">
         <button
           type="button"
           className="rounded-full max-w-full px-4 py-1.5 bg-gray-50 dark:bg-gray-800 shadow-md"
@@ -27,6 +22,11 @@ const ViewProfile = ({
           Lifetime {userType === "donor" ? "Donation" : "Distribution"}: {42069}
         </button>
       </p>
+      {userType === "distributor" && (
+        <div className="mt-4 md:-mt-12 mx-4 flex justify-center md:justify-end">
+          <ActivityToggler id={id} initialActive={distributor.isActive} />
+        </div>
+      )}
       <div
         id="donor-distributor-reg"
         className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2"
