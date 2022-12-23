@@ -15,9 +15,9 @@ const ViewProfile = ({
       <p className="mt-4 text-gray-500 dark:text-gray-400 text-center md:text-start">
         <button
           type="button"
-          className="rounded-full border-2 border-gray-100 dark:border-gray-700 max-w-full px-4"
+          className="rounded-full border-2 border-gray-200 dark:border-gray-700 max-w-full px-4 bg-gray-50 dark:bg-gray-800"
         >
-          Lifetime Donation: {42069}
+          Lifetime {userType === "donor" ? "Donation" : "Distribution"}: {42069}
         </button>
       </p>
       <div
@@ -105,7 +105,7 @@ const ViewProfile = ({
               d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
             />
           </svg>
-          <h1 className="mx-2 text-lg text-gray-700 capitalize dark:text-white truncate">
+          <h1 className="w-full mx-2 text-lg text-gray-700 capitalize dark:text-white truncate">
             {personalDetails.location.address}
           </h1>
         </div>
@@ -197,7 +197,7 @@ const ViewProfile = ({
 
         <button
           onClick={toggleEditForm}
-          className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+          className="mt-2 flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
         >
           <span>Update Profile </span>
           <svg
@@ -215,7 +215,7 @@ const ViewProfile = ({
             />
           </svg>
         </button>
-        <button className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-lg hover:bg-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
+        <button className="lg:mt-2 flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-lg hover:bg-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
           <span>Delete Profile</span>
           <svg
             className="w-5 h-5"
