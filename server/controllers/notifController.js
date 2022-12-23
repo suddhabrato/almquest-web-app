@@ -14,12 +14,13 @@ const pusher = new Pusher({
 exports.receiveUpdate = asyncHandler(async (req, res, next) => {
   const { user_id, user_type, message } = req.body;
 
+  const id = user_id.toString();
   if (user_type === "Donor") {
     const donor = await Donor.findById(user_id);
     donor.notif_unseen = donor.notif_unseen + 1;
     await donor.save();
 
-    pusher.trigger("almquest-channel", `${user_id}`, {
+    pusher.trigger("almquest-channel", `${id}`, {
       message: message,
       count: donor.notif_unseen,
     });
@@ -28,7 +29,7 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
     distributor.notif_unseen = distributor.notif_unseen + 1;
     await distributor.save();
 
-    pusher.trigger("almquest-channel", `${user_id}`, {
+    pusher.trigger("almquest-channel", `${id}`, {
       message: message,
       count: distributor.notif_unseen,
     });
