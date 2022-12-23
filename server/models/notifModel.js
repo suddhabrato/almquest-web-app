@@ -34,9 +34,9 @@ const notifSchema = new mongoose.Schema({
 
 const Notification = mongoose.model("Notification", notifSchema);
 
-Notification.watch().on("change", async (data) => {
-  await axios.post(
-    "https://almquest-pyserver.onrender.com/api/notifyUpdate",
+Notification.watch().on("change", (data) => {
+  axios.post(
+    "https://almquest-server.onrender.com/api/notifyUpdate",
     data.fullDocument
   );
 });
