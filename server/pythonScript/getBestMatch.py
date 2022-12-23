@@ -5,7 +5,7 @@ connectionString = "mongodb+srv://admin:12345@almquest.toauhu5.mongodb.net/?retr
 
 
 def __sortingParam(val):
-    return float(val['legs'][0]["distance"]["text"].rsplit(" ")[0])
+    return float(val[0]['legs'][0]["distance"]["text"].rsplit(" ")[0])
 
 
 def __compare(package_cords, dist_list, donor_travel_capacity):
@@ -22,18 +22,23 @@ def __compare(package_cords, dist_list, donor_travel_capacity):
     distributor_list = list()
     for i in dist_list:
         distObj = collection.find_one({"_id": i})
-        dist_travel_capacity = distObj["travelCapacity"]
+        dist_travel_capacity = distObj["distanceRange"]
         distCords = (distObj["location"]["coordinates"][0], distObj["location"]["coordinates"][1])
         packCords = (package_cords[0], package_cords[1])
-        z = gDD.getDirectionList(distCords, packCords)[0]
-        if z['legs'][0]["distance"]["text"].rsplit(" ")[0] <= donor_travel_capacity+dist_travel_capacity:
+        # print("Coordinates:", distCords, packCords)
+        p = gDD.getDirectionList(distCords, packCords)
+        # print(p)
+        z = p[0]
+        if float(z['legs'][0]["distance"]["text"].rsplit(" ")[0]) <= donor_travel_capacity+dist_travel_capacity:
             distributor_list.append([z, i])
 
     if len(distributor_list) == 0:
         return 0, 0, None
-
+    # print("Distributor List: \n")
+    # print(distributor_list)
     distributor_list.sort(key=__sortingParam)
-
+    # print("After Sort Distributor List: \n")
+    # print(distributor_list)
     bestOne = distributor_list[0][0]
 
     path_legs = bestOne['legs'][0]
@@ -49,7 +54,7 @@ def __compare(package_cords, dist_list, donor_travel_capacity):
             dist = dist/1000
         path_length = path_length + dist
         if dist_travel_capacity >= path_length:
-            point = [[path_steps][i]['end_location']['lat'], [path_steps][i]['end_location']['lon']]
+            point = [path_steps[i]['end_location']['lat'], path_steps[i]['end_location']['lng']]
             break
 
     return point[0], point[1], distributor_list[0][1]
