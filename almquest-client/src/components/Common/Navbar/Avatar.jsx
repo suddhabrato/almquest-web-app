@@ -17,7 +17,7 @@ const Avatar = ({ darkMode, toggleDarkMode, setLoggedIn }) => {
     localStorage.removeItem("reg_user");
     localStorage.removeItem("temp_user");
     setLoggedIn(false);
-    navigate("/", { replace: true });
+    navigate(0);
   };
   const avatarPicture = JSON.parse(localStorage.getItem("reg_user"))
     ? JSON.parse(localStorage.getItem("reg_user")).picture
