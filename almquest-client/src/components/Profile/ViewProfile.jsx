@@ -12,8 +12,15 @@ const ViewProfile = ({
       <h1 className="text-4xl break-words text-center md:text-start font-semibold tracking-wide text-gray-800 capitalize dark:text-white">
         {personalDetails.name}
       </h1>
-      <p className="mt-4 text-gray-500 dark:text-gray-400">{userType}</p>
-      <form
+      <p className="mt-4 text-gray-500 dark:text-gray-400 text-center md:text-start">
+        <button
+          type="button"
+          className="rounded-full border-2 border-gray-100 dark:border-gray-700 max-w-full px-4"
+        >
+          Lifetime Donation: {42069}
+        </button>
+      </p>
+      <div
         id="donor-distributor-reg"
         className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2"
       >
@@ -33,7 +40,7 @@ const ViewProfile = ({
             />
           </svg>
           <h1 className="mx-2 text-lg text-gray-700 capitalize dark:text-white truncate">
-            {personalDetails.name}
+            AlmQuest {userType}
           </h1>
         </div>
 
@@ -225,7 +232,7 @@ const ViewProfile = ({
             />
           </svg>
         </button>
-      </form>
+      </div>
     </>
   );
 };

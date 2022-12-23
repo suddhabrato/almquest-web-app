@@ -1,6 +1,123 @@
 import React from "react";
+import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const UpdateForm = () => {
+const UpdateForm = ({
+  toggleEditForm,
+  getProfile,
+  personalDetails,
+  userType,
+  id,
+  donor,
+  distributor,
+}) => {
+  const navigate = useNavigate();
+  const [newPersonalDetails, setNewPersonalDetails] = useState(personalDetails);
+  const [newDonor, setNewDonor] = useState(donor);
+  const [newDistributor, setNewDistributor] = useState(distributor);
+  const autoCompleteRef = useRef();
+  const inputRef = useRef();
+  const options = {
+    componentRestrictions: { country: "in" },
+    fields: ["geometry", "name"],
+  };
+  //autocomplete places api util
+  useEffect(() => {
+    autoCompleteRef.current = new window.google.maps.places.Autocomplete(
+      inputRef.current,
+      options
+    );
+    autoCompleteRef.current.addListener("place_changed", async function () {
+      const place = await autoCompleteRef.current.getPlace();
+      const loc = {
+        address: place.name,
+        coordinates: [
+          place.geometry.location.lat(),
+          place.geometry.location.lng(),
+        ],
+      };
+      setNewPersonalDetails((prev) => ({
+        ...prev,
+        location: loc,
+      }));
+    });
+  }, []);
+
+  useEffect(() => {
+    console.log(newPersonalDetails);
+    console.log(newDonor);
+    console.log(newDistributor);
+  }, [newPersonalDetails, newDonor, newDistributor]);
+
+  const handleDiscard = () => {
+    toggleEditForm();
+  };
+
+  const submitDonor = async (donor) => {
+    try {
+      console.log(donor);
+      const res = await axios.patch(`/api/donor/update/${id}`, donor);
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const submitDistributor = async (distributor) => {
+    try {
+      console.log(distributor);
+      const res = await axios.patch(
+        `/api/distributor/update/${id}`,
+        distributor
+      );
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const handleSubmit = async (evt) => {
+    evt.preventDefault();
+    if (userType === "donor") {
+      const body = {
+        ...newDonor,
+        ...newPersonalDetails,
+      };
+      submitDonor(body);
+    } else {
+      const body = {
+        ...newDistributor,
+        ...newPersonalDetails,
+      };
+      submitDistributor(body);
+    }
+    getProfile();
+    toggleEditForm();
+    navigate(0);
+  };
+
+  const handleChange = (evt) => {
+    const value = evt.target.value;
+    if (["name", "email", "phone"].includes(evt.target.name)) {
+      setNewPersonalDetails((prev) => ({
+        ...prev,
+        [evt.target.name]: value,
+      }));
+    } else {
+      if (userType === "donor") {
+        setNewDonor((prev) => ({
+          ...prev,
+          [evt.target.name]: value,
+        }));
+      } else {
+        setNewDistributor((prev) => ({
+          ...prev,
+          [evt.target.name]: value,
+        }));
+      }
+    }
+  };
   return (
     <>
       <h1 className="text-4xl break-words text-center md:text-start font-semibold tracking-wide text-gray-800 capitalize dark:text-white">
@@ -23,7 +140,7 @@ const UpdateForm = () => {
             name="name"
             type="text"
             placeholder="John Doe"
-            value={personalDetails.name}
+            value={newPersonalDetails.name}
             onChange={handleChange}
             className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
             required
@@ -37,7 +154,7 @@ const UpdateForm = () => {
           <input
             type="email"
             name="email"
-            value={personalDetails.email}
+            value={newPersonalDetails.email}
             onChange={handleChange}
             className="block w-full px-5 py-3 mt-2  disabled:text-gray-400 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:disabled:text-gray-400 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
             disabled
@@ -52,7 +169,7 @@ const UpdateForm = () => {
           <input
             name="phone"
             type="tel"
-            value={personalDetails.phone}
+            value={newPersonalDetails.phone}
             onChange={handleChange}
             placeholder="XXX-XXX-XXXX"
             className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -65,13 +182,13 @@ const UpdateForm = () => {
             Location
           </label>
           <input
+            ref={inputRef}
             type="text"
-            placeholder="123 Main Avenue"
+            placeholder={newPersonalDetails.location.address}
             className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-            required
           />
         </div>
-        {userType == "Donor" ? (
+        {userType === "donor" ? (
           <>
             <div>
               <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
@@ -79,7 +196,7 @@ const UpdateForm = () => {
               </label>
               <select
                 name="donorType"
-                value={donor.donorType}
+                value={newDonor.donorType}
                 onChange={handleChange}
                 className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                 required
@@ -96,7 +213,7 @@ const UpdateForm = () => {
               </label>
               <input
                 name="distanceRange"
-                value={donor.distanceRange}
+                value={newDonor.distanceRange}
                 type="number"
                 onChange={handleChange}
                 placeholder="8 Kilometres"
@@ -114,7 +231,7 @@ const UpdateForm = () => {
               <input
                 name="maxCapacity"
                 type="number"
-                value={distributor.maxCapacity}
+                value={newDistributor.maxCapacity}
                 onChange={handleChange}
                 placeholder="45 Kilograms"
                 className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -128,7 +245,7 @@ const UpdateForm = () => {
               <input
                 name="distanceRange"
                 type="number"
-                value={distributor.distanceRange}
+                value={newDistributor.distanceRange}
                 onChange={handleChange}
                 placeholder="15 Kilometres"
                 className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -138,7 +255,11 @@ const UpdateForm = () => {
           </>
         )}
 
-        <button className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-lg hover:bg-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
+        <button
+          onClick={handleDiscard}
+          type="button"
+          className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-900 rounded-lg hover:bg-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+        >
           <span>Discard Changes </span>
           <svg
             className="w-5 h-5"
@@ -155,7 +276,10 @@ const UpdateForm = () => {
             />
           </svg>
         </button>
-        <button className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+        <button
+          type="submit"
+          className="flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+        >
           <span>Save Changes </span>
           <svg
             className="w-5 h-5"
