@@ -26,7 +26,7 @@ def pair(y1):
     # collection3 = database1["paireddonordists"]
     collection4 = database1["notifications"]
     collection5 = database1["distributors"]
-    collection6 = database1["donor"]
+    collection6 = database1["donors"]
 
     activeDistributors = collection2.find()
 
@@ -34,7 +34,7 @@ def pair(y1):
 
     donatedpackage_object = collection1.find_one({"_id": x})
     donor_object = collection6.find_one({'_id': donatedpackage_object['donor_id']})
-
+    # print(donor_object)
     lat_package = donatedpackage_object["location"]["coordinates"][0]
     lon_package = donatedpackage_object["location"]["coordinates"][1]
     donation_amt = donatedpackage_object["quantity"]
@@ -58,8 +58,10 @@ def pair(y1):
         # check if donation amount is less thn available capacity
         if donation_amt <= dist_available_capacity:
             hav_dist = haversine((lat_package, lon_package), (lat_dist, lon_dist))
-            if hav_dist <= 80:
+            if hav_dist <= 100:
                 distributor_list_fiter1.append([y, lat_dist, lon_dist])
+
+    # print("Distributor List 1:", distributor_list_fiter1)
 
     if len(distributor_list_fiter1) == 0:
         post_notif_donor = {
@@ -80,11 +82,14 @@ def pair(y1):
         collection4.insert_one(post_notif_donor)
 
     # 5NN
+    # print("Distributor List 1 before donor id insertion: ", distributor_list_fiter1)
     distributor_list_fiter1.insert(0, [donatedpackage_object['donor_id'], lat_package, lon_package])
+    # print("Distributor List 1 after donor id insertion: ", distributor_list_fiter1)
     distributor_list_fiter2 = model.findNearestDistributor(distributor_list_fiter1)
-    meet_lat, meet_lon, distributor_id = gBM.meetLocation([lat_package, lat_package], distributor_list_fiter2, donor_travel_capacity)
+    # print("Distributor List 2:", distributor_list_fiter2)
+    meet_lat, meet_lon, distributor_id = gBM.meetLocation([lat_package, lon_package], distributor_list_fiter2, donor_travel_capacity)
 
-    #Pair Not Found
+    # Pair Not Found
 
     if meet_lat == 0 and meet_lon == 0:
         post_notif_donor = {
@@ -104,7 +109,9 @@ def pair(y1):
         }
         collection4.insert_one(post_notif_donor)
 
+    # Pair Found
     else:
+        # print(1)
         distributor_obj = collection5.find_one({"_id": distributor_id})
 
         post_notif_donor = {
@@ -113,7 +120,7 @@ def pair(y1):
             'message': 'You have been Paired',
             'packageId': x,
             'name': distributor_obj['name'],
-            'photo': distributor_obj['photo'],
+            'photo': distributor_obj['picture'],
             'desc': 'You have been paired',
             'timestamp': datetime.datetime.now(),
             'meet_location': {
@@ -129,7 +136,7 @@ def pair(y1):
             'message': 'You have been Paired',
             'packageId': x,
             'name': donor_object['name'],
-            'photo': donor_object['photo'],
+            'photo': donor_object['picture'],
             'desc': 'You have been paired',
             'timestamp': datetime.datetime.now(),
             'meet_location': {
@@ -140,8 +147,7 @@ def pair(y1):
         }
 
         post_donated_packages_update_1 = {
-            '$set': {'current_state': "Paired"
-            }
+            '$set': {'current_state': "Paired"}
         }
 
         post_donated_packages_update_2 = {
@@ -159,7 +165,7 @@ def pair(y1):
 
         getPackage = distributor_obj["packages"]
         getPackage.append(x)
-
+        # print(getPackage)
         post_dist = {
             '$set': {'packages': getPackage}
         }
@@ -167,12 +173,10 @@ def pair(y1):
         collection4.insert_one(post_notif_dist)
         collection4.insert_one(post_notif_donor)
         collection5.update_one({'_id': x}, post_dist)
-        collection5.update_one({'_id': x}, post_donated_packages_update_1)
-        collection5.update_one({'_id': x}, post_donated_packages_update_2)
+        collection1.update_one({'_id': x}, post_donated_packages_update_1)
+        collection1.update_one({'_id': x}, post_donated_packages_update_2)
 
 
-
-
-
+# pair('63a5cce857ad4593a1d4c429')
 
 

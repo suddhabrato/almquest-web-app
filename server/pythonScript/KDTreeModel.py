@@ -11,19 +11,24 @@ def __createNdArray(x):
 
 
 def findNearestDistributor(x):
+    # print("passed parameter to KDTree:", x)
     coordinates, distributor = __createNdArray(x)
+    # print("coord Return from ndCreateArray: ", coordinates)
+    # print("dist Return from ndCreateArray: ", coordinates)
     training_points = distributor.shape[0]
+    # print(training_points)
     tree = KDTree(coordinates, leaf_size=2, metric='manhattan')
-    dist, ind = tree.query(coordinates[0:1], k=training_points//2)
+    dist, ind = tree.query(coordinates[0:1], k=training_points)
     nearest_neighbours = list()
-
+    # print(dist)
     # print(x)
     # print(dist)
     # print(ind[0])
-
     for i in range(1, ind[0].size, 1):
         # Get the distributor ID of the nearest distributors
         nearest_neighbours.append(distributor[ind[0][i]][0])
+
+    # print("Nearest Neighbours: ", nearest_neighbours)
     return nearest_neighbours
 
 
