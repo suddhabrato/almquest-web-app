@@ -12,7 +12,7 @@
     });
 
     var channel = pusher.subscribe('almquest-channel');
-    channel.bind('donor-event', function(data) {
+    channel.bind('639e251dd8b39afde7a3841b', function(data) {
       alert(JSON.stringify(data.message));
     });
   </script>
