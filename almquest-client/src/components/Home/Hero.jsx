@@ -9,12 +9,12 @@ const Hero = () => {
           <div className="w-full lg:w-1/2">
             <div className="lg:max-w-lg">
               <h1 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
-                Help Us make the World a Better Place
+                Help us make the World a Better Place
               </h1>
 
               <p className="mt-4 text-gray-600 dark:text-gray-400">
-                AlmQuest brings to you the opportunity tobe the oene to donate food and be assured that it will reach the 
-                ones who need it the most or, be the one to get in touch with such donors and distribute the food where
+                AlmQuest brings to you the opportunity to be the one to donate food or, 
+                be the one to get in touch with such donors and distribute the food where
                 its needed.
               </p>
 
