@@ -5,7 +5,7 @@ const Team = () => {
     <section className="bg-white dark:bg-gray-900">
       <div className="container lg:px-32 px-6 py-10 pt-4 mx-auto">
         <h1 className="text-3xl font-semibold text-center text-gray-800 capitalize lg:text-4xl dark:text-white">
-          Our Executive Team
+          Our Development Team
         </h1>
         <div className="flex justify-center mx-auto mt-6">
           <span className="inline-block w-40 h-1 bg-blue-500 rounded-full"></span>
@@ -96,11 +96,11 @@ const Team = () => {
             />
 
             <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
-              Amelia. Anderson
+              Suddhabrato Ghosh
             </h1>
 
             <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
-              Lead Developer
+              Frontend Developer
             </p>
 
             <div className="flex mt-3 -mx-2">
@@ -164,12 +164,18 @@ const Team = () => {
               alt=""
             />
 
-            <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
-              Olivia Wathan
+            <h1 className="flex flex-row mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
+              <p className="mr-1">
+                Tamonash
+              </p>
+              <p>
+                Bhattacharyya
+              </p>
+  
             </h1>
 
             <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
-              Lead designer
+              AI/ML Developer
             </p>
 
             <div className="flex mt-3 -mx-2">
@@ -234,11 +240,11 @@ const Team = () => {
             />
 
             <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
-              John Doe
+              Anirban Roy 
             </h1>
 
             <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
-              Full stack developer
+              Content Writer
             </p>
 
             <div className="flex mt-3 -mx-2">
