@@ -9,8 +9,10 @@ const CTADonorDistributorTop = () => {
         </h2>
 
         <p className="block max-w-4xl mt-4 text-gray-500 dark:text-gray-300">
-          Here on AlmQuest we bring two groups of people together - The ones who have excess food they can donate and the ones who 
-          have the opportunity and the scope to distribute that food to the under-priviledged and the ones in need.  
+          Here on AlmQuest we bring two groups of people together - The ones who
+          have excess food they can donate and the ones who have the opportunity
+          and the scope to distribute that food to the under-priviledged and the
+          ones in need.
         </p>
 
         <div className="mt-6">
@@ -73,8 +75,8 @@ const CTADonorDistributorTop = () => {
         </h1>
 
         <p className="max-w-2xl mx-auto my-6 text-center text-gray-500 dark:text-gray-300">
-          We provide this platform for bringing two kinds of people or organisation alike together who can
-          fulfil each other's needs.
+          We provide this platform for bringing two kinds of people or
+          organisation alike together who can fulfil each other's needs.
         </p>
 
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-2">

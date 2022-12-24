@@ -1,4 +1,6 @@
 import React from "react";
+import Pusher from "pusher-js";
+
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Common/Navbar";
@@ -7,10 +9,20 @@ import Home from "./components/Home";
 import Contacts from "./components/Contacts";
 import RegisterForm from "./components/Forms/Register";
 import { useEffect } from "react";
-import Package from "./components/Forms/Package";
 import Profile from "./components/Profile";
+import Transactions from "./components/Transactions";
 
 const App = () => {
+  const pusher = new Pusher("b369bdc486176cddddfd", {
+    cluster: "ap2",
+  });
+
+  const channel = pusher.subscribe("almquest-channel");
+
+  channel.bind("63a167af6915ec54e5cb3f19", function (data) {
+    console.log(data);
+  });
+
   const [darkMode, setDarkMode] = useState(
     JSON.parse(localStorage.getItem("darkMode")) || false
   );
@@ -36,6 +48,7 @@ const App = () => {
         <Route path="/contact" element={<Contacts />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/transaction" element={<Transactions />} />
       </Routes>
       <Footer />
     </BrowserRouter>
