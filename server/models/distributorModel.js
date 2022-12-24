@@ -60,6 +60,12 @@ const distributorSchema = new mongoose.Schema({
       ref: "DonatedPackages",
     },
   ],
+  notifs: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "Notification",
+    },
+  ],
 });
 
 const Distributor = mongoose.model("Distributor", distributorSchema);

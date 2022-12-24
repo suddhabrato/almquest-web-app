@@ -57,6 +57,12 @@ const donorSchema = new mongoose.Schema({
       ref: "DonatedPackages",
     },
   ],
+  notifs: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "Notification",
+    },
+  ],
 });
 
 const Donor = mongoose.model("Donor", donorSchema);
