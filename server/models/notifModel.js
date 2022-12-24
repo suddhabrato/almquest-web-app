@@ -38,7 +38,12 @@ Notification.watch().on("change", async (data) => {
   try {
     await axios.post(
       "https://almquest-server.onrender.com/api/notifyUpdate",
-      data.fullDocument
+      data.fullDocument,
+      {
+        headers: {
+          "Accept-Encoding": "gzip,deflate,compress",
+        },
+      }
     );
   } catch (err) {
     console.log(err);
