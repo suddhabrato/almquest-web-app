@@ -21,7 +21,7 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
     await donor.save();
 
     pusher.trigger("almquest-channel", `${id}`, {
-      message: message,
+      message: "Distributor found for your package.",
       count: donor.notif_unseen,
     });
   } else {
@@ -30,7 +30,7 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
     await distributor.save();
 
     pusher.trigger("almquest-channel", `${id}`, {
-      message: message,
+      message: "You have been assigned to a new package.",
       count: distributor.notif_unseen,
     });
   }
