@@ -4,7 +4,7 @@ import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useState } from "react";
-import NotifTray from "./NotifTray";
+import NotifTray from "../Notifications/NotifTray";
 import Avatar from "./Avatar";
 
 const Navbar = ({ darkMode, toggleDarkMode }) => {

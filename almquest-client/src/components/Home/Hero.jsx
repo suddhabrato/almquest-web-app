@@ -6,7 +6,7 @@ const Hero = () => {
     <section className="bg-white dark:bg-gray-900">
       <div className="container px-6 lg:px-32 py-16 mx-auto">
         <div className="items-center lg:flex flex flex-col-reverse lg:flex-row">
-          <div className="w-full lg:w-1/2">
+          <div className="w-full lg:w-1/2 px-2 mt-6 lg:mt-0">
             <div className="lg:max-w-lg">
               <h1 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
                 Help us make the World a Better Place
@@ -24,7 +24,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
+          <div className="flex items-center justify-center w-full lg:w-1/2">
             <img
               className="w-3/4 h-full lg:max-w-3xl"
               src={Charitybro}
