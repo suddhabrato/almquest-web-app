@@ -34,11 +34,20 @@ const notifSchema = new mongoose.Schema({
 
 const Notification = mongoose.model("Notification", notifSchema);
 
-Notification.watch().on("change", (data) => {
-  axios.post(
-    "https://almquest-server.onrender.com/api/notifyUpdate",
-    data.fullDocument
-  );
+Notification.watch().on("change", async (data) => {
+  try {
+    await axios.post(
+      "https://almquest-server.onrender.com/api/notifyUpdate",
+      data.fullDocument,
+      {
+        headers: {
+          "Accept-Encoding": "gzip,deflate,compress",
+        },
+      }
+    );
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 module.exports = Notification;
