@@ -126,21 +126,16 @@ const Package = () => {
         </button>
         {isOpen && (
           <div
-            x-transition:enter="transition duration-300 ease-out"
-            x-transition:enter-start="translate-y-4 opacity-0 sm:translate-y-0 sm:scale-95"
-            x-transition:enter-end="translate-y-0 opacity-100 sm:scale-100"
-            x-transition:leave="transition duration-150 ease-in"
-            x-transition:leave-start="translate-y-0 opacity-100 sm:scale-100"
-            x-transition:leave-end="translate-y-4 opacity-0 sm:translate-y-0 sm:scale-95"
-            className={`${
+            className={`transition duration-300 ease-in-out ${
               isOpen
                 ? "translate-y-0 opacity-100 sm:scale-100"
                 : "translate-y-4 opacity-0 sm:translate-y-0 sm:scale-95"
-            }transition duration-300 ease-in-out fixed inset-0 z-10 overflow-y-auto`}
+            } fixed inset-0 z-10 overflow-y-auto`}
             aria-labelledby="modal-title"
             role="dialog"
             aria-modal="true"
           >
+            <div className="absolute w-full h-full bg-opacity-20 bg-gray-300 transition backdrop-blur-md duration-300 ease-in dark:bg-gray-800 dark:bg-opacity-20"></div>
             <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
               <span
                 className="hidden sm:inline-block sm:h-screen sm:align-middle"
