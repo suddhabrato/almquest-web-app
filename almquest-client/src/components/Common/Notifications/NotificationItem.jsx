@@ -23,14 +23,21 @@ moment.updateLocale("en", {
   },
 });
 
-const NotificationItem = ({ notif }) => {
+const NotificationItem = ({ notif, seen }) => {
   return (
     <Link to={`/transaction/${notif.packageId}`}>
-      <div className="flex items-center px-4 py-3 -mx-2 transition-colors duration-300 transform border-b border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 dark:border-gray-700">
+      <div
+        className={`${
+          !seen && "bg-white dark:bg-gray-800"
+        } flex items-center px-4 py-3 -mx-2 transition-colors duration-300 transform border-b border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 dark:border-gray-700`}
+      >
         <img
           className="flex-shrink-0 object-cover w-8 h-8 mx-1 rounded-full"
-          src={notif.photo}
+          src={
+            notif.photo || JSON.parse(localStorage.getItem("reg_user")).picture
+          }
           alt="avatar"
+          referrerPolicy="no-referrer"
         />
         <p className="mx-2 text-sm text-gray-600 dark:text-white">
           {notif.status === "Paired" ? (

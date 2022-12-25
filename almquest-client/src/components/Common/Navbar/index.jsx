@@ -12,14 +12,19 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   const location = useLocation();
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isOpen, setOpen] = useState(false);
+  const [id, setId] = useState("");
+  const [userType, setUserType] = useState("");
   const toggle = () => {
     setOpen(!isOpen);
   };
 
   useEffect(() => {
     const registeredUser = JSON.parse(localStorage.getItem("reg_user"));
-    if (registeredUser) setLoggedIn(true);
-    else setLoggedIn(false);
+    if (registeredUser) {
+      setId(registeredUser.id);
+      setUserType(registeredUser.userType);
+      setLoggedIn(true);
+    } else setLoggedIn(false);
   }, [location.pathname]);
 
   const login = useGoogleLogin({
@@ -119,7 +124,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                 </div>
               ) : (
                 <div className="flex items-center">
-                  <NotifTray />
+                  <NotifTray id={id} userType={userType} />
                   <Avatar
                     darkMode={darkMode}
                     toggleDarkMode={toggleDarkMode}
@@ -177,7 +182,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                   </div>
                 ) : (
                   <div className="flex items-center">
-                    <NotifTray />
+                    <NotifTray id={id} userType={userType} />
                     <Avatar
                       darkMode={darkMode}
                       toggleDarkMode={toggleDarkMode}
