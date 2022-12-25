@@ -19,6 +19,14 @@ const notifSchema = new mongoose.Schema({
   name: String,
   photo: String,
   timestamp: Date,
+  state: {
+    type: String,
+    enum: {
+      values: ["Not Paired", "Paired", "Received", "Distributed"],
+      message: "Not a valid state",
+    },
+    default: "Not Paired",
+  },
 });
 
 const Notification = mongoose.model("Notification", notifSchema);

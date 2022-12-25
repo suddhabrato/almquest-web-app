@@ -9,6 +9,8 @@ router.delete("/delete/:id", distributorController.delete);
 
 router.post("/toggle/:id", distributorController.toggleActivity);
 router.post("/notifSeen", distributorController.notifSeen);
+router.get("/getNotifs/:id", distributorController.getNotifs);
+router.get("/getPackages/:id", distributorController.getPackages);
 
 router.get("/:id", distributorController.getProfile);
 

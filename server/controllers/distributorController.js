@@ -50,6 +50,8 @@ exports.delete = factory.deleteAccount(Distributor);
 exports.update = factory.updateAccount(Distributor);
 exports.getProfile = factory.myProfile(Distributor);
 exports.notifSeen = factory.notifSeen(Distributor);
+exports.getNotifs = factory.getNotifs(Distributor);
+exports.getPackages = factory.getPackages(Distributor);
 
 exports.togglePackageState = asyncHandler(async (req, res, next) => {
   const { package_id, state } = req.body;
