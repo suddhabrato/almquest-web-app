@@ -165,13 +165,8 @@ const Team = () => {
             />
 
             <h1 className="flex flex-row mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
-              <p className="mr-1">
-                Tamonash
-              </p>
-              <p>
-                Bhattacharyya
-              </p>
-  
+              <p className="mr-1">Tamonash</p>
+              <p>Bhattacharyya</p>
             </h1>
 
             <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
@@ -240,7 +235,7 @@ const Team = () => {
             />
 
             <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
-              Anirban Roy 
+              Anirban Roy
             </h1>
 
             <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
