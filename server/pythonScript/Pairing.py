@@ -71,6 +71,7 @@ def pair(y1):
             'packageId': x,
             'name': '',
             'photo': '',
+            'status': "Not Paired",
             # 'desc': 'We could not find a pair for you',
             'timestamp': datetime.datetime.now(),
             # 'meet_location': {
@@ -114,6 +115,7 @@ def pair(y1):
                 'packageId': x,
                 'name': distributor_obj['name'],
                 'photo': distributor_obj['picture'],
+                'status': "Paired",
                 # 'desc': 'You have bee
                 # n paired',
                 'timestamp': datetime.datetime.now(),
@@ -131,6 +133,7 @@ def pair(y1):
                 'packageId': x,
                 'name': donor_object['name'],
                 'photo': donor_object['picture'],
+                'status': "Paired",
                 # 'desc': 'You have been paired',
                 'timestamp': datetime.datetime.now(),
                 # 'meet_location': {
@@ -147,6 +150,7 @@ def pair(y1):
             post_donated_packages_update_2 = {
                 '$set': {'pair': {
                     'distributor_id': distributor_id,
+                    'distributor_name': distributor_obj['name'],
                     'meet_location': {
                         'coordinates': [meet_lat, meet_lon],
                         'address': '',
