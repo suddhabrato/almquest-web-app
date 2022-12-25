@@ -18,18 +18,7 @@ const notifSchema = new mongoose.Schema({
   },
   name: String,
   photo: String,
-  desc: String,
   timestamp: Date,
-  meet_location: {
-    type: {
-      type: String,
-      default: "Point",
-      enum: ["Point"],
-    },
-    coordinates: [Number],
-    address: String,
-  },
-  path: String,
 });
 
 const Notification = mongoose.model("Notification", notifSchema);
