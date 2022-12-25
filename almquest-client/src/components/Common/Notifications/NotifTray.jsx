@@ -3,41 +3,46 @@ import { useEffect } from "react";
 import { useState } from "react";
 import ClickAwayListener from "react-click-away-listener";
 import NotificationItem from "./NotificationItem";
+import axios from "axios";
 
-const NotifTray = () => {
+const NotifTray = ({ id, userType }) => {
   const [isOpen, setOpen] = useState(false);
-  const [isEmpty, setEmpty] = useState(true);
-  const notif = {
-    _id: "63a69de3cf5d0a51a41a55d9",
-    user_id: "63a32c408cb59257713fa6dc",
-    user_type: "Donor",
-    status: "Not Paired",
-    message: "You have been Paired",
-    packageId: "63a69de12d697bc12a0a06ce",
-    name: "Suddhabrato Ghosh",
-    photo:
-      "https://lh3.googleusercontent.com/a/AEdFTp7FcCWzo5WIgQG7-HwLvDSV5QqDK6EDMikJfvQqqg",
-    desc: "You have been paired",
-    timestamp: "2022-12-24T15:07:56.717+00:00",
-    meet_location: {
-      coordinates: [22.7595826, 88.3753067],
-      address: "94/2 c road",
-    },
-    path: "https://www.google.com/maps/dir/22.7593618,+88.3746275/22.7595826,+88.3753067/am=t",
-  };
-  const [notifs, setNotifs] = useState([notif]);
+  const [hasSeen, setHasSeen] = useState(false);
+  const [notifs, setNotifs] = useState([]);
+  const [unseen, setUnseen] = useState(0);
   const getNotifications = async () => {
     try {
-      setEmpty(notifs.length === 0);
+      const res = await axios.get(`/api/${userType}/${id}/getNotifs`);
+      console.log(res.data);
+      setNotifs(res.data.notifs.slice(0).reverse());
+      setUnseen(res.data.unseen_count);
     } catch (err) {
       console.log(err);
     }
   };
   useEffect(() => {
     getNotifications();
-  }, [notifs]);
+  }, [isOpen]);
   const toggle = () => {
-    setOpen(!isOpen);
+    if (isOpen) setOpen(false);
+    else handleOpen();
+  };
+
+  const updateSeen = async () => {
+    try {
+      const res = await axios.post(`/api/${userType}/${id}/notifSeen`);
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleOpen = async () => {
+    setOpen(true);
+    if (unseen !== 0) {
+      await updateSeen();
+    }
+    setHasSeen(true);
   };
   const handleClickAway = () => {
     setOpen(false);
@@ -49,7 +54,7 @@ const NotifTray = () => {
           onClick={toggle}
           className="relative z-10 block p-2 text-gray-700 bg-white border border-transparent rounded-md dark:text-white dark:bg-gray-900 dark:hover:bg-gray-800 dark:focus:bg-gray-800 focus:outline-none"
         >
-          {isEmpty ? (
+          {unseen === 0 ? (
             <svg
               className="w-5 h-5 text-gray-800 dark:text-white"
               viewBox="0 0 24 24"
@@ -75,7 +80,7 @@ const NotifTray = () => {
             </svg>
           )}{" "}
         </button>
-        {isOpen && !isEmpty && (
+        {isOpen && notifs.length !== 0 && (
           <div
             x-transition:enter="transition ease-out duration-100"
             x-transition:enter-start="opacity-0 scale-90"
@@ -83,11 +88,15 @@ const NotifTray = () => {
             x-transition:leave="transition ease-in duration-100"
             x-transition:leave-start="opacity-100 scale-100"
             x-transition:leave-end="opacity-0 scale-90"
-            className="absolute right-0 z-20 w-64 mt-6 overflow-hidden bg-white rounded-md shadow-lg sm:w-80 dark:bg-gray-800"
+            className="absolute right-0 z-20 w-64 mt-6 overflow-hidden bg-gray-200 rounded-md shadow-lg sm:w-80 dark:bg-gray-900"
           >
             <div className="py-2">
-              {notifs.map((notif) => (
-                <NotificationItem key={notif._id} notif={notif} />
+              {notifs.map((notif, idx) => (
+                <NotificationItem
+                  key={notif._id}
+                  notif={notif}
+                  seen={idx + 1 > unseen}
+                />
               ))}
             </div>
             <a

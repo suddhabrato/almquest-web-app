@@ -17,6 +17,7 @@ const Package = () => {
     setOpen((prev) => !prev);
   };
   const [contact, setContact] = useState("");
+  const [name, setName] = useState("");
   const [packageDetails, setPackageDetails] = useState({
     donor_id: "",
     quantity: "",
@@ -62,13 +63,14 @@ const Package = () => {
           const { id, userType } = regUser;
           if (userType !== "donor") return navigate("/");
           const res = await axios.get(`/api/donor/${id}`);
-          const { location, phone, distanceRange } = res.data.data;
+          const { location, phone, distanceRange, name } = res.data.data;
           setPackageDetails({
             donor_id: id,
             quantity: "",
             travelCapacity: distanceRange,
             location: location,
           });
+          setName(name);
           setContact(phone);
         } else navigate("/register", { replace: true });
       } catch (err) {
@@ -93,7 +95,14 @@ const Package = () => {
   const handleSubmit = async (evt) => {
     evt.preventDefault();
     try {
-      const res = await axios.post("/api/donor/donate", packageDetails);
+      const body = {
+        ...packageDetails,
+        timestamp: Date.now(),
+        donor_name: name,
+        donor_phone: contact,
+      };
+      console.log(body);
+      const res = await axios.post("/api/donor/donate", body);
       console.log(res);
       setOpen(false);
     } catch (err) {

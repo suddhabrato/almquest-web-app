@@ -12,13 +12,23 @@ const Transactions = ({ id, userType }) => {
       coordinates: [],
       address: "94/74 C Road, Anandapuri, Barrackpore",
     },
+    quantity: 3,
+    travelCapacity: 13,
     pair: {
       distributor_id: "",
       distributor_name: "Aditya Das",
       distributor_phone: "9123065598",
+      distributor_location: {
+        coordinates: [],
+        address: "94/74 C Road, Anandapuri, Barrackpore",
+      },
+      meet_location: {
+        coordinates: [],
+        address: "",
+      },
+      distributor_path: "",
+      donor_path: "",
     },
-    quantity: 3,
-    travelCapacity: 13,
   };
   return (
     <section className="mx-4">
