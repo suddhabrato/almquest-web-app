@@ -4,7 +4,7 @@ const Distributor = require("../models/distributorModel");
 const Pusher = require("pusher");
 
 exports.receiveUpdate = asyncHandler(async (req, res, next) => {
-  const { user_id, user_type, message } = req.body;
+  const { _id, user_id, user_type, message } = req.body;
 
   const pusher = new Pusher({
     appId: "1526157",
@@ -17,7 +17,17 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
 
   if (user_type === "Donor") {
     const donor = await Donor.findById(id);
-    donor.notif_unseen = donor.notif_unseen + 1;
+
+    while (donor.notifs.length >= 10) {
+      donor.notifs.reverse();
+      donor.notifs.pop();
+      donor.notifs.reverse();
+    }
+    donor.notifs.push(_id);
+    if (donor.notif_unseen < 10) {
+      donor.notif_unseen = donor.notif_unseen + 1;
+    }
+
     await donor.save();
 
     pusher.trigger("almquest-channel", `${id}`, {
@@ -26,7 +36,17 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
     });
   } else {
     const distributor = await Distributor.findById(id);
-    distributor.notif_unseen = distributor.notif_unseen + 1;
+
+    while (distributor.notifs.length >= 10) {
+      distributor.notifs.reverse();
+      distributor.notifs.pop();
+      distributor.notifs.reverse();
+    }
+    distributor.notifs.push(_id);
+    if (distributor.notif_unseen < 10) {
+      distributor.notif_unseen = distributor.notif_unseen + 1;
+    }
+
     await distributor.save();
 
     pusher.trigger("almquest-channel", `${id}`, {
