@@ -1,35 +1,53 @@
 import React from "react";
 import moment from "moment";
-const Transactions = ({ id, userType }) => {
-  const Package = {
-    _id: "63a69de12d697bc12a0a06ce",
-    donor_id: "",
-    donor_name: "Suddhabrato Ghosh",
-    donor_phone: "8584920325",
-    current_state: "Paired",
-    timestamp: "2022-12-24T15:07:56.717+00:00",
-    location: {
+import { useEffect, useState } from "react";
+import axios from "axios";
+const Package = {
+  _id: "63a69de12d697bc12a0a06ce",
+  donor_id: "",
+  donor_name: "Suddhabrato Ghosh",
+  donor_phone: "8584920325",
+  current_state: "Paired",
+  timestamp: "2022-12-24T15:07:56.717+00:00",
+  location: {
+    coordinates: [],
+    address: "94/74 C Road, Anandapuri, Barrackpore",
+  },
+  quantity: 3,
+  travelCapacity: 13,
+  pair: {
+    distributor_id: "",
+    distributor_name: "Aditya Das",
+    distributor_phone: "9123065598",
+    distributor_location: {
       coordinates: [],
       address: "94/74 C Road, Anandapuri, Barrackpore",
     },
-    quantity: 3,
-    travelCapacity: 13,
-    pair: {
-      distributor_id: "",
-      distributor_name: "Aditya Das",
-      distributor_phone: "9123065598",
-      distributor_location: {
-        coordinates: [],
-        address: "94/74 C Road, Anandapuri, Barrackpore",
-      },
-      meet_location: {
-        coordinates: [],
-        address: "",
-      },
-      distributor_path: "",
-      donor_path: "",
+    meet_location: {
+      coordinates: [],
+      address: "",
     },
+    distributor_path: "",
+    donor_path: "",
+  },
+};
+const Transactions = ({ id }) => {
+  const [transaction, setTransaction] = useState(Package);
+  const userType = JSON.parse(localStorage.getItem("reg_user")).userType;
+  const getPackage = async () => {
+    try {
+      const res = await axios.get(`/api/package/${id}`);
+      console.log(res.data);
+      setTransaction(res.data.package);
+    } catch (err) {
+      console.log(err);
+    }
   };
+
+  useEffect(() => {
+    getPackage();
+  }, [id]);
+
   return (
     <section className="mx-4">
       <div className="my-16 rounded-xl shadow-lg border-gray-100 dark:border-gray-700 border-1 flex-col items-center h-full w-full max-w-4xl p-8 lg:px-12 mx-auto">
@@ -37,16 +55,16 @@ const Transactions = ({ id, userType }) => {
           <h2 className="my-2 text-4xl font-semibold text-gray-800 dark:text-white md:mt-0">
             Package Details
           </h2>
-          {Package.current_state === "Paired" ? (
+          {transaction.current_state === "Paired" ? (
             <button className="mx-2 mt-4 rounded-full max-w-full px-4 py-1.5 border-2 border-blue-500 dark:border-blue-400">
               <p className="text-blue-500 dark:text-blue-400 truncate font-semibold tracking-wide">
-                Status: {Package.current_state}
+                Status: {transaction.current_state}
               </p>
             </button>
           ) : (
             <button className="mx-2 mt-4 rounded-full max-w-full px-4 py-1.5 border-2 border-gray-500 dark:border-gray-300">
               <p className="text-gray-500 dark:text-gray-300 truncate font-semibold tracking-wide">
-                Status: {Package.current_state}
+                Status: {transaction.current_state}
               </p>
             </button>
           )}
@@ -54,11 +72,11 @@ const Transactions = ({ id, userType }) => {
         <div className="flex flex-col items-center justify-between sm:flex-row mt-2 sm:mt-0">
           <button className="mt-2 rounded-full max-w-full px-4 py-1.5 bg-gray-50 dark:bg-gray-800 shadow-md">
             <p className="text-gray-500 dark:text-gray-400 truncate">
-              Package ID: {Package._id}
+              Package ID: {transaction._id}
             </p>
           </button>
         </div>
-        {Package.current_state === "Paired" ? (
+        {transaction.current_state === "Paired" ? (
           <>
             <div className="grid grid-cols-1 gap-6 mt-8 mb-4 sm:grid-cols-2">
               <div className="flex items-center text-gray-700 dark:text-gray-200 px-2">
@@ -75,7 +93,7 @@ const Transactions = ({ id, userType }) => {
                 </svg>
 
                 <h1 className="mx-2 text-lg text-gray-700 capitalize dark:text-white truncate">
-                  {moment(Package.timestamp, moment.ISO_8601).format("lll")}
+                  {moment(transaction.timestamp, moment.ISO_8601).format("lll")}
                 </h1>
               </div>
               <div className="flex items-center text-gray-700 dark:text-gray-200 px-2">
@@ -92,19 +110,39 @@ const Transactions = ({ id, userType }) => {
                 </svg>
 
                 <h1 className="mx-2 text-lg text-gray-700 capitalize dark:text-white">
-                  {Package.quantity} Meals
+                  {transaction.quantity} Meals
                 </h1>
               </div>
             </div>
             <hr className="border-gray-200 dark:border-gray-700" />
             <h3 className="text-xl font-medium leading-6 text-gray-800 capitalize dark:text-white mt-6">
-              Meet Directions
+              Meet Directions :{" "}
+              <a
+                className="underline"
+                href={
+                  userType === "donor"
+                    ? transaction.pair.donor_path
+                    : transaction.pair.distributor_path
+                }
+              >
+                {transaction.pair.meet_location.address}
+              </a>
             </h3>
             <iframe
               className="border-0 w-full h-[40vh] mt-4 mb-6"
               loading="lazy"
               allowFullScreen
-              src="https://www.google.com/maps/embed/v1/directions?origin=place_id:Ejw5NCwgQyBSZCwgQW5hbmRhcHVyaSwgQmFycmFja3BvcmUsIFdlc3QgQmVuZ2FsIDcwMDEyMiwgSW5kaWEiMBIuChQKEglxJlE0TJr4ORHcDTD0LEbWshBeKhQKEgnF44NATJr4ORFd2fCOGA2YyQ&destination=place_id:ChIJSS2NGsl5AjoRHQPPdIxQ7sY&key=AIzaSyBbcFeq42Ad9aqnlZuQdkNahM3YmyC2Z6Y&zoom=10"
+              src={`https://www.google.com/maps/embed/v1/directions?origin=${
+                userType === "donor"
+                  ? transaction.location.coordinates[0]
+                  : transaction.pair.distributor_location.coordinates[0]
+              },${
+                userType === "donor"
+                  ? transaction.location.coordinates[1]
+                  : transaction.pair.distributor_location.coordinates[1]
+              }&destination=${transaction.pair.meet_location.coordinates[0]},${
+                transaction.pair.meet_location.coordinates[1]
+              }&key=AIzaSyBbcFeq42Ad9aqnlZuQdkNahM3YmyC2Z6Y&zoom=10`}
             />
             <hr className="border-gray-200 dark:border-gray-700" />
 
@@ -129,7 +167,7 @@ const Transactions = ({ id, userType }) => {
                 </svg>
 
                 <h1 className="mx-2 text-lg text-gray-700 capitalize dark:text-white truncate">
-                  {Package.donor_name}
+                  {transaction.donor_name}
                 </h1>
               </div>
               <div className="flex items-center text-gray-700 dark:text-gray-200 px-2">
@@ -149,7 +187,7 @@ const Transactions = ({ id, userType }) => {
                 </svg>
 
                 <h1 className="mx-2 text-lg text-gray-700 capitalize dark:text-white">
-                  {Package.donor_phone}
+                  {transaction.donor_phone}
                 </h1>
               </div>
             </div>
@@ -175,7 +213,7 @@ const Transactions = ({ id, userType }) => {
                 </svg>
 
                 <h1 className="mx-2 text-lg text-gray-700 capitalize dark:text-white truncate">
-                  {Package.pair.distributor_name}
+                  {transaction.pair.distributor_name}
                 </h1>
               </div>
               <div className="flex items-center text-gray-700 dark:text-gray-200 px-2">
@@ -195,7 +233,7 @@ const Transactions = ({ id, userType }) => {
                 </svg>
 
                 <h1 className="mx-2 text-lg text-gray-700 capitalize dark:text-white">
-                  {Package.pair.distributor_phone}
+                  {transaction.pair.distributor_phone}
                 </h1>
               </div>
             </div>
@@ -216,7 +254,7 @@ const Transactions = ({ id, userType }) => {
               </svg>
 
               <h1 className="mx-2 text-lg text-gray-700 capitalize dark:text-white truncate">
-                {moment(Package.timestamp, moment.ISO_8601).format("lll")}
+                {moment(transaction.timestamp, moment.ISO_8601).format("lll")}
               </h1>
             </div>
 
@@ -242,7 +280,7 @@ const Transactions = ({ id, userType }) => {
                 />
               </svg>
               <h1 className="mx-2 text-lg text-gray-700 dark:text-white truncate">
-                {Package.location.address}
+                {transaction.location.address}
               </h1>
             </div>
 
@@ -260,7 +298,7 @@ const Transactions = ({ id, userType }) => {
               </svg>
 
               <h1 className="mx-2 text-lg text-gray-700 capitalize dark:text-white">
-                {Package.quantity} Meals
+                {transaction.quantity} Meals
               </h1>
             </div>
 
@@ -280,13 +318,13 @@ const Transactions = ({ id, userType }) => {
                 />
               </svg>
               <h1 className="w-full mx-2 text-lg text-gray-700 capitalize dark:text-white truncate">
-                {Package.travelCapacity} Kilometres
+                {transaction.travelCapacity} Kilometres
               </h1>
             </div>
           </div>
         )}
 
-        {Package.current_state === "Not Paired" && (
+        {transaction.current_state === "Not Paired" && (
           <div className="flex justify-end mt-4">
             <a
               href="#"

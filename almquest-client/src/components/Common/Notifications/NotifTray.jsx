@@ -7,7 +7,6 @@ import axios from "axios";
 
 const NotifTray = ({ id, userType }) => {
   const [isOpen, setOpen] = useState(false);
-  const [hasSeen, setHasSeen] = useState(false);
   const [notifs, setNotifs] = useState([]);
   const [unseen, setUnseen] = useState(0);
   const getNotifications = async () => {
@@ -42,7 +41,6 @@ const NotifTray = ({ id, userType }) => {
     if (unseen !== 0) {
       await updateSeen();
     }
-    setHasSeen(true);
   };
   const handleClickAway = () => {
     setOpen(false);
@@ -88,12 +86,15 @@ const NotifTray = ({ id, userType }) => {
             x-transition:leave="transition ease-in duration-100"
             x-transition:leave-start="opacity-100 scale-100"
             x-transition:leave-end="opacity-0 scale-90"
-            className="absolute right-0 z-20 w-64 mt-6 overflow-hidden bg-gray-200 rounded-md shadow-lg sm:w-80 dark:bg-gray-900"
+            onClick={() => {
+              getNotifications();
+            }}
+            className="absolute right-0 z-20 w-[70vw] mt-4 overflow-hidden bg-gray-200 rounded-md shadow-lg sm:w-80 dark:bg-gray-900"
           >
-            <div className="py-2">
+            <div className="pb-2 overflow-x-hidden overflow-y-auto max-h-[70vh]">
               {notifs.map((notif, idx) => (
                 <NotificationItem
-                  key={notif._id}
+                  key={idx}
                   notif={notif}
                   seen={idx + 1 > unseen}
                 />
