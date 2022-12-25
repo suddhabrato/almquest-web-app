@@ -66,14 +66,14 @@ exports.checkUserExist = asyncHandler(async (req, res, next) => {
 
   if (doc1 || doc2) {
     res.status(200).json({
-      isRegistered:true,
+      isRegistered: true,
       message: "User already exist",
-      userType: doc1?'donor':'distributor',
-      id: doc1 ? doc1._id : doc2._id
+      userType: doc1 ? "donor" : "distributor",
+      id: doc1 ? doc1._id : doc2._id,
     });
   } else {
     res.status(200).json({
-      isRegistered:false,
+      isRegistered: false,
       message: "User not registered",
     });
   }
@@ -89,5 +89,38 @@ exports.notifSeen = (Model) =>
 
     res.status(200).json({
       status: "success",
+    });
+  });
+
+exports.getNotifs = (Model) =>
+  asyncHandler(async (req, res, next) => {
+    const id = req.params.id;
+
+    const doc = await Model.findById(id);
+    const populated = await doc.populate({
+      path: "notifs",
+      select: "-__v",
+    });
+
+    res.status(200).json({
+      status: "success",
+      unseen_count: doc.notif_unseen,
+      notifs: populated.notifs,
+    });
+  });
+
+exports.getPackages = (Model) =>
+  asyncHandler(async (req, res, next) => {
+    const id = req.params.id;
+
+    const doc = await Model.findById(id);
+    const populated = await doc.populate({
+      path: "packages",
+      select: "-__v",
+    });
+
+    res.status(200).json({
+      status: "success",
+      packages: populated.packages,
     });
   });
