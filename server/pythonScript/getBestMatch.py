@@ -55,7 +55,6 @@ def __compare(package_cords, dist_list, donor_travel_capacity):
         path_length = path_length + dist
         if dist_travel_capacity >= path_length:
             point = [path_steps[i]['end_location']['lat'], path_steps[i]['end_location']['lng']]
-            break
 
     return point[0], point[1], distributor_list[0][1]
 
