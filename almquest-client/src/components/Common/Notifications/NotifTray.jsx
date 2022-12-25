@@ -22,23 +22,26 @@ const NotifTray = ({ id, userType }) => {
   };
   useEffect(() => {
     getNotifications();
-  }, []);
+  }, [isOpen]);
   const toggle = () => {
     if (isOpen) setOpen(false);
     else handleOpen();
   };
-  const handleOpen = () => {
+
+  const updateSeen = async () => {
+    try {
+      const res = await axios.post(`/api/${userType}/${id}/notifSeen`);
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleOpen = async () => {
     setOpen(true);
-    const updateSeen = async () => {
-      try {
-        const body = { id: id };
-        const res = await axios.post(`/api/${userType}/notifSeen`, body);
-        console.log(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    updateSeen();
+    if (unseen !== 0) {
+      await updateSeen();
+    }
     setHasSeen(true);
   };
   const handleClickAway = () => {
@@ -51,7 +54,7 @@ const NotifTray = ({ id, userType }) => {
           onClick={toggle}
           className="relative z-10 block p-2 text-gray-700 bg-white border border-transparent rounded-md dark:text-white dark:bg-gray-900 dark:hover:bg-gray-800 dark:focus:bg-gray-800 focus:outline-none"
         >
-          {unseen !== 0 ? (
+          {unseen === 0 ? (
             <svg
               className="w-5 h-5 text-gray-800 dark:text-white"
               viewBox="0 0 24 24"
@@ -85,7 +88,7 @@ const NotifTray = ({ id, userType }) => {
             x-transition:leave="transition ease-in duration-100"
             x-transition:leave-start="opacity-100 scale-100"
             x-transition:leave-end="opacity-0 scale-90"
-            className="absolute right-0 z-20 w-64 mt-6 overflow-hidden bg-gray-100 rounded-md shadow-lg sm:w-80 dark:bg-gray-900"
+            className="absolute right-0 z-20 w-64 mt-6 overflow-hidden bg-gray-200 rounded-md shadow-lg sm:w-80 dark:bg-gray-900"
           >
             <div className="py-2">
               {notifs.map((notif, idx) => (
