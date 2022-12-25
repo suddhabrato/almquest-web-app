@@ -5,6 +5,7 @@ import bson
 import KDTreeModel as model
 import getBestMatch as gBM
 import datetime
+import getDirectionData as gDD
 max_range = 50
 
 
@@ -151,9 +152,14 @@ def pair(y1):
                 '$set': {'pair': {
                     'distributor_id': distributor_id,
                     'distributor_name': distributor_obj['name'],
+                    'distributor_phone': distributor_obj['phone'],
+                    'location': {
+                        'coordinates': distributor_obj['location']['coordinates'],
+                        'address': distributor_obj['location']['address'],
+                    },
                     'meet_location': {
                         'coordinates': [meet_lat, meet_lon],
-                        'address': '',
+                        'address': gDD.getAddressFromCords((meet_lat, meet_lon)),
                     },
                     'donor_path': gp.getPath([lat_package, lon_package], [meet_lat, meet_lon]),
                     'distributor_path': gp.getPath([distributor_obj["location"]["coordinates"][0], distributor_obj["location"]["coordinates"][1]], [meet_lat, meet_lon]),
@@ -162,6 +168,9 @@ def pair(y1):
             }
             post_donated_packages_update_3 = {
                 '$set': {'current_state': 'Paired'}
+            }
+            post_distributor_update_4 = {
+                '$set': {'': 'Paired'}
             }
 
             getPackage = distributor_obj["packages"]
@@ -179,6 +188,6 @@ def pair(y1):
             collection1.update_one({'_id': x}, post_donated_packages_update_3)
 
 
-# pair('63a5cce857ad4593a1d4c429')
+pair('63a5cce857ad4593a1d4c429')
 
 
