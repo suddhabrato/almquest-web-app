@@ -1,6 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
-const path=require('path')
+const path = require("path");
 const donorRouter = require("./routes/donorRoutes");
 const distributorRouter = require("./routes/distributorRoutes");
 const factory = require("./controllers/handlerFactory");
@@ -14,26 +14,27 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
-app.use((req,res, next)=>{
-  res.setHeader('Access-Control-Allow-Origin',"*");
-  res.setHeader('Access-Control-Allow-Headers',"*");
-  res.setHeader('Access-Control-Allow-Methods','*')
-  res.header('Access-Control-Allow-Credentials', true);
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "*");
+  res.setHeader("Access-Control-Allow-Methods", "*");
+  res.header("Access-Control-Allow-Credentials", true);
   next();
 });
 
-app.options('*', (req,res)=>{
+app.options("*", (req, res) => {
   res.status(200).send();
-})
+});
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../almquest-client/dist')));
+app.use(express.static(path.join(__dirname, "../almquest-client/dist")));
 
 // Routes
 app.use("/api/donor", donorRouter);
 app.use("/api/distributor", distributorRouter);
 app.post("/api/checkExist", factory.checkUserExist);
 app.post("/api/notifyUpdate", notifController.receiveUpdate);
+app.get("/api/package/:id", factory.getPackageById);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));

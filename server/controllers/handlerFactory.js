@@ -2,6 +2,7 @@ const AppError = require("../utils/appError");
 const Donor = require("../models/donorModel");
 const Distributor = require("../models/distributorModel");
 const asyncHandler = require("express-async-handler");
+const DonatedPackages = require("../models/donatedPackages");
 
 exports.register = (Model) =>
   asyncHandler(async (req, res, next) => {
@@ -124,3 +125,17 @@ exports.getPackages = (Model) =>
       packages: populated.packages,
     });
   });
+
+exports.getPackageById = asyncHandler(async (req, res, next) => {
+  const id = req.params.id;
+  const doc = await DonatedPackages.findById(id);
+
+  if (!doc) {
+    return next(new AppError("Package no longer exist for given id.", 404));
+  }
+
+  res.status(200).json({
+    status: "success",
+    package: doc,
+  });
+});
