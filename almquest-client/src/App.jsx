@@ -2,7 +2,7 @@ import React from "react";
 import Pusher from "pusher-js";
 
 import { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
 import Navbar from "./components/Common/Navbar";
 import Footer from "./components/Common/Footer";
 import Home from "./components/Home";
@@ -42,6 +42,11 @@ const App = () => {
     setDarkMode((prev) => !prev);
   };
 
+  const GetTransaction = () => {
+    const { transactionId } = useParams();
+    return <Transactions id={transactionId} userType="donor" />;
+  };
+
   return (
     <BrowserRouter>
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
@@ -50,8 +55,11 @@ const App = () => {
         <Route path="/contact" element={<Contacts />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/transaction" element={<Transactions />} />
-        <Route path="/personainfo" element={<PersonaInfo/>} />
+        <Route
+          path="/transaction/:transactionId"
+          element={<GetTransaction />}
+        />
+        <Route path="/personainfo" element={<PersonaInfo />} />
       </Routes>
       <Footer />
     </BrowserRouter>
