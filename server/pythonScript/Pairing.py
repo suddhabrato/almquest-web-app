@@ -71,13 +71,13 @@ def pair(y1):
             'packageId': x,
             'name': '',
             'photo': '',
-            'desc': 'We could not find a pair for you',
+            # 'desc': 'We could not find a pair for you',
             'timestamp': datetime.datetime.now(),
-            'meet_location': {
-                'coordinates': [0, 0],
-                'address': '',
-            },
-            'path': ''
+            # 'meet_location': {
+            #     'coordinates': [0, 0],
+            #     'address': '',
+            # },
+            # 'path': ''
         }
         collection4.insert_one(post_notif_donor)
 
@@ -110,10 +110,10 @@ def pair(y1):
             post_notif_donor = {
                 "user_id": donatedpackage_object['donor_id'],
                 'user_type': 'Donor',
-                # 'message': 'You have been Paired',
+                'message': 'You have been Paired with a Distributor',
                 'packageId': x,
-                # 'name': distributor_obj['name'],
-                # 'photo': distributor_obj['picture'],
+                'name': distributor_obj['name'],
+                'photo': distributor_obj['picture'],
                 # 'desc': 'You have bee
                 # n paired',
                 'timestamp': datetime.datetime.now(),
@@ -127,10 +127,10 @@ def pair(y1):
             post_notif_dist = {
                 "user_id": distributor_id,
                 'user_type': 'Distributor',
-                # 'message': 'You have been Paired',
+                'message': 'You have been Paired with a Donor',
                 'packageId': x,
-                # 'name': donor_object['name'],
-                # 'photo': donor_object['picture'],
+                'name': donor_object['name'],
+                'photo': donor_object['picture'],
                 # 'desc': 'You have been paired',
                 'timestamp': datetime.datetime.now(),
                 # 'meet_location': {
@@ -175,6 +175,6 @@ def pair(y1):
             collection1.update_one({'_id': x}, post_donated_packages_update_3)
 
 
-pair('63a5cce857ad4593a1d4c429')
+# pair('63a5cce857ad4593a1d4c429')
 
 
