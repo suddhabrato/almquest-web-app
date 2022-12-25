@@ -18,18 +18,15 @@ const notifSchema = new mongoose.Schema({
   },
   name: String,
   photo: String,
-  desc: String,
   timestamp: Date,
-  meet_location: {
-    type: {
-      type: String,
-      default: "Point",
-      enum: ["Point"],
+  state: {
+    type: String,
+    enum: {
+      values: ["Not Paired", "Paired", "Received", "Distributed"],
+      message: "Not a valid state",
     },
-    coordinates: [Number],
-    address: String,
+    default: "Not Paired",
   },
-  path: String,
 });
 
 const Notification = mongoose.model("Notification", notifSchema);

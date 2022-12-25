@@ -12,6 +12,8 @@ import { useEffect } from "react";
 import Profile from "./components/Profile";
 import Transactions from "./components/Transactions";
 
+import PersonaInfo from "./components/Information/PersonaInfo";
+
 const App = () => {
   const pusher = new Pusher("b369bdc486176cddddfd", {
     cluster: "ap2",
@@ -57,6 +59,7 @@ const App = () => {
           path="/transaction/:transactionId"
           element={<GetTransaction />}
         />
+        <Route path="/personainfo" element={<PersonaInfo />} />
       </Routes>
       <Footer />
     </BrowserRouter>

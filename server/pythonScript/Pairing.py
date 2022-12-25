@@ -71,110 +71,112 @@ def pair(y1):
             'packageId': x,
             'name': '',
             'photo': '',
-            'desc': 'We could not find a pair for you',
+            'status': "Not Paired",
+            # 'desc': 'We could not find a pair for you',
             'timestamp': datetime.datetime.now(),
-            'meet_location': {
-                'coordinates': [0, 0],
-                'address': '',
-            },
-            'path': ''
+            # 'meet_location': {
+            #     'coordinates': [0, 0],
+            #     'address': '',
+            # },
+            # 'path': ''
         }
         collection4.insert_one(post_notif_donor)
 
-    # 5NN
-    # print("Distributor List 1 before donor id insertion: ", distributor_list_fiter1)
-    distributor_list_fiter1.insert(0, [donatedpackage_object['donor_id'], lat_package, lon_package])
-    # print("Distributor List 1 after donor id insertion: ", distributor_list_fiter1)
-    distributor_list_fiter2 = model.findNearestDistributor(distributor_list_fiter1)
-    # print("Distributor List 2:", distributor_list_fiter2)
-    meet_lat, meet_lon, distributor_id = gBM.meetLocation([lat_package, lon_package], distributor_list_fiter2, donor_travel_capacity)
-
-    # Pair Not Found
-
-    if meet_lat == 0 and meet_lon == 0:
-        post_notif_donor = {
-            "user_id": donatedpackage_object['donor_id'],
-            'user_type': 'Donor',
-            'message': 'We could not find a pair for you',
-            'packageId': x,
-            'name': '',
-            'photo': '',
-            'desc': 'We could not find a pair for you',
-            'timestamp': datetime.datetime.now(),
-            'meet_location': {
-                'coordinates': [0, 0],
-                'address': '',
-            },
-            'path': ''
-        }
-        collection4.insert_one(post_notif_donor)
-
-    # Pair Found
     else:
-        # print(1)
-        distributor_obj = collection5.find_one({"_id": distributor_id})
 
-        post_notif_donor = {
-            "user_id": donatedpackage_object['donor_id'],
-            'user_type': 'Donor',
-            'message': 'You have been Paired',
-            'packageId': x,
-            'name': distributor_obj['name'],
-            'photo': distributor_obj['picture'],
-            'desc': 'You have been paired',
-            'timestamp': datetime.datetime.now(),
-            'meet_location': {
-                'coordinates': [meet_lat, meet_lon],
-                'address': '',
-            },
-            'path': gp.getPath([lat_package, lon_package], [meet_lat, meet_lon])
-        }
+        # 5NN
+        # print("Distributor List 1 before donor id insertion: ", distributor_list_fiter1)
+        distributor_list_fiter1.insert(0, [donatedpackage_object['donor_id'], lat_package, lon_package])
+        # print("Distributor List 1 after donor id insertion: ", distributor_list_fiter1)
+        distributor_list_fiter2 = model.findNearestDistributor(distributor_list_fiter1)
+        # print("Distributor List 2:", distributor_list_fiter2)
+        meet_lat, meet_lon, distributor_id = gBM.meetLocation([lat_package, lon_package], distributor_list_fiter2, donor_travel_capacity)
 
-        post_notif_dist = {
-            "user_id": distributor_id,
-            'user_type': 'Distributor',
-            'message': 'You have been Paired',
-            'packageId': x,
-            'name': donor_object['name'],
-            'photo': donor_object['picture'],
-            'desc': 'You have been paired',
-            'timestamp': datetime.datetime.now(),
-            'meet_location': {
-                'coordinates': [meet_lat, meet_lon],
-                'address': '',
-            },
-            'path': gp.getPath([distributor_obj["location"]["coordinates"][0], distributor_obj["location"]["coordinates"][1]], [meet_lat, meet_lon])
-        }
+        # Pair Not Found
 
-        post_donated_packages_update_1 = {
-            '$set': {'current_state': "Paired"}
-        }
+        if meet_lat == 0 and meet_lon == 0:
+            post_notif_donor = {
+                "user_id": donatedpackage_object['donor_id'],
+                'user_type': 'Donor',
+                'packageId': x,
+                'timestamp': datetime.datetime.now(),
+            }
+            collection4.insert_one(post_notif_donor)
 
-        post_donated_packages_update_2 = {
-            '$set': {'pair': {
-                'distributor_id': distributor_id,
-                'meet_location': {
-                    'coordinates': [meet_lat, meet_lon],
-                    'address': '',
-                },
-                'donor_path': gp.getPath([lat_package, lon_package], [meet_lat, meet_lon]),
-                'distributor_path': gp.getPath([distributor_obj["location"]["coordinates"][0], distributor_obj["location"]["coordinates"][1]], [meet_lat, meet_lon]),
+        # Pair Found
+        else:
+            # print(1)
+            distributor_obj = collection5.find_one({"_id": distributor_id})
+
+            post_notif_donor = {
+                "user_id": donatedpackage_object['donor_id'],
+                'user_type': 'Donor',
+                'message': 'You have been Paired with a Distributor',
+                'packageId': x,
+                'name': distributor_obj['name'],
+                'photo': distributor_obj['picture'],
+                'status': "Paired",
+                # 'desc': 'You have bee
+                # n paired',
+                'timestamp': datetime.datetime.now(),
+                # 'meet_location': {
+                #     'coordinates': [meet_lat, meet_lon],
+                #     'address': '',
+                # },
+                # 'path': gp.getPath([lat_package, lon_package], [meet_lat, meet_lon])
+            }
+
+            post_notif_dist = {
+                "user_id": distributor_id,
+                'user_type': 'Distributor',
+                'message': 'You have been Paired with a Donor',
+                'packageId': x,
+                'name': donor_object['name'],
+                'photo': donor_object['picture'],
+                'status': "Paired",
+                # 'desc': 'You have been paired',
+                'timestamp': datetime.datetime.now(),
+                # 'meet_location': {
+                #     'coordinates': [meet_lat, meet_lon],
+                #     'address': '',
+                # },
+                # 'path': gp.getPath([distributor_obj["location"]["coordinates"][0], distributor_obj["location"]["coordinates"][1]], [meet_lat, meet_lon])
+            }
+
+            post_donated_packages_update_1 = {
+                '$set': {'current_state': "Paired"}
+            }
+
+            post_donated_packages_update_2 = {
+                '$set': {'pair': {
+                    'distributor_id': distributor_id,
+                    'distributor_name': distributor_obj['name'],
+                    'meet_location': {
+                        'coordinates': [meet_lat, meet_lon],
+                        'address': '',
+                    },
+                    'donor_path': gp.getPath([lat_package, lon_package], [meet_lat, meet_lon]),
+                    'distributor_path': gp.getPath([distributor_obj["location"]["coordinates"][0], distributor_obj["location"]["coordinates"][1]], [meet_lat, meet_lon]),
+                    }
                 }
             }
-        }
+            post_donated_packages_update_3 = {
+                '$set': {'current_state': 'Paired'}
+            }
 
-        getPackage = distributor_obj["packages"]
-        getPackage.append(x)
-        # print(getPackage)
-        post_dist = {
-            '$set': {'packages': getPackage}
-        }
+            getPackage = distributor_obj["packages"]
+            getPackage.append(x)
+            # print(getPackage)
+            post_dist = {
+                '$set': {'packages': getPackage}
+            }
 
-        collection4.insert_one(post_notif_dist)
-        collection4.insert_one(post_notif_donor)
-        collection5.update_one({'_id': x}, post_dist)
-        collection1.update_one({'_id': x}, post_donated_packages_update_1)
-        collection1.update_one({'_id': x}, post_donated_packages_update_2)
+            collection4.insert_one(post_notif_dist)
+            collection4.insert_one(post_notif_donor)
+            collection5.update_one({'_id': distributor_id}, post_dist)
+            collection1.update_one({'_id': x}, post_donated_packages_update_1)
+            collection1.update_one({'_id': x}, post_donated_packages_update_2)
+            collection1.update_one({'_id': x}, post_donated_packages_update_3)
 
 
 # pair('63a5cce857ad4593a1d4c429')
