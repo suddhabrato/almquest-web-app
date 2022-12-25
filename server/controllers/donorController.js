@@ -10,6 +10,8 @@ exports.deleteDonor = factory.deleteAccount(Donor);
 exports.updateDonor = factory.updateAccount(Donor);
 exports.getDonor = factory.myProfile(Donor);
 exports.notifSeen = factory.notifSeen(Donor);
+exports.getNotifs = factory.getNotifs(Donor);
+exports.getPackages = factory.getPackages(Donor);
 
 exports.donatePackage = asyncHandler(async (req, res, next) => {
   const { donor_id } = req.body;
