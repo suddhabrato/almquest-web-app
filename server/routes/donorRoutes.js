@@ -8,9 +8,11 @@ router.patch("/update/:id", donorController.updateDonor);
 router.delete("/delete/:id", donorController.deleteDonor);
 
 router.post("/donate", donorController.donatePackage);
-router.post("/notifSeen", donorController.notifSeen);
-router.get("/getNotifs/:id", donorController.getNotifs);
-router.get("/getPackages/:id", donorController.getPackages);
+router.post("/:id/notifSeen", donorController.notifSeen);
+
+router.get("/:id/getNotifs", donorController.getNotifs);
+router.get("/:id/getPackages", donorController.getPackages);
+router.delete("/:did/package/:pid", donorController.deletePackage);
 router.get("/:id", donorController.getDonor);
 
 module.exports = router;

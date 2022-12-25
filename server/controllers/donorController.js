@@ -13,6 +13,20 @@ exports.notifSeen = factory.notifSeen(Donor);
 exports.getNotifs = factory.getNotifs(Donor);
 exports.getPackages = factory.getPackages(Donor);
 
+exports.deletePackage = asyncHandler(async (req, res, next) => {
+  const { did, pid } = req.params;
+
+  await DonatedPackages.findByIdAndDelete(pid);
+
+  const donor = await Donor.findById(did);
+  donor.packages.remove(pid);
+  await donor.save();
+
+  res.status(200).json({
+    status: "success",
+  });
+});
+
 exports.donatePackage = asyncHandler(async (req, res, next) => {
   const { donor_id } = req.body;
 
