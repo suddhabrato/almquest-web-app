@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 const Package = {
@@ -32,10 +33,14 @@ const Package = {
   },
 };
 const Transactions = ({ id }) => {
+  const navigate = useNavigate();
   const [transaction, setTransaction] = useState(Package);
-  const userType = JSON.parse(localStorage.getItem("reg_user")).userType;
+  const [userType, setUserType] = useState("");
   const getPackage = async () => {
     try {
+      const regUser = JSON.parse(localStorage.getItem("reg_user"));
+      if (!regUser) navigate("/");
+      setUserType(regUser.userType);
       const res = await axios.get(`/api/package/${id}`);
       console.log(res.data);
       setTransaction(res.data.package);
