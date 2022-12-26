@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const Donor = require("../models/donorModel");
 const Distributor = require("../models/distributorModel");
+const Notification = require("../models/notifModel");
 const Pusher = require("pusher");
 
 exports.receiveUpdate = asyncHandler(async (req, res, next) => {
@@ -54,6 +55,18 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
       count: distributor.notif_unseen,
     });
   }
+
+  res.status(200).json({
+    status: "success",
+  });
+});
+
+exports.notifSeen = asyncHandler(async (req, res, next) => {
+  const id = req.params.id;
+
+  const notif = await Notification.findById(id);
+  notif.notif_seen = true;
+  await notif.save();
 
   res.status(200).json({
     status: "success",

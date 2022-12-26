@@ -27,23 +27,29 @@ const notifSchema = new mongoose.Schema({
     },
     default: "Not Paired",
   },
+  notif_seen: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const Notification = mongoose.model("Notification", notifSchema);
 
 Notification.watch().on("change", async (data) => {
-  try {
-    await axios.post(
-      "https://almquest-server.onrender.com/api/notifyUpdate",
-      data.fullDocument,
-      {
-        headers: {
-          "Accept-Encoding": "gzip,deflate,compress",
-        },
-      }
-    );
-  } catch (err) {
-    console.log(err);
+  if (data.operationType == "insert") {
+    try {
+      await axios.post(
+        "https://almquest-server.onrender.com/api/notifyUpdate",
+        data.fullDocument,
+        {
+          headers: {
+            "Accept-Encoding": "gzip,deflate,compress",
+          },
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
   }
 });
 
