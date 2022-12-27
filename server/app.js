@@ -32,9 +32,11 @@ app.use(express.static(path.join(__dirname, "../almquest-client/dist")));
 // Routes
 app.use("/api/donor", donorRouter);
 app.use("/api/distributor", distributorRouter);
+
 app.post("/api/checkExist", factory.checkUserExist);
 app.post("/api/notifyUpdate", notifController.receiveUpdate);
 app.get("/api/package/:id", factory.getPackageById);
+app.post("/api/notification/:id", notifController.notifSeen);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
