@@ -72,7 +72,7 @@ def pair(y1):
             'packageId': x,
             'name': '',
             'photo': '',
-            'status': "Not Paired",
+            'state': "Not Paired",
             # 'desc': 'We could not find a pair for you',
             'timestamp': datetime.datetime.now(),
             # 'meet_location': {
@@ -116,7 +116,7 @@ def pair(y1):
                 'packageId': x,
                 'name': distributor_obj['name'],
                 'photo': distributor_obj['picture'],
-                'status': "Paired",
+                'state': "Paired",
                 # 'desc': 'You have bee
                 # n paired',
                 'timestamp': datetime.datetime.now(),
@@ -134,7 +134,7 @@ def pair(y1):
                 'packageId': x,
                 'name': donor_object['name'],
                 'photo': donor_object['picture'],
-                'status': "Paired",
+                'state': "Paired",
                 # 'desc': 'You have been paired',
                 'timestamp': datetime.datetime.now(),
                 # 'meet_location': {

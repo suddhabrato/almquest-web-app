@@ -16,7 +16,11 @@
         "type": "Point"
       },
       "distanceRange": 3,
-      "lifetimeDonation": 69
+      "lifetimeDonation": 69,
+      "picture": "https://lh3.googleusercontent.com/a/AEdFTp54nZpzeMX6OiUKCG_t9k5sAJAMsrEWFs6MrRJz=s96-c",
+      "notif_unseen": 0,
+      "packages": [],
+      "notifs": []
     },
     {
       "name": "Namaste Bangla",
@@ -34,7 +38,11 @@
         "type": "Point"
       },
       "distanceRange": 2,
-      "lifetimeDonation": 420
+      "lifetimeDonation": 420,
+      "picture": "https://lh3.googleusercontent.com/a/AEdFTp54nZpzeMX6OiUKCG_t9k5sAJAMsrEWFs6MrRJz=s96-c",
+      "notif_unseen": 0,
+      "packages": [],
+      "notifs": []
     },
     {
       "name": "Bong Pizza",
@@ -52,7 +60,11 @@
         "type": "Point"
       },
       "distanceRange": 3,
-      "lifetimeDonation": 786
+      "lifetimeDonation": 786,
+      "picture": "https://lh3.googleusercontent.com/a/AEdFTp54nZpzeMX6OiUKCG_t9k5sAJAMsrEWFs6MrRJz=s96-c",
+      "notif_unseen": 0,
+      "packages": [],
+      "notifs": []
     },
     {
       "name": "Monalisha Ghosh",
@@ -90,7 +102,10 @@
       },
       "distanceRange": 2,
       "lifetimeDonation": 12,
-      "__v": 0
+      "picture": "https://lh3.googleusercontent.com/a/AEdFTp54nZpzeMX6OiUKCG_t9k5sAJAMsrEWFs6MrRJz=s96-c",
+      "notif_unseen": 0,
+      "packages": [],
+      "notifs": []
     },
     {
       "name": "Tamonash Bhattacharyya",
@@ -109,7 +124,11 @@
       },
       "distanceRange": 4,
       "lifetimeDonation": 15,
-      "__v": 0
+      "__v": 0,
+      "picture": "https://lh3.googleusercontent.com/a/AEdFTp54nZpzeMX6OiUKCG_t9k5sAJAMsrEWFs6MrRJz=s96-c",
+      "notif_unseen": 0,
+      "packages": [],
+      "notifs": []
     },
     {
       "name": "Rik Roy",
@@ -128,6 +147,10 @@
       },
       "distanceRange": 3,
       "lifetimeDonation": 18,
+      "picture": "https://lh3.googleusercontent.com/a/AEdFTp54nZpzeMX6OiUKCG_t9k5sAJAMsrEWFs6MrRJz=s96-c",
+      "notif_unseen": 0,
+      "packages": [],
+      "notifs": [],
       "__v": 0
     },
     {
@@ -147,7 +170,11 @@
       },
       "distanceRange": 2,
       "lifetimeDonation": 30,
-      "__v": 0
+      "__v": 0,
+      "picture": "https://lh3.googleusercontent.com/a/AEdFTp54nZpzeMX6OiUKCG_t9k5sAJAMsrEWFs6MrRJz=s96-c",
+      "notif_unseen": 0,
+      "packages": [],
+      "notifs": []
     },
     {
       "name": "Raj boys hostel",
@@ -166,7 +193,11 @@
       },
       "distanceRange": 2,
       "lifetimeDonation": 48,
-      "__v": 0
+      "__v": 0,
+      "picture": "https://lh3.googleusercontent.com/a/AEdFTp54nZpzeMX6OiUKCG_t9k5sAJAMsrEWFs6MrRJz=s96-c",
+      "notif_unseen": 0,
+      "packages": [],
+      "notifs": []
     },
     {
       "name": "Aditya Das",
@@ -185,7 +216,11 @@
       },
       "distanceRange": 3,
       "lifetimeDonation": 775,
-      "__v": 0
+      "__v": 0,
+      "picture": "https://lh3.googleusercontent.com/a/AEdFTp54nZpzeMX6OiUKCG_t9k5sAJAMsrEWFs6MrRJz=s96-c",
+      "notif_unseen": 0,
+      "packages": [],
+      "notifs": []
     },
     {
       "name": "Belpukur SSK",
@@ -204,7 +239,11 @@
       },
       "distanceRange": 2,
       "lifetimeDonation": 77,
-      "__v": 0
+      "__v": 0,
+      "picture": "https://lh3.googleusercontent.com/a/AEdFTp54nZpzeMX6OiUKCG_t9k5sAJAMsrEWFs6MrRJz=s96-c",
+      "notif_unseen": 0,
+      "packages": [],
+      "notifs": []
     },
     {
       "name": "Edward Panja",
@@ -223,7 +262,11 @@
       },
       "distanceRange": 2,
       "lifetimeDonation": 47,
-      "__v": 0
+      "__v": 0,
+      "picture": "https://lh3.googleusercontent.com/a/AEdFTp54nZpzeMX6OiUKCG_t9k5sAJAMsrEWFs6MrRJz=s96-c",
+      "notif_unseen": 0,
+      "packages": [],
+      "notifs": []
     },
     {
       "name": "Ghatal Lions' Club",
@@ -242,7 +285,11 @@
       },
       "distanceRange": 3,
       "lifetimeDonation": 47,
-      "__v": 0
+      "__v": 0,
+      "picture": "https://lh3.googleusercontent.com/a/AEdFTp54nZpzeMX6OiUKCG_t9k5sAJAMsrEWFs6MrRJz=s96-c",
+      "notif_unseen": 0,
+      "packages": [],
+      "notifs": []
     },
     {
       "name": "Saraswati Club",
@@ -261,7 +308,11 @@
       },
       "distanceRange": 3,
       "lifetimeDonation": 47,
-      "__v": 0
+      "__v": 0,
+      "picture": "https://lh3.googleusercontent.com/a/AEdFTp54nZpzeMX6OiUKCG_t9k5sAJAMsrEWFs6MrRJz=s96-c",
+      "notif_unseen": 0,
+      "packages": [],
+      "notifs": []
     }
   ]
 }

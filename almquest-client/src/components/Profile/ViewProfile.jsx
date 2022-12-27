@@ -19,7 +19,7 @@ const ViewProfile = ({
           type="button"
           className="rounded-full max-w-full px-4 py-1.5 bg-gray-50 dark:bg-gray-800 shadow-md"
         >
-          Lifetime {userType === "donor" ? "Donation" : "Distribution"}: {42069}
+          Lifetime {userType === "donor" ? "Donation" : "Distribution"}: {donor.lifetimeDonation}
         </button>
       </p>
       {userType === "distributor" && (
