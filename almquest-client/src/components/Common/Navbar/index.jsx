@@ -8,7 +8,7 @@ import { useState } from "react";
 import NotifTray from "../Notifications/NotifTray";
 import Avatar from "./Avatar";
 
-const Navbar = ({ darkMode, toggleDarkMode }) => {
+const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -126,11 +126,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               ) : (
                 <div className="flex items-center">
                   <NotifTray id={id} userType={userType} />
-                  <Avatar
-                    darkMode={darkMode}
-                    toggleDarkMode={toggleDarkMode}
-                    setLoggedIn={setLoggedIn}
-                  />
+                  <Avatar setLoggedIn={setLoggedIn} />
                 </div>
               )}
             </div>
@@ -184,11 +180,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                 ) : (
                   <div className="flex items-center">
                     <NotifTray id={id} userType={userType} />
-                    <Avatar
-                      darkMode={darkMode}
-                      toggleDarkMode={toggleDarkMode}
-                      setLoggedIn={setLoggedIn}
-                    />
+                    <Avatar setLoggedIn={setLoggedIn} />
                   </div>
                 )}
               </div>

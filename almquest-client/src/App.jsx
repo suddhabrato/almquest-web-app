@@ -11,25 +11,9 @@ import Profile from "./components/Profile";
 import Transactions from "./components/Transactions";
 import PersonaInfo from "./components/Information/PersonaInfo";
 import Alert from "./components/Alerts";
+import { useThemeContext } from "./contexts/ThemeContext";
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(
-    JSON.parse(localStorage.getItem("darkMode")) || false
-  );
-  useEffect(() => {
-    localStorage.setItem("darkMode", JSON.stringify(darkMode));
-    darkMode
-      ? (document.body.classList.add("dark"),
-        document.body.classList.add("bg-gray-900"),
-        document.body.classList.remove("bg-white"))
-      : (document.body.classList.remove("dark"),
-        document.body.classList.add("bg-white"),
-        document.body.classList.remove("bg-gray-900"));
-  }, [darkMode]);
-  const toggleDarkMode = () => {
-    setDarkMode((prev) => !prev);
-  };
-
   const GetTransaction = () => {
     const { transactionId } = useParams();
     return <Transactions id={transactionId} userType="donor" />;
@@ -37,7 +21,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Navbar />
       <Alert />
       <Routes>
         <Route path="/" element={<Home />} />
