@@ -24,6 +24,7 @@ exports.deletePackage = asyncHandler(async (req, res, next) => {
 
   donor.packages.remove(pid);
   donor.notifs.remove(notif._id.toString());
+  donor.lifetimeDonation = donor.lifetimeDonation - 1;
   await donor.save();
 
   await Notification.findOneAndDelete({ packageId: pid });
@@ -45,6 +46,8 @@ exports.donatePackage = asyncHandler(async (req, res, next) => {
 
   const pid = package._id.toString();
   donor.packages.push(package._id);
+  donor.lifetimeDonation = donor.lifetimeDonation + 1;
+
   await donor.save();
 
   // Initiate PyScript
