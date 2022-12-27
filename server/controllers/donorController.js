@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 const Donor = require("../models/donorModel");
 const axios = require("axios");
 const DonatedPackages = require("../models/donatedPackages");
+const Notification = require("../models/notifModel");
 const factory = require("./handlerFactory");
 const AppError = require("../utils/appError");
 
@@ -19,8 +20,13 @@ exports.deletePackage = asyncHandler(async (req, res, next) => {
   await DonatedPackages.findByIdAndDelete(pid);
 
   const donor = await Donor.findById(did);
+  const notif = await Notification.findOne({ packageId: pid });
+
   donor.packages.remove(pid);
+  donor.notifs.remove(notif._id.toString());
   await donor.save();
+
+  await Notification.findOneAndDelete({ packageId: pid });
 
   res.status(200).json({
     status: "success",
