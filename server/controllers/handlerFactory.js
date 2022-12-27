@@ -71,6 +71,7 @@ exports.checkUserExist = asyncHandler(async (req, res, next) => {
       message: "User already exist",
       userType: doc1 ? "donor" : "distributor",
       id: doc1 ? doc1._id : doc2._id,
+      picture: doc1 ? doc1.picture : doc2.picture,
     });
   } else {
     res.status(200).json({
