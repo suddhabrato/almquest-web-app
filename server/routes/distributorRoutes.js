@@ -8,6 +8,7 @@ router.patch("/update/:id", distributorController.update);
 router.delete("/delete/:id", distributorController.delete);
 
 router.post("/toggle/:id", distributorController.toggleActivity);
+router.post("/togglePackage", distributorController.togglePackageState);
 router.post("/:id/notifSeen", distributorController.notifSeen);
 
 router.get("/:id/getNotifs", distributorController.getNotifs);

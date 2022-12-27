@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Distributor = require("../models/distributorModel");
+const Donor = require("../models/donorModel");
 const ActiveDistributor = require("../models/activeDistributor");
 const DonatedPackages = require("../models/donatedPackages");
 const Notification = require("../models/notifModel");
@@ -54,11 +55,31 @@ exports.getNotifs = factory.getNotifs(Distributor);
 exports.getPackages = factory.getPackages(Distributor);
 
 exports.togglePackageState = asyncHandler(async (req, res, next) => {
-  const { package_id, state } = req.body;
+  const { donor_id, distributor_id, packageId, state } = req.body;
 
-  const package = await DonatedPackages.findById(package_id);
+  const donor = await Donor.findById(donor_id);
+  const distributor = await Distributor.findById(distributor_id);
+
+  const package = await DonatedPackages.findById(packageId);
   package.current_state = state;
   await package.save();
+
+  if (state == "Distributed") {
+    distributor.totalPackagesDistributed =
+      distributor.totalPackagesDistributed + 1;
+    await distributor.save();
+  }
+
+  await Notification.create({
+    user_id: donor._id,
+    user_type: "Donor",
+    message: `Distributor has updated package state to ${state} state.`,
+    packageId: packageId,
+    name: distributor.name,
+    photo: distributor.picture,
+    timestamp: Date.now(),
+    state: state,
+  });
 
   res.status(200).json({
     status: "success",
