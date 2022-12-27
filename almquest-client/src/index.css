@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: none;
+    scrollbar-color: #222226 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #a3a3a30d;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: rgba(55, 65, 81, 0.742);
+  }
+
 input[type='number']::-webkit-inner-spin-button,  input[type='number']::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;

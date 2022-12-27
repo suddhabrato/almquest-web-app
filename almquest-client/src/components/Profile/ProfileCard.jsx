@@ -21,12 +21,12 @@ const ProfileCard = () => {
   const [donor, setDonor] = useState({
     donorType: "",
     distanceRange: "",
-    isActive: "",
   });
 
   const [distributor, setDistributor] = useState({
     distanceRange: "",
     maxCapacity: "",
+    isActive: "",
   });
 
   useEffect(() => {

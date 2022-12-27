@@ -6,17 +6,24 @@ import ViewProfile from "./ViewProfile";
 import UpdateForm from "./UpdateForm";
 import DonatePackageCTA from "./DonatePackageCTA";
 import axios from "axios";
+import { useAlertContext } from "../../contexts/AlertContext";
 
 const Profile = () => {
   const navigate = useNavigate();
   const [userType, setUserType] = useState();
-
+  const { displayAlert } = useAlertContext();
   useEffect(() => {
     const regUser = JSON.parse(localStorage.getItem("reg_user"));
     console.log(regUser);
     if (regUser) {
+      displayAlert(
+        "info",
+        "Registered User",
+        "Welcome Back lo rsadasdg jsadh jasd hsk aks dkja sd kjasd as d",
+        ""
+      );
       setUserType(regUser.userType);
-    } else navigate("/", { replace: true });
+    } else navigate("/register", { replace: true });
   }, []);
 
   return (
