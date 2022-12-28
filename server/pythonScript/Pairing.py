@@ -153,7 +153,7 @@ def pair(y1):
                     'distributor_id': distributor_id,
                     'distributor_name': distributor_obj['name'],
                     'distributor_phone': distributor_obj['phone'],
-                    'location': {
+                    'distributor_location': {
                         'coordinates': distributor_obj['location']['coordinates'],
                         'address': distributor_obj['location']['address'],
                     },
