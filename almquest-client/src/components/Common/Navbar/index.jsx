@@ -1,6 +1,5 @@
 import React from "react";
-import Pusher from "pusher-js";
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import NotifTray from "../Notifications/NotifTray";
 import Avatar from "./Avatar";

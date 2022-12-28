@@ -3,40 +3,19 @@ import { useEffect } from "react";
 import { useState } from "react";
 import ClickAwayListener from "react-click-away-listener";
 import NotificationItem from "./NotificationItem";
-import axios from "axios";
 import { useUserContext } from "../../../contexts/UserContext";
 
 const NotifTray = () => {
-  const { user } = useUserContext();
-  const { id, userType } = user;
+  const { getNotifications, updateSeen, notifs, unseen } = useUserContext();
   const [isOpen, setOpen] = useState(false);
-  const [notifs, setNotifs] = useState([]);
-  const [unseen, setUnseen] = useState(0);
-  const getNotifications = async () => {
-    try {
-      const res = await axios.get(`/api/${userType}/${id}/getNotifs`);
-      console.log(res.data);
-      setNotifs(res.data.notifs.slice(0).reverse());
-      setUnseen(res.data.unseen_count);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+
   useEffect(() => {
     getNotifications();
   }, [isOpen]);
+
   const toggle = () => {
     if (isOpen) setOpen(false);
     else handleOpen();
-  };
-
-  const updateSeen = async () => {
-    try {
-      const res = await axios.post(`/api/${userType}/${id}/notifSeen`);
-      console.log(res.data);
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   const handleOpen = async () => {
@@ -55,7 +34,7 @@ const NotifTray = () => {
           onClick={toggle}
           className="relative z-10 block p-2 text-gray-700 bg-white border border-transparent rounded-md dark:text-white dark:bg-gray-900 dark:hover:bg-gray-800 dark:focus:bg-gray-800 focus:outline-none"
         >
-          {unseen === 0 ? (
+          {unseen === 0 || isOpen ? (
             <svg
               className="w-5 h-5 text-gray-800 dark:text-white"
               viewBox="0 0 24 24"

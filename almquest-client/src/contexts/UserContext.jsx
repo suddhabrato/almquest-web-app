@@ -1,4 +1,5 @@
 import axios from "axios";
+import Pusher from "pusher-js";
 import { useState } from "react";
 import { createContext, useContext } from "react";
 import { useGoogleLogin } from "@react-oauth/google";
@@ -15,6 +16,14 @@ const defaultUser = {
   userType: "",
 };
 
+Pusher.logToConsole = true;
+
+var pusher = new Pusher("e8e48f668ab490fa03e0", {
+  cluster: "ap2",
+});
+
+const channel = pusher.subscribe("almquest-channel");
+
 const UserContext = createContext();
 
 export const UserContextProvider = ({ children }) => {
@@ -28,11 +37,19 @@ export const UserContextProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("user")) || defaultUser
   );
 
+  const [notifs, setNotifs] = useState([]);
+  const [unseen, setUnseen] = useState(0);
+
   useEffect(() => {
     console.log(user);
     if (user.email !== "") localStorage.setItem("user", JSON.stringify(user));
     else localStorage.removeItem("user");
   }, [user, isLoggedIn]);
+
+  useEffect(() => {
+    if (user.id !== "") bindToChannel(user.id);
+    else channel.unbind();
+  }, [isLoggedIn]);
 
   const checkUserExist = async (email) => {
     try {
@@ -50,7 +67,10 @@ export const UserContextProvider = ({ children }) => {
           picture: picture,
         }));
       }
-      return { isRegistered, name: res.data.name ? res.data.name : "" };
+      return {
+        isRegistered,
+        name: res.data.name ? res.data.name : "",
+      };
     } catch (err) {
       console.log(err);
     }
@@ -102,9 +122,52 @@ export const UserContextProvider = ({ children }) => {
     displayAlert("info", `Till we meet again!`, "Successfully logged you out!");
   };
 
+  const getNotifications = async () => {
+    try {
+      const { id, userType } = user;
+      const res = await axios.get(`/api/${userType}/${id}/getNotifs`);
+      console.log(res.data);
+      setNotifs(res.data.notifs.slice(0).reverse());
+      setUnseen(res.data.unseen_count);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateSeen = async () => {
+    try {
+      const { id, userType } = user;
+      const res = await axios.post(`/api/${userType}/${id}/notifSeen`);
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const bindToChannel = (id) => {
+    channel.bind(id, function (data) {
+      setTimeout(() => {
+        getNotifications();
+        displayAlert("notif", "", data.message, data.picture || user.picture);
+      }, 4000);
+      console.log(data.message);
+    });
+  };
+
   return (
     <UserContext.Provider
-      value={{ isLoggedIn, user, setUser, checkUserExist, login, logout }}
+      value={{
+        isLoggedIn,
+        user,
+        notifs,
+        unseen,
+        setUser,
+        checkUserExist,
+        login,
+        logout,
+        getNotifications,
+        updateSeen,
+      }}
     >
       {children}
     </UserContext.Provider>
