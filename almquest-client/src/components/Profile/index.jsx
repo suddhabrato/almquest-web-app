@@ -1,29 +1,32 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ProfileCard from "./ProfileCard";
-import ViewProfile from "./ViewProfile";
-import UpdateForm from "./UpdateForm";
 import DonatePackageCTA from "./DonatePackageCTA";
-import axios from "axios";
 import { useAlertContext } from "../../contexts/AlertContext";
+import { useUserContext } from "../../contexts/UserContext";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const [userType, setUserType] = useState();
+  const { user, isLoggedIn } = useUserContext();
   const { displayAlert } = useAlertContext();
   useEffect(() => {
-    const regUser = JSON.parse(localStorage.getItem("reg_user"));
-    console.log(regUser);
-    if (regUser) {
+    console.log(user);
+    if (user.isRegistered === false) {
       displayAlert(
-        "info",
-        "Registered User",
-        "Welcome Back lo rsadasdg jsadh jasd hsk aks dkja sd kjasd as d",
-        ""
+        "error",
+        "We were unable to find your profile!",
+        "Please register with us to create your profile now."
       );
-      setUserType(regUser.userType);
-    } else navigate("/register", { replace: true });
+      return navigate("/register");
+    }
+    if (!isLoggedIn) {
+      displayAlert(
+        "error",
+        "Hey! We don't recognize you",
+        "Please login to join AlmQuest!"
+      );
+    }
   }, []);
 
   return (
@@ -31,7 +34,7 @@ const Profile = () => {
       <section className="bg-white dark:bg-gray-900">
         <div className="flex-col justify-center items-center min-h-screen mx-4 mt-16 mb-8">
           <ProfileCard />
-          {userType === "donor" && <DonatePackageCTA />}
+          {user.userType === "donor" && <DonatePackageCTA />}
         </div>
       </section>
     </>

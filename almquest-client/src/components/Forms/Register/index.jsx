@@ -45,7 +45,6 @@ const Register = () => {
         "Already a member of the family",
         "You are already registered as a " + user.userType
       );
-
       navigate("/", { replace: true });
     }
     if (isLoggedIn) {
@@ -139,7 +138,7 @@ const Register = () => {
     displayAlert(
       "success",
       `Successfully registered as a ${userType}!`,
-      "Welcome to the Almquest Family " + name.split(" ")[0]
+      "Welcome to the AlmQuest Family " + name.split(" ")[0]
     );
     navigate("/", { replace: true });
   };

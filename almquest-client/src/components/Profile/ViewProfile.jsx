@@ -1,14 +1,15 @@
 import React from "react";
+import { useUserContext } from "../../contexts/UserContext";
 import ActivityToggler from "./ActivityToggler";
 
 const ViewProfile = ({
   toggleEditForm,
   personalDetails,
-  userType,
   donor,
   distributor,
-  id,
 }) => {
+  const { user } = useUserContext();
+  const { id, userType } = user;
   return (
     <>
       <h1 className="text-4xl break-words text-center md:text-start font-semibold tracking-wide text-gray-800 capitalize dark:text-white">

@@ -104,7 +104,7 @@ export const UserContextProvider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ isLoggedIn, user, checkUserExist, login, logout }}
+      value={{ isLoggedIn, user, setUser, checkUserExist, login, logout }}
     >
       {children}
     </UserContext.Provider>
