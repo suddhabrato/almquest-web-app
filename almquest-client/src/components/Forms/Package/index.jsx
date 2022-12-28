@@ -115,7 +115,7 @@ const Package = () => {
       <div className="relative flex justify-center">
         <button
           onClick={toggle}
-          className="inline-flex items-center justify-center w-full px-5 py-3 mt-4 overflow-hidden text-white transition-colors duration-300 bg-blue-600 rounded-lg shadow sm:w-auto sm:mx-2 sm:mt-0 hover:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+          className="inline-flex items-center justify-center w-full px-5 py-3 mt-4 overflow-hidden text-white transition-colors duration-300 bg-amber-600 rounded-lg shadow sm:w-auto sm:mx-2 sm:mt-0 hover:bg-amber-500 focus:ring focus:ring-amber-300 focus:ring-opacity-80"
         >
           <svg
             className="w-5 h-5 mx-2"
@@ -162,7 +162,7 @@ const Package = () => {
                 </h3>
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
                   Enter the details for the package. Once you donate, you cannot retract the donation.
-                  <br /> Here is the contact no. you provided <a className="text-blue-800" href={"tel:"+{contact}}>+91 {contact}</a>
+                  <br /> Here is the contact no. you provided <a className="text-amber-800" href={"tel:"+{contact}}>+91 {contact}</a>
                 </p>
 
                 <form className="mt-4" onSubmit={handleSubmit}>
@@ -180,7 +180,7 @@ const Package = () => {
                       value={packageDetails.quantity}
                       onChange={handleChange}
                       placeholder="Number of meals"
-                      className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
+                      className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-amber-400 focus:outline-none focus:ring focus:ring-amber-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-amber-300"
                     />
                   </label>
                   <label
@@ -197,7 +197,7 @@ const Package = () => {
                       value={packageDetails.travelCapacity}
                       onChange={handleChange}
                       placeholder="10 Kilometres"
-                      className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
+                      className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-amber-400 focus:outline-none focus:ring focus:ring-amber-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-amber-300"
                     />
                   </label>
                   <label
@@ -212,13 +212,13 @@ const Package = () => {
                       type="text"
                       disabled={isDisabledLocation}
                       placeholder={packageDetails.location.address}
-                      className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300  disabled:text-gray-400"
+                      className="block w-full px-4 py-3 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-amber-400 focus:outline-none focus:ring focus:ring-amber-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-amber-300  disabled:text-gray-400"
                     />
                   </label>
                   <button
                     type="button"
                     onClick={toggleDisabled}
-                    className="mt-2 flex items-center rounded py-1.5 px-2 text-sm text-blue-600 transition-colors duration-300 hover:text-blue-400 focus:outline-none dark:text-blue-400 dark:hover:text-blue-500"
+                    className="mt-2 flex items-center rounded py-1.5 px-2 text-sm text-amber-600 transition-colors duration-300 hover:text-amber-400 focus:outline-none dark:text-amber-400 dark:hover:text-amber-500"
                   >
                     {isDisabledLocation ? (
                       <svg
@@ -270,7 +270,7 @@ const Package = () => {
 
                     <button
                       type="submit"
-                      className="w-full px-4 py-2 mt-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md sm:mt-0 sm:w-1/2 sm:mx-2 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                      className="w-full px-4 py-2 mt-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-amber-600 rounded-md sm:mt-0 sm:w-1/2 sm:mx-2 hover:bg-amber-500 focus:outline-none focus:ring focus:ring-amber-300 focus:ring-opacity-40"
                     >
                       Donate Package
                     </button>

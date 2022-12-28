@@ -3,7 +3,7 @@ import React from "react";
 const CTADonorDistributorTop = () => {
   return (
     <section className="bg-white dark:bg-gray-900">
-      <div className="container flex flex-col items-center px-4 py-12 mx-auto text-center my-4">
+      <div className="container flex flex-col items-center px-4 py-12 mx-auto text-center my-4 mb-4">
         <h2 className="text-3xl font-bold tracking-tight text-gray-800 xl:text-4xl dark:text-white">
           About Us
         </h2>
@@ -28,7 +28,7 @@ const CTADonorDistributorTop = () => {
 
           <a
             href="/personainfo"
-            className="inline-flex items-center justify-center w-full px-5 py-3 mt-4 overflow-hidden text-white transition-colors duration-300 bg-blue-600 rounded-lg shadow sm:w-auto sm:mx-2 sm:mt-0 hover:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+            className="inline-flex items-center justify-center w-full px-5 py-3 mt-4 overflow-hidden text-white transition-colors duration-300 bg-amber-600 rounded-lg shadow sm:w-auto sm:mx-2 sm:mt-0 hover:bg-amber-500 focus:ring focus:ring-amber-300 focus:ring-opacity-80"
           >
             <svg className="w-5 h-5 mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -41,7 +41,7 @@ const CTADonorDistributorTop = () => {
 
       {/* <div className="container lg:px-32 px-6 py-10 mx-auto">
         <h1 className="text-3xl font-semibold text-center text-gray-800 capitalize lg:text-4xl dark:text-white">
-          Join Us <span className="text-blue-500">In Our Quest</span>
+          Join Us <span className="text-amber-500">In Our Quest</span>
         </h1>
 
         <p className="max-w-2xl mx-auto my-6 text-center text-gray-500 dark:text-gray-300">
@@ -50,7 +50,7 @@ const CTADonorDistributorTop = () => {
         </p>
 
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-2">
-          <div className="px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent">
+          <div className="px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent">
             <div className="flex flex-col items-center">
               <img
                 className="flex-shrink-0 object-cover w-24 h-24 rounded-full sm:mx-4 ring-4 justify-center ring-gray-300"
@@ -76,7 +76,7 @@ const CTADonorDistributorTop = () => {
 
           </div>
 
-          <div className="px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent">
+          <div className="px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent">
             <div className="flex flex-col sm:-mx-4 sm:flex-row">
               <img
                 className="flex-shrink-0 object-cover w-24 h-24 rounded-full sm:mx-4 ring-4 ring-gray-300"
@@ -155,7 +155,7 @@ const CTADonorDistributorTop = () => {
       <section class="bg-white dark:bg-gray-900">
         <div class="container lg:px-28 py-10 mx-auto">
           <div class="text-center">
-            <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">Join Us in <span className="text-blue-500">Our Quest</span></h1>
+            <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">Join Us in <span className="text-amber-500">Our Quest</span></h1>
 
             <p class="max-w-lg mx-auto mt-4 text-gray-500">
             We provide this platform for bringing two kinds of people or
@@ -167,7 +167,7 @@ const CTADonorDistributorTop = () => {
             <div>
               <img class="relative z-10 object-cover w-full rounded-md h-96" src="https://images.pexels.com/photos/6994944/pexels-photo-6994944.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
 
-              <div class="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white shadow dark:bg-gray-900  transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent dark:hover:bg-blue-500">
+              <div class="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white shadow dark:bg-gray-900  transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent dark:hover:bg-amber-500">
                 <a href="/register" class="font-semibold text-gray-800 dark:text-white md:text-xl  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white">
                 Join us as a Donor Now!
                 </a>
@@ -183,7 +183,7 @@ const CTADonorDistributorTop = () => {
             <div>
               <img class="relative z-10 object-cover w-full rounded-md h-96" src="https://images.pexels.com/photos/4393668/pexels-photo-4393668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
 
-              <div class="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white shadow dark:bg-gray-900  transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent dark:hover:bg-blue-500">
+              <div class="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white shadow dark:bg-gray-900  transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent dark:hover:bg-amber-500">
                 <a href="/register" class="font-semibold text-gray-800 dark:text-white md:text-xl  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white">
                 Join us as a Distributor Now!
                 </a>

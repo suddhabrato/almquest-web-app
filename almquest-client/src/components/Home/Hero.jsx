@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import Charitybro from "../../assets/Charity-bro.svg";
 
 const Hero = () => {
@@ -13,13 +14,17 @@ const Hero = () => {
               </h1>
 
               <p className="mt-4 text-gray-600 dark:text-gray-400">
-                AlmQuest brings to you the opportunity to be the one to donate
+                {/* AlmQuest brings to you the opportunity to be the one to donate
                 food or, be the one to get in touch with such donors and
-                distribute the food where its needed.
+                distribute the food where its needed. */}
+                In a world with 800 million people who go hungry every single day, 
+                we are here to make a change.
+                With AlmQuest, you get to make a difference in a way
+                that really matters.
               </p>
 
-              <button className="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-blue-600 rounded-md lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                Join Us{/*Anchor to registration page */}
+              <button className="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-amber-600 rounded-md lg:w-auto hover:bg-amber-500 focus:outline-none focus:bg-amber-500">
+                Join Us{}
               </button>
             </div>
           </div>
