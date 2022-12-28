@@ -49,14 +49,8 @@ export const UserContextProvider = ({ children }) => {
           name: name,
           picture: picture,
         }));
-        displayAlert(
-          "success",
-          `Welcome Back ${name.split(" ")[0]}!`,
-          "Congratulations! Successfully logged you in!"
-        );
       }
-      setLoggedIn(true);
-      return isRegistered;
+      return { isRegistered, name: res.data.name ? res.data.name : "" };
     } catch (err) {
       console.log(err);
     }
@@ -79,7 +73,8 @@ export const UserContextProvider = ({ children }) => {
           email: res.data.email,
           name: res.data.name,
         }));
-        const isRegistered = await checkUserExist(res.data.email);
+        const { isRegistered, name } = await checkUserExist(res.data.email);
+        setLoggedIn(true);
         if (!isRegistered) {
           displayAlert(
             "warning",
@@ -87,6 +82,12 @@ export const UserContextProvider = ({ children }) => {
             "Looks like you are not registered. Go ahead and join us in our journey!"
           );
           navigate("/register");
+        } else {
+          displayAlert(
+            "success",
+            `Welcome Back ${name.split(" ")[0]}!`,
+            "Congratulations! Successfully logged you in!"
+          );
         }
       } catch (err) {
         alert(err.message);
@@ -97,12 +98,13 @@ export const UserContextProvider = ({ children }) => {
   const logout = () => {
     setUser(defaultUser);
     setLoggedIn(false);
+    navigate("/", { replace: true });
     displayAlert("info", `Till we meet again!`, "Successfully logged you out!");
   };
 
   return (
     <UserContext.Provider
-      value={{ isLoggedIn, setLoggedIn, user, login, logout }}
+      value={{ isLoggedIn, user, checkUserExist, login, logout }}
     >
       {children}
     </UserContext.Provider>

@@ -4,8 +4,11 @@ import { useState } from "react";
 import ClickAwayListener from "react-click-away-listener";
 import NotificationItem from "./NotificationItem";
 import axios from "axios";
+import { useUserContext } from "../../../contexts/UserContext";
 
-const NotifTray = ({ id, userType }) => {
+const NotifTray = () => {
+  const { user } = useUserContext();
+  const { id, userType } = user;
   const [isOpen, setOpen] = useState(false);
   const [notifs, setNotifs] = useState([]);
   const [unseen, setUnseen] = useState(0);

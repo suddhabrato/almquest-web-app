@@ -4,9 +4,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import RegForm from "./RegForm";
 import { useUserContext } from "../../../contexts/UserContext";
+import { useAlertContext } from "../../../contexts/AlertContext";
 
 const Register = () => {
-  const { user, isLoggedIn } = useUserContext();
+  const { user, isLoggedIn, checkUserExist } = useUserContext();
+  const { displayAlert } = useAlertContext();
   const navigate = useNavigate();
   const autoCompleteRef = useRef();
   const inputRef = useRef();
@@ -37,11 +39,24 @@ const Register = () => {
   }, []);
 
   useEffect(() => {
-    if (user.isRegistered) navigate("/", { replace: true });
+    if (user.isRegistered) {
+      displayAlert(
+        "info",
+        "Already a member of the family",
+        "You are already registered as a " + user.userType
+      );
+
+      navigate("/", { replace: true });
+    }
     if (isLoggedIn) {
       const { name, email, picture } = user;
       setPersonalDetails({ ...personalDetails, name, email, picture });
     } else {
+      displayAlert(
+        "error",
+        "Hey! We don't recognize you",
+        "Please login to join AlmQuest!"
+      );
       navigate("/", { replace: true });
     }
   }, [user]);
@@ -120,13 +135,12 @@ const Register = () => {
       };
       submitDistributor(body);
     }
-    const body = { email: personalDetails.email };
-    const checkReg = await axios.post("/api/checkExist", body);
-    const tempUser = JSON.parse(localStorage.getItem("temp_user"));
-    tempUser.userType = checkReg.data.userType;
-    tempUser.id = checkReg.data.id;
-    localStorage.setItem("reg_user", JSON.stringify(tempUser));
-    localStorage.removeItem("temp_user");
+    const { name } = await checkUserExist(personalDetails.email);
+    displayAlert(
+      "success",
+      `Successfully registered as a ${userType}!`,
+      "Welcome to the Almquest Family " + name.split(" ")[0]
+    );
     navigate("/", { replace: true });
   };
 
