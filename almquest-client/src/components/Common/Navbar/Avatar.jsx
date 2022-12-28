@@ -1,12 +1,13 @@
 import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ClickAwayListener from "react-click-away-listener";
 import { useState } from "react";
 import { useThemeContext } from "../../../contexts/ThemeContext";
+import { useUserContext } from "../../../contexts/UserContext";
 
-const Avatar = ({ setLoggedIn }) => {
+const Avatar = () => {
   const { darkMode, toggleDarkMode } = useThemeContext();
-  const navigate = useNavigate();
+  const { logout, user } = useUserContext();
   const [isOpen, setOpen] = useState(false);
   const toggle = () => {
     setOpen((prev) => !prev);
@@ -15,15 +16,6 @@ const Avatar = ({ setLoggedIn }) => {
     setOpen(false);
   };
 
-  const signOut = () => {
-    localStorage.removeItem("reg_user");
-    localStorage.removeItem("temp_user");
-    setLoggedIn(false);
-    navigate(0);
-  };
-  const avatarPicture = JSON.parse(localStorage.getItem("reg_user"))
-    ? JSON.parse(localStorage.getItem("reg_user")).picture
-    : JSON.parse(localStorage.getItem("temp_user")).picture;
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
       <div className="relative inline-block">
@@ -36,7 +28,7 @@ const Avatar = ({ setLoggedIn }) => {
           <div className="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
             <img
               referrerPolicy="no-referrer"
-              src={avatarPicture}
+              src={user.picture}
               className="object-cover w-full h-full"
               alt="avatar"
             />
@@ -52,7 +44,7 @@ const Avatar = ({ setLoggedIn }) => {
             x-transition:leave-end="opacity-0 scale-90"
             className="absolute right-0 z-20 w-48 py-2 mt-2 lg:mt-6 bg-white rounded-md shadow-xl dark:bg-gray-800"
           >
-            {JSON.parse(localStorage.getItem("reg_user")) ? (
+            {user.isRegistered ? (
               <>
                 <Link
                   to="/profile"
@@ -293,7 +285,7 @@ const Avatar = ({ setLoggedIn }) => {
             )}
             <hr className="border-gray-200 dark:border-gray-700" />
             <a
-              onClick={signOut}
+              onClick={logout}
               className="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
             >
               <svg

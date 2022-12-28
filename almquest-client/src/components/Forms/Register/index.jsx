@@ -3,8 +3,10 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import RegForm from "./RegForm";
+import { useUserContext } from "../../../contexts/UserContext";
 
 const Register = () => {
+  const { user, isLoggedIn } = useUserContext();
   const navigate = useNavigate();
   const autoCompleteRef = useRef();
   const inputRef = useRef();
@@ -35,16 +37,14 @@ const Register = () => {
   }, []);
 
   useEffect(() => {
-    const tempUser = JSON.parse(localStorage.getItem("temp_user"));
-    const regUser = JSON.parse(localStorage.getItem("reg_user"));
-    if (regUser) navigate("/", { replace: true });
-    if (tempUser) {
-      const { name, email, picture } = tempUser;
+    if (user.isRegistered) navigate("/", { replace: true });
+    if (isLoggedIn) {
+      const { name, email, picture } = user;
       setPersonalDetails({ ...personalDetails, name, email, picture });
     } else {
       navigate("/", { replace: true });
     }
-  }, []);
+  }, [user]);
 
   const [personalDetails, setPersonalDetails] = useState({
     picture: "",
