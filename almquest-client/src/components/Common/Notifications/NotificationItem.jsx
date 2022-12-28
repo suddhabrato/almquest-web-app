@@ -40,7 +40,7 @@ const NotificationItem = ({ notif, seen }) => {
           referrerPolicy="no-referrer"
         />
         <p className="mx-2 text-sm text-gray-600 dark:text-white">
-          {notif.status === "Paired" ? (
+          {notif.state === "Paired" ? (
             <>
               <span className="font-bold" href="#">
                 Hurray!

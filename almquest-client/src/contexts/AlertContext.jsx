@@ -17,7 +17,7 @@ export const AlertContextProvider = ({ children }) => {
     setAlert({ showing: true, msg, type, img, title });
     setTimeout(() => {
       setAlert({ showing: false, msg: "", type: "", img: "", title: "" });
-    }, 4000);
+    }, 5000);
   };
 
   return (

@@ -12,20 +12,20 @@ const Profile = () => {
   const { displayAlert } = useAlertContext();
   useEffect(() => {
     console.log(user);
-    if (user.isRegistered === false) {
-      displayAlert(
-        "error",
-        "We were unable to find your profile!",
-        "Please register with us to create your profile now."
-      );
-      return navigate("/register");
-    }
     if (!isLoggedIn) {
       displayAlert(
         "error",
         "Hey! We don't recognize you",
         "Please login to join AlmQuest!"
       );
+      return navigate("/");
+    } else if (user.isRegistered === false) {
+      displayAlert(
+        "error",
+        "We were unable to find your profile!",
+        "Please register with us to create your profile now."
+      );
+      return navigate("/register");
     }
   }, []);
 

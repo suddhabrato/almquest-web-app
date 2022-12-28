@@ -3,13 +3,18 @@ import { useEffect, useRef } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../../../contexts/UserContext";
+import { useAlertContext } from "../../../contexts/AlertContext";
 
 const Package = () => {
+  const { user } = useUserContext();
+  const { displayAlert } = useAlertContext();
   const navigate = useNavigate();
   const autoCompleteRef = useRef();
   const inputRef = useRef();
   const [isOpen, setOpen] = useState(false);
   const [isDisabledLocation, setDisabledLocation] = useState(true);
+
   const toggleDisabled = () => {
     setDisabledLocation((prev) => !prev);
   };
@@ -54,29 +59,36 @@ const Package = () => {
     });
   }, [isDisabledLocation]);
 
-  useEffect(() => {
-    const fetchDonorInfo = async () => {
-      try {
-        const regUser = await JSON.parse(localStorage.getItem("reg_user"));
-        console.log(regUser);
-        if (regUser) {
-          const { id, userType } = regUser;
-          if (userType !== "donor") return navigate("/");
-          const res = await axios.get(`/api/donor/${id}`);
-          const { location, phone, distanceRange, name } = res.data.data;
-          setPackageDetails({
-            donor_id: id,
-            quantity: "",
-            travelCapacity: distanceRange,
-            location: location,
-          });
-          setName(name);
-          setContact(phone);
-        } else navigate("/register", { replace: true });
-      } catch (err) {
-        alert(err.message);
+  const fetchDonorInfo = async () => {
+    try {
+      console.log(user);
+      if (user) {
+        const { id, userType } = user;
+        if (userType !== "donor") {
+          displayAlert(
+            "error",
+            "Whoa! We don&apos;t do that here!",
+            "Distributors cannot donate packages!"
+          );
+          return navigate("/");
+        }
+        const res = await axios.get(`/api/donor/${id}`);
+        const { location, phone, distanceRange, name } = res.data.data;
+        setPackageDetails({
+          donor_id: id,
+          quantity: "",
+          travelCapacity: distanceRange,
+          location: location,
+        });
+        setName(name);
+        setContact(phone);
       }
-    };
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  useEffect(() => {
     fetchDonorInfo();
   }, []);
 
@@ -105,6 +117,11 @@ const Package = () => {
       const res = await axios.post("/api/donor/donate", body);
       console.log(res);
       setOpen(false);
+      displayAlert(
+        "success",
+        "Package successfully added!",
+        "Please wait while we find a distributor for your package."
+      );
     } catch (err) {
       alert(err.message);
     }

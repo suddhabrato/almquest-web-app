@@ -26,7 +26,7 @@ const DonatePackageCTA = () => {
         </p>
 
         <div className="inline-flex w-full mt-6 sm:w-auto">
-          {/* <Package /> */}
+          <Package />
         </div>
       </div>
     </div>

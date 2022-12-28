@@ -3,6 +3,8 @@ import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useUserContext } from "../../contexts/UserContext";
+import { useAlertContext } from "../../contexts/AlertContext";
 const Package = {
   _id: "63a69de12d697bc12a0a06ce",
   donor_id: "",
@@ -34,15 +36,22 @@ const Package = {
 };
 const Transactions = ({ id }) => {
   const navigate = useNavigate();
+  const { user, isLoggedIn } = useUserContext();
+  const { displayAlert } = useAlertContext();
   const [transaction, setTransaction] = useState(Package);
-  const [userType, setUserType] = useState("");
+  const { userType } = user;
   const getPackage = async () => {
     try {
-      const regUser = JSON.parse(localStorage.getItem("reg_user"));
-      if (!regUser) navigate("/");
-      setUserType(regUser.userType);
+      if (!isLoggedIn || !user.isRegistered) {
+        displayAlert(
+          "error",
+          "Hey! You are trespassing!",
+          "You are not authorized to view this transaction."
+        );
+        return navigate("/");
+      }
       const res = await axios.get(`/api/package/${id}`);
-      console.log(res.data);
+      console.log("pack", res.data);
       setTransaction(res.data.package);
     } catch (err) {
       console.log(err);
@@ -50,7 +59,7 @@ const Transactions = ({ id }) => {
   };
 
   useEffect(() => {
-    getPackage();
+    if (id) getPackage();
   }, [id]);
 
   return (
