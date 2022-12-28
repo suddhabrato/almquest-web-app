@@ -8,9 +8,9 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
   const { _id, user_id, user_type, message } = req.body;
 
   const pusher = new Pusher({
-    appId: "1526157",
-    key: "b369bdc486176cddddfd",
-    secret: "0f1a3034f5561ec2c060",
+    appId: "1531071",
+    key: "e8e48f668ab490fa03e0",
+    secret: "04bd7966f4a359b6e19b",
     cluster: "ap2",
     useTLS: true,
   });
