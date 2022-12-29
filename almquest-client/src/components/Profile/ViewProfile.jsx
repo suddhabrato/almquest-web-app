@@ -1,14 +1,15 @@
 import React from "react";
+import { useUserContext } from "../../contexts/UserContext";
 import ActivityToggler from "./ActivityToggler";
 
 const ViewProfile = ({
   toggleEditForm,
   personalDetails,
-  userType,
   donor,
   distributor,
-  id,
 }) => {
+  const { user } = useUserContext();
+  const { id, userType } = user;
   return (
     <>
       <h1 className="text-4xl break-words text-center md:text-start font-semibold tracking-wide text-gray-800 capitalize dark:text-white">
@@ -17,10 +18,12 @@ const ViewProfile = ({
       <p className="mt-4 text-gray-500 dark:text-gray-400 text-center md:text-start">
         <button
           type="button"
-          className="rounded-full max-w-full px-4 py-1.5 bg-gray-50 dark:bg-gray-800 shadow-md"
+          className="rounded-full max-w-full px-6 py-1.5 bg-gray-50 dark:bg-gray-800 shadow-md"
         >
-          Lifetime {userType === "donor" ? "Donation" : "Distribution"}:{" "}
-          {donor.lifetimeDonation}
+          Lifetime{" "}
+          {userType === "donor"
+            ? "Donation: " + donor.lifetimeDonation
+            : "Distribution: " + distributor.totalPackagesDistributed}
         </button>
       </p>
       {userType === "distributor" && (

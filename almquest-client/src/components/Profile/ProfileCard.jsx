@@ -1,14 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import ViewProfile from "./ViewProfile";
 import UpdateForm from "./UpdateForm";
 import axios from "axios";
+import { useUserContext } from "../../contexts/UserContext";
 
 const ProfileCard = () => {
-  const navigate = useNavigate();
-  const [userType, setUserType] = useState();
-  const [id, setId] = useState();
+  const { user, setUser } = useUserContext();
   const [isEditing, setEditing] = useState(false);
   const [personalDetails, setPersonalDetails] = useState({
     picture: "",
@@ -21,12 +19,14 @@ const ProfileCard = () => {
   const [donor, setDonor] = useState({
     donorType: "",
     distanceRange: "",
-    isActive: "",
+    lifetimeDonation: "",
   });
 
   const [distributor, setDistributor] = useState({
     distanceRange: "",
     maxCapacity: "",
+    isActive: "",
+    totalPackagesDistributed: "",
   });
 
   useEffect(() => {
@@ -37,15 +37,12 @@ const ProfileCard = () => {
 
   const getProfile = async () => {
     try {
-      const regUser = await JSON.parse(localStorage.getItem("reg_user"));
-      if (regUser) {
-        const { id, userType } = regUser;
-        setUserType(userType);
-        setId(id);
+      if (user && user.isRegistered) {
+        const { id, userType } = user;
         const res = await axios.get(`/api/${userType}/${id}`);
+        console.log(res.data.data);
         const { picture, name, email, location, phone } = res.data.data;
-        regUser.name = name;
-        localStorage.setItem("reg_user", JSON.stringify(regUser));
+        setUser((prev) => ({ ...prev, name: name }));
         setPersonalDetails({
           name,
           email,
@@ -54,15 +51,23 @@ const ProfileCard = () => {
           phone,
         });
         if (userType === "donor") {
-          const { distanceRange, donorType } = res.data.data;
-          setDonor({ distanceRange, donorType });
+          const { distanceRange, donorType, lifetimeDonation } = res.data.data;
+          setDonor({ distanceRange, donorType, lifetimeDonation });
         }
         if (userType === "distributor") {
-          const { distanceRange, maxCapacity, isActive } = res.data.data;
-          setDistributor({ maxCapacity, distanceRange, isActive });
+          const {
+            distanceRange,
+            maxCapacity,
+            isActive,
+            totalPackagesDistributed,
+          } = res.data.data;
+          setDistributor({
+            maxCapacity,
+            distanceRange,
+            isActive,
+            totalPackagesDistributed,
+          });
         }
-      } else {
-        navigate("/", { replace: true });
       }
     } catch (err) {
       console.log(err);
@@ -91,8 +96,6 @@ const ProfileCard = () => {
           <ViewProfile
             toggleEditForm={toggleEditForm}
             personalDetails={personalDetails}
-            userType={userType}
-            id={id}
             donor={donor}
             distributor={distributor}
           />
@@ -101,9 +104,7 @@ const ProfileCard = () => {
             toggleEditForm={toggleEditForm}
             getProfile={getProfile}
             personalDetails={personalDetails}
-            userType={userType}
             donor={donor}
-            id={id}
             distributor={distributor}
           />
         )}

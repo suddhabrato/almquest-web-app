@@ -1,18 +1,19 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useUserContext } from "../../contexts/UserContext";
+import { useAlertContext } from "../../contexts/AlertContext";
 
 const UpdateForm = ({
   toggleEditForm,
   getProfile,
   personalDetails,
-  userType,
-  id,
   donor,
   distributor,
 }) => {
-  const navigate = useNavigate();
+  const { displayAlert } = useAlertContext();
+  const { user } = useUserContext();
+  const { id, userType } = user;
   const [newPersonalDetails, setNewPersonalDetails] = useState(personalDetails);
   const [newDonor, setNewDonor] = useState(donor);
   const [newDistributor, setNewDistributor] = useState(distributor);
@@ -52,6 +53,11 @@ const UpdateForm = ({
 
   const handleDiscard = () => {
     toggleEditForm();
+    displayAlert(
+      "info",
+      "Wiping the slate clean!",
+      "All changes have now been discarded."
+    );
   };
 
   const submitDonor = async (donor) => {
@@ -92,6 +98,11 @@ const UpdateForm = ({
       };
       await submitDistributor(body);
     }
+    displayAlert(
+      "success",
+      "Welcoming the new you!",
+      "Your profile has been successfully updated."
+    );
     getProfile();
     toggleEditForm();
   };
