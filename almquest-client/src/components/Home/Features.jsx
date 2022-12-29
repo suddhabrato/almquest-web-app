@@ -104,9 +104,9 @@ const Features = () => {
                 </h1>
 
                 <p className="mt-3 text-gray-500 dark:text-gray-300">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Provident ab nulla quod dignissimos vel non corrupti doloribus
-                  voluptatum eveniet
+                  With AlmQuest keeping track of when the package is received by
+                  the distributor and when it gets finally distributed, you can
+                  be rest assured that your goodwill meets its right end.
                 </p>
               </div>
             </div>

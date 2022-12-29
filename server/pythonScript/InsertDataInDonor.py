@@ -98,3 +98,30 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+sample = {
+  "name": "Aditya Das",
+
+  "email": "adityadas6d@gmail.com",
+  "phone": "8583035599",
+  "donorType": "Individual",
+  "location": {
+    "address": "94/2 C Road, Anandapuri, Barrackpore",
+    "coordinates": [
+      22.759658299999998,
+      88.37536759999999
+    ],
+    "type": "Point"
+  },
+  "distanceRange": 15,
+  "lifetimeDonation": 0,
+
+  "picture": "https://lh3.googleusercontent.com/a/AEdFTp54nZpzeMX6OiUKCG_t9k5sAJAMsrEWFs6MrRJz=s96-c",
+  "notif_unseen": 0,
+  "packages": [
+
+  ],
+  "notifs": [
+  ],
+  "__v": 4
+}

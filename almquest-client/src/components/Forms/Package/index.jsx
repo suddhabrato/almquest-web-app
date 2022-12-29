@@ -178,9 +178,12 @@ const Package = () => {
                   Add a package
                 </h3>
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                  Your new project has been created. Invite your team to
-                  collaborate on this project.
-                  <br /> Here is the contact no. +91 {contact}
+                  Enter the details for the package. Once you donate, you cannot
+                  retract the donation.
+                  <br /> Here is the contact no. you provided{" "}
+                  <a className="text-blue-800" href={"tel:" + { contact }}>
+                    +91 {contact}
+                  </a>
                 </p>
 
                 <form className="mt-4" onSubmit={handleSubmit}>
