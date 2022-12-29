@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useUserContext } from "../../contexts/UserContext";
 import { useAlertContext } from "../../contexts/AlertContext";
-import { Ripple } from "react-preloaders";
+import { Ripple } from "react-preloaders2";
 import { useThemeContext } from "../../contexts/ThemeContext";
 
 const Package = {

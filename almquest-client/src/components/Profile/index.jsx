@@ -5,7 +5,7 @@ import ProfileCard from "./ProfileCard";
 import DonatePackageCTA from "./DonatePackageCTA";
 import { useAlertContext } from "../../contexts/AlertContext";
 import { useUserContext } from "../../contexts/UserContext";
-import { Ripple } from "react-preloaders";
+import { Ripple } from "react-preloaders2";
 import { useThemeContext } from "../../contexts/ThemeContext";
 
 const Profile = () => {
