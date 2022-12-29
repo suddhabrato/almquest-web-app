@@ -5,7 +5,7 @@ const Notification = require("../models/notifModel");
 const Pusher = require("pusher");
 
 exports.receiveUpdate = asyncHandler(async (req, res, next) => {
-  const { _id, user_id, user_type, message, photo } = req.body;
+  const { _id, user_id, user_type, message, photo, packageId } = req.body;
 
   const pusher = new Pusher({
     appId: "1531071",
@@ -36,6 +36,7 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
       message: message,
       photo: photo ?? "",
       count: donor.notif_unseen,
+      pid: packageId,
     });
   } else {
     const distributor = await Distributor.findById(id);
@@ -57,6 +58,7 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
       message: message,
       photo: photo ?? "",
       count: distributor.notif_unseen,
+      pid: packageId,
     });
   }
 

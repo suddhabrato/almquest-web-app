@@ -61,7 +61,6 @@ const donorSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.ObjectId,
       ref: "Notification",
-      unique: true,
     },
   ],
 });
