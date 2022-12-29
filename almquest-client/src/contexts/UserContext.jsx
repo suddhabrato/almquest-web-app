@@ -148,7 +148,13 @@ export const UserContextProvider = ({ children }) => {
     channel.bind(id, function (data) {
       setTimeout(() => {
         getNotifications();
-        displayAlert("notif", "", data.message, data.picture || user.picture);
+        displayAlert(
+          "notif",
+          "",
+          data.message,
+          data.photo || user.picture,
+          data.pid
+        );
       }, 4000);
       console.log(data.message);
     });

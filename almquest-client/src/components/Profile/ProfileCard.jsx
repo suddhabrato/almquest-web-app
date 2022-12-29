@@ -19,12 +19,14 @@ const ProfileCard = () => {
   const [donor, setDonor] = useState({
     donorType: "",
     distanceRange: "",
+    lifetimeDonation: "",
   });
 
   const [distributor, setDistributor] = useState({
     distanceRange: "",
     maxCapacity: "",
     isActive: "",
+    totalPackagesDistributed: "",
   });
 
   useEffect(() => {
@@ -38,6 +40,7 @@ const ProfileCard = () => {
       if (user && user.isRegistered) {
         const { id, userType } = user;
         const res = await axios.get(`/api/${userType}/${id}`);
+        console.log(res.data.data);
         const { picture, name, email, location, phone } = res.data.data;
         setUser((prev) => ({ ...prev, name: name }));
         setPersonalDetails({
@@ -48,12 +51,22 @@ const ProfileCard = () => {
           phone,
         });
         if (userType === "donor") {
-          const { distanceRange, donorType } = res.data.data;
-          setDonor({ distanceRange, donorType });
+          const { distanceRange, donorType, lifetimeDonation } = res.data.data;
+          setDonor({ distanceRange, donorType, lifetimeDonation });
         }
         if (userType === "distributor") {
-          const { distanceRange, maxCapacity, isActive } = res.data.data;
-          setDistributor({ maxCapacity, distanceRange, isActive });
+          const {
+            distanceRange,
+            maxCapacity,
+            isActive,
+            totalPackagesDistributed,
+          } = res.data.data;
+          setDistributor({
+            maxCapacity,
+            distanceRange,
+            isActive,
+            totalPackagesDistributed,
+          });
         }
       }
     } catch (err) {

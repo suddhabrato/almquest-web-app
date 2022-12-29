@@ -11,12 +11,20 @@ export const AlertContextProvider = ({ children }) => {
     msg: "",
     type: "",
     img: "",
+    pid: "",
   });
 
-  const displayAlert = (type, title, msg, img) => {
-    setAlert({ showing: true, msg, type, img, title });
+  const displayAlert = (type, title, msg, img, pid) => {
+    setAlert({ showing: true, msg, type, img, title, pid });
     setTimeout(() => {
-      setAlert({ showing: false, msg: "", type: "", img: "", title: "" });
+      setAlert({
+        showing: false,
+        msg: "",
+        type: "",
+        img: "",
+        title: "",
+        pid: "",
+      });
     }, 5000);
   };
 

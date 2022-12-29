@@ -8,7 +8,7 @@ import AlertWarning from "./AlertWarning";
 
 const Alert = () => {
   const { alert } = useAlertContext();
-  const { showing, img, title, type, msg } = alert;
+  const { showing, img, title, type, msg, pid } = alert;
 
   console.log(alert);
   return (
@@ -21,7 +21,7 @@ const Alert = () => {
       {type === "info" && <AlertInfo msg={msg} title={title} />}
       {type === "success" && <AlertSuccess msg={msg} title={title} />}
       {type === "warning" && <AlertWarning msg={msg} title={title} />}
-      {type === "notif" && <AlertNotifPop msg={msg} img={img} />}
+      {type === "notif" && <AlertNotifPop msg={msg} img={img} pid={pid} />}
     </div>
   );
 };

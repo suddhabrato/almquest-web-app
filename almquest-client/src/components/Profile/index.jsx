@@ -5,9 +5,12 @@ import ProfileCard from "./ProfileCard";
 import DonatePackageCTA from "./DonatePackageCTA";
 import { useAlertContext } from "../../contexts/AlertContext";
 import { useUserContext } from "../../contexts/UserContext";
+import { Ripple } from "react-preloaders";
+import { useThemeContext } from "../../contexts/ThemeContext";
 
 const Profile = () => {
   const navigate = useNavigate();
+  const { darkMode } = useThemeContext();
   const { user, isLoggedIn } = useUserContext();
   const { displayAlert } = useAlertContext();
   useEffect(() => {
@@ -37,6 +40,12 @@ const Profile = () => {
           {user.userType === "donor" && <DonatePackageCTA />}
         </div>
       </section>
+      <Ripple
+        customLoading={user.id === ""}
+        time={1000}
+        background={!darkMode ? "rgb(255, 255, 255)" : "rgb(17, 24, 39)"}
+        color={darkMode ? "rgb(255, 255, 255)" : "rgb(17, 24, 39)"}
+      />
     </>
   );
 };
