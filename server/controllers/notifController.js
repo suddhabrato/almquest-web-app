@@ -17,15 +17,9 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
   const id = user_id.toString();
 
   if (user_type === "Donor") {
-    const donor = await Donor.findByIdAndUpdate(
-      id,
-      {
-        $push: { notifs: _id },
-      },
-      { new: true, runValidators: true }
-    );
+    const donor = await Donor.findById(id);
 
-    while (donor.notifs.length > 10) {
+    while (donor.notifs.length >= 10) {
       donor.notifs.reverse();
       donor.notifs.pop();
       donor.notifs.reverse();
@@ -35,6 +29,7 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
       donor.notif_unseen = donor.notif_unseen + 1;
     }
 
+    donor.notifs.push(_id);
     await donor.save();
 
     pusher.trigger("almquest-channel", `${id}`, {
@@ -43,15 +38,9 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
       count: donor.notif_unseen,
     });
   } else {
-    const distributor = await Distributor.findByIdAndUpdate(
-      id,
-      {
-        $push: { notifs: _id },
-      },
-      { new: true, runValidators: true }
-    );
+    const distributor = await Distributor.findById(id);
 
-    while (distributor.notifs.length > 10) {
+    while (distributor.notifs.length >= 10) {
       distributor.notifs.reverse();
       distributor.notifs.pop();
       distributor.notifs.reverse();
@@ -61,6 +50,7 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
       distributor.notif_unseen = distributor.notif_unseen + 1;
     }
 
+    distributor.notifs.push(_id);
     await distributor.save();
 
     pusher.trigger("almquest-channel", `${id}`, {
