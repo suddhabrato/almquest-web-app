@@ -81,7 +81,7 @@ const ProfileCard = () => {
     <div className="rounded-xl shadow-lg border-gray-100 dark:border-gray-700 border-1 flex-col items-center h-full w-full max-w-4xl p-8 lg:px-12 mx-auto">
       <div className="flex justify-center -mt-20 md:mx-12 md:justify-end">
         <img
-          className="object-cover w-32 h-32 border-4 border-amber-500 rounded-full dark:border-amber-400"
+          className="object-cover w-32 h-32 border-4 border-blue-500 rounded-full dark:border-blue-400"
           alt="Testimonial avatar"
           src={personalDetails.picture}
         />

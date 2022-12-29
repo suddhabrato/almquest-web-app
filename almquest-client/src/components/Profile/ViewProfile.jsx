@@ -19,7 +19,8 @@ const ViewProfile = ({
           type="button"
           className="rounded-full max-w-full px-4 py-1.5 bg-gray-50 dark:bg-gray-800 shadow-md"
         >
-          Lifetime {userType === "donor" ? "Donation" : "Distribution"}: {donor.lifetimeDonation}
+          Lifetime {userType === "donor" ? "Donation" : "Distribution"}:{" "}
+          {donor.lifetimeDonation}
         </button>
       </p>
       {userType === "distributor" && (
@@ -204,7 +205,7 @@ const ViewProfile = ({
 
         <button
           onClick={toggleEditForm}
-          className="mt-2 flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-amber-500 rounded-lg hover:bg-amber-400 focus:outline-none focus:ring focus:ring-amber-300 focus:ring-opacity-50"
+          className="mt-2 flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
         >
           <span>Update Profile </span>
           <svg
