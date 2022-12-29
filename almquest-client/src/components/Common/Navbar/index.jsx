@@ -1,61 +1,16 @@
 import React from "react";
-import axios from "axios";
-import { useNavigate, Link, useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import { useGoogleLogin } from "@react-oauth/google";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import NotifTray from "../Notifications/NotifTray";
 import Avatar from "./Avatar";
+import { useUserContext } from "../../../contexts/UserContext";
 
-const Navbar = ({ darkMode, toggleDarkMode }) => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const [isLoggedIn, setLoggedIn] = useState(false);
+const Navbar = () => {
+  const { login, isLoggedIn, user } = useUserContext();
   const [isOpen, setOpen] = useState(false);
-  const [id, setId] = useState("");
-  const [userType, setUserType] = useState("");
   const toggle = () => {
     setOpen(!isOpen);
   };
-
-  useEffect(() => {
-    const registeredUser = JSON.parse(localStorage.getItem("reg_user"));
-    if (registeredUser) {
-      setId(registeredUser.id);
-      setUserType(registeredUser.userType);
-      setLoggedIn(true);
-    } else setLoggedIn(false);
-  }, [location.pathname]);
-
-  const login = useGoogleLogin({
-    onSuccess: async (response) => {
-      try {
-        const res = await axios.get(
-          "https://www.googleapis.com/oauth2/v3/userinfo",
-          {
-            headers: {
-              Authorization: `Bearer ${response.access_token}`,
-            },
-          }
-        );
-        const body = { email: res.data.email };
-        const checkReg = await axios.post("/api/checkExist", body);
-        const { isRegistered } = checkReg.data;
-        //when registered user exists logging him in
-        if (isRegistered) {
-          res.data.userType = checkReg.data.userType;
-          res.data.id = checkReg.data.id;
-          localStorage.setItem("reg_user", JSON.stringify(res.data));
-          setLoggedIn(true);
-        } else {
-          localStorage.setItem("temp_user", JSON.stringify(res.data));
-          navigate("/register", { replace: true });
-        }
-      } catch (err) {
-        alert(err.message);
-      }
-    },
-  });
 
   return (
     <nav className="sticky top-0 bg-white shadow dark:bg-gray-900 z-30">
@@ -113,7 +68,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             </div>
 
             <div className="flex lg:hidden items-center">
-              {!isLoggedIn && !JSON.parse(localStorage.getItem("temp_user")) ? (
+              {!isLoggedIn ? (
                 <div className="flex items-baseline -mx-2 sm:mt-0">
                   <Link
                     onClick={login}
@@ -124,12 +79,8 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                 </div>
               ) : (
                 <div className="flex items-center">
-                  <NotifTray id={id} userType={userType} />
-                  <Avatar
-                    darkMode={darkMode}
-                    toggleDarkMode={toggleDarkMode}
-                    setLoggedIn={setLoggedIn}
-                  />
+                  {user.isRegistered && <NotifTray />}
+                  <Avatar />
                 </div>
               )}
             </div>
@@ -170,8 +121,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             </div>
             <div className="flex items-center mt-4 lg:mt-0">
               <div className="hidden lg:flex">
-                {!isLoggedIn &&
-                !JSON.parse(localStorage.getItem("temp_user")) ? (
+                {!isLoggedIn ? (
                   <div className="flex items-center mx-2 sm:mt-0">
                     <Link
                       onClick={login}
@@ -182,12 +132,8 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
                   </div>
                 ) : (
                   <div className="flex items-center">
-                    <NotifTray id={id} userType={userType} />
-                    <Avatar
-                      darkMode={darkMode}
-                      toggleDarkMode={toggleDarkMode}
-                      setLoggedIn={setLoggedIn}
-                    />
+                    {user.isRegistered && <NotifTray />}
+                    <Avatar />
                   </div>
                 )}
               </div>

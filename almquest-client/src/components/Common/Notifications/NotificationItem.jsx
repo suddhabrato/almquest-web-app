@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import { useUserContext } from "../../../contexts/UserContext";
 
 moment.updateLocale("en", {
   relativeTime: {
@@ -24,6 +25,7 @@ moment.updateLocale("en", {
 });
 
 const NotificationItem = ({ notif, seen }) => {
+  const { user } = useUserContext();
   return (
     <Link to={`/transaction/${notif.packageId}`}>
       <div
@@ -33,14 +35,12 @@ const NotificationItem = ({ notif, seen }) => {
       >
         <img
           className="flex-shrink-0 object-cover w-8 h-8 mx-1 rounded-full"
-          src={
-            notif.photo || JSON.parse(localStorage.getItem("reg_user")).picture
-          }
+          src={notif.photo || user.picture}
           alt="avatar"
           referrerPolicy="no-referrer"
         />
         <p className="mx-2 text-sm text-gray-600 dark:text-white">
-          {notif.status === "Paired" ? (
+          {notif.state === "Paired" ? (
             <>
               <span className="font-bold" href="#">
                 Hurray!

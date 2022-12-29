@@ -1,14 +1,15 @@
 import React from "react";
+import { useUserContext } from "../../contexts/UserContext";
 import ActivityToggler from "./ActivityToggler";
 
 const ViewProfile = ({
   toggleEditForm,
   personalDetails,
-  userType,
   donor,
   distributor,
-  id,
 }) => {
+  const { user } = useUserContext();
+  const { id, userType } = user;
   return (
     <>
       <h1 className="text-4xl break-words text-center md:text-start font-semibold tracking-wide text-gray-800 capitalize dark:text-white">
@@ -17,9 +18,12 @@ const ViewProfile = ({
       <p className="mt-4 text-gray-500 dark:text-gray-400 text-center md:text-start">
         <button
           type="button"
-          className="rounded-full max-w-full px-4 py-1.5 bg-gray-50 dark:bg-gray-800 shadow-md"
+          className="rounded-full max-w-full px-6 py-1.5 bg-gray-50 dark:bg-gray-800 shadow-md"
         >
-          Lifetime {userType === "donor" ? "Donation" : "Distribution"}: {donor.lifetimeDonation}
+          Lifetime{" "}
+          {userType === "donor"
+            ? "Donation: " + donor.lifetimeDonation
+            : "Distribution: " + distributor.totalPackagesDistributed}
         </button>
       </p>
       {userType === "distributor" && (
@@ -204,7 +208,7 @@ const ViewProfile = ({
 
         <button
           onClick={toggleEditForm}
-          className="mt-2 flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-amber-500 rounded-lg hover:bg-amber-400 focus:outline-none focus:ring focus:ring-amber-300 focus:ring-opacity-50"
+          className="mt-2 flex items-center justify-between w-full px-6 py-3 text-sm tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
         >
           <span>Update Profile </span>
           <svg

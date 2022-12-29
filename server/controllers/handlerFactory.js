@@ -105,10 +105,13 @@ exports.getNotifs = (Model) =>
       select: "-__v",
     });
 
+    const dupNotifs = populated.notifs;
+    const uniqNotifs = [...new Set(dupNotifs)];
+
     res.status(200).json({
       status: "success",
       unseen_count: doc.notif_unseen,
-      notifs: populated.notifs,
+      notifs: uniqNotifs,
     });
   });
 
@@ -122,9 +125,12 @@ exports.getPackages = (Model) =>
       select: "-__v",
     });
 
+    const dupPackages = populated.packages;
+    const uniqPackages = [...new Set(dupPackages)];
+
     res.status(200).json({
       status: "success",
-      packages: populated.packages,
+      packages: uniqPackages,
     });
   });
 

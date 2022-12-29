@@ -2,10 +2,13 @@ import React from "react";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useUserContext } from "../../contexts/UserContext";
+import { useAlertContext } from "../../contexts/AlertContext";
 
-const ActivityToggler = ({ id, initialActive }) => {
+const ActivityToggler = ({ initialActive }) => {
   const [isActive, setActive] = useState(initialActive);
-
+  const { user } = useUserContext();
+  const { displayAlert } = useAlertContext();
   useEffect(() => {
     if (initialActive !== undefined) setActive(initialActive);
   }, [initialActive]);
@@ -13,8 +16,21 @@ const ActivityToggler = ({ id, initialActive }) => {
   const handleChange = () => {
     const toggleActivity = async () => {
       try {
+        const { id } = user;
         const res = await axios.post(`/api/distributor/toggle/${id}`);
         console.log(res);
+        if (isActive === false)
+          displayAlert(
+            "success",
+            "Wow! You are active now",
+            "You will be visible to donors"
+          );
+        if (isActive === true)
+          displayAlert(
+            "info",
+            "Looking forward to seeing you!",
+            "You are inactive now and will not be visible to donors"
+          );
         setActive((prev) => !prev);
       } catch (err) {
         console.log(err);
@@ -39,7 +55,7 @@ const ActivityToggler = ({ id, initialActive }) => {
             onChange={handleChange}
             checked={initialActive === undefined ? false : isActive}
           />
-          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-amber-500"></div>
+          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-500"></div>
         </label>
       </div>
     </button>

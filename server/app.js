@@ -27,7 +27,6 @@ app.options("*", (req, res) => {
 });
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "../almquest-client/dist")));
 
 // Routes
 app.use("/api/donor", donorRouter);

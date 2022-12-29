@@ -5,12 +5,12 @@ const Notification = require("../models/notifModel");
 const Pusher = require("pusher");
 
 exports.receiveUpdate = asyncHandler(async (req, res, next) => {
-  const { _id, user_id, user_type, message } = req.body;
+  const { _id, user_id, user_type, message, photo, packageId } = req.body;
 
   const pusher = new Pusher({
-    appId: "1526157",
-    key: "b369bdc486176cddddfd",
-    secret: "0f1a3034f5561ec2c060",
+    appId: "1531071",
+    key: "e8e48f668ab490fa03e0",
+    secret: "04bd7966f4a359b6e19b",
     cluster: "ap2",
     useTLS: true,
   });
@@ -24,16 +24,19 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
       donor.notifs.pop();
       donor.notifs.reverse();
     }
-    donor.notifs.push(_id);
+
     if (donor.notif_unseen < 10) {
       donor.notif_unseen = donor.notif_unseen + 1;
     }
 
+    donor.notifs.push(_id);
     await donor.save();
 
     pusher.trigger("almquest-channel", `${id}`, {
       message: message,
+      photo: photo ?? "",
       count: donor.notif_unseen,
+      pid: packageId,
     });
   } else {
     const distributor = await Distributor.findById(id);
@@ -43,16 +46,19 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
       distributor.notifs.pop();
       distributor.notifs.reverse();
     }
-    distributor.notifs.push(_id);
+
     if (distributor.notif_unseen < 10) {
       distributor.notif_unseen = distributor.notif_unseen + 1;
     }
 
+    distributor.notifs.push(_id);
     await distributor.save();
 
     pusher.trigger("almquest-channel", `${id}`, {
       message: message,
+      photo: photo ?? "",
       count: distributor.notif_unseen,
+      pid: packageId,
     });
   }
 
