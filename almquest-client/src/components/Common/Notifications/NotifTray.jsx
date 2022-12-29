@@ -4,10 +4,16 @@ import { useState } from "react";
 import ClickAwayListener from "react-click-away-listener";
 import NotificationItem from "./NotificationItem";
 import { useUserContext } from "../../../contexts/UserContext";
+import { useLocation } from "react-router-dom";
 
 const NotifTray = () => {
+  const location = useLocation();
   const { getNotifications, updateSeen, notifs, unseen } = useUserContext();
   const [isOpen, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     getNotifications();

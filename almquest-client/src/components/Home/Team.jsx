@@ -1,8 +1,11 @@
 import React from "react";
 
-const Team = () => {
+const Team = ({ pageRefs }) => {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section
+      className="bg-white dark:bg-gray-900"
+      ref={(el) => (pageRefs.current = { ...pageRefs.current, team: el })}
+    >
       <div className="container lg:px-32 px-6 py-10 pt-4 mx-auto">
         <h1 className="text-3xl font-semibold text-center text-gray-800 capitalize lg:text-4xl dark:text-white">
           Our Development Team

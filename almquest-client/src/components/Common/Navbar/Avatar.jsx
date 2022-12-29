@@ -1,11 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ClickAwayListener from "react-click-away-listener";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useThemeContext } from "../../../contexts/ThemeContext";
 import { useUserContext } from "../../../contexts/UserContext";
 
 const Avatar = () => {
+  const location = useLocation();
   const { darkMode, toggleDarkMode } = useThemeContext();
   const { logout, user } = useUserContext();
   const [isOpen, setOpen] = useState(false);
@@ -15,6 +16,10 @@ const Avatar = () => {
   const handleClickAway = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>

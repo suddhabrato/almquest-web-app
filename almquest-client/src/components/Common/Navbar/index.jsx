@@ -1,16 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import NotifTray from "../Notifications/NotifTray";
 import Avatar from "./Avatar";
 import { useUserContext } from "../../../contexts/UserContext";
 
-const Navbar = () => {
+const Navbar = ({ pageRefs }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const { login, isLoggedIn, user } = useUserContext();
   const [isOpen, setOpen] = useState(false);
   const toggle = () => {
     setOpen(!isOpen);
   };
+
+  const redirectToHome = () => {
+    navigate("/");
+  };
+
+  async function scrollIntoView(type) {
+    if (location.pathname !== "/") await redirectToHome();
+    pageRefs.current[type].scrollIntoView({
+      behavior: "smooth",
+    });
+    setOpen(false);
+  }
 
   return (
     <nav className="sticky top-0 bg-white shadow dark:bg-gray-900 z-30">
@@ -56,15 +70,13 @@ const Navbar = () => {
                   </svg>
                 )}
               </button>
-              <Link
-                onClick={() => {
-                  setOpen(false);
-                }}
-                className="mx-4 lg:mx-0 text-2xl font-bold text-gray-800 transition-colors duration-300 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
+              <a
+                onClick={() => scrollIntoView("hero")}
+                className="cursor-pointer mx-4 lg:mx-0 text-2xl font-bold text-gray-800 transition-colors duration-300 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
                 to="/"
               >
                 AlmQuest
-              </Link>
+              </a>
             </div>
 
             <div className="flex lg:hidden items-center">
@@ -78,7 +90,12 @@ const Navbar = () => {
                   </Link>
                 </div>
               ) : (
-                <div className="flex items-center">
+                <div
+                  className="flex items-center"
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                >
                   {user.isRegistered && <NotifTray />}
                   <Avatar />
                 </div>
@@ -94,20 +111,26 @@ const Navbar = () => {
           >
             <div className="flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8">
               <a
-                href="#"
-                className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                Features
-              </a>
-              <a
-                href="#"
-                className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                onClick={() => scrollIntoView("about")}
+                className="cursor-pointer px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 About Us
               </a>
               <a
-                href="#"
-                className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                onClick={() => scrollIntoView("features")}
+                className="cursor-pointer px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                Features
+              </a>
+              <a
+                onClick={() => scrollIntoView("testimonials")}
+                className="cursor-pointer px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                Testimonials
+              </a>
+              <a
+                onClick={() => scrollIntoView("team")}
+                className="cursor-pointer px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 Team
               </a>

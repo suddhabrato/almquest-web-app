@@ -9,8 +9,10 @@ import Profile from "./components/Profile";
 import Transactions from "./components/Transactions";
 import PersonaInfo from "./components/Information/PersonaInfo";
 import Alert from "./components/Alerts";
+import { useRef } from "react";
 
 const App = () => {
+  const pageRefs = useRef({});
   const GetTransaction = () => {
     const { transactionId } = useParams();
     return <Transactions id={transactionId} userType="donor" />;
@@ -18,10 +20,10 @@ const App = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar pageRefs={pageRefs} />
       <Alert />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home pageRefs={pageRefs} />} />
         <Route path="/contact" element={<Contacts />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/profile" element={<Profile />} />
