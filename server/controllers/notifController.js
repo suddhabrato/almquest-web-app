@@ -5,7 +5,7 @@ const Notification = require("../models/notifModel");
 const Pusher = require("pusher");
 
 exports.receiveUpdate = asyncHandler(async (req, res, next) => {
-  const { _id, user_id, user_type, message } = req.body;
+  const { _id, user_id, user_type, message, photo } = req.body;
 
   const pusher = new Pusher({
     appId: "1531071",
@@ -17,14 +17,20 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
   const id = user_id.toString();
 
   if (user_type === "Donor") {
-    const donor = await Donor.findById(id);
+    const donor = await Donor.findByIdAndUpdate(
+      id,
+      {
+        $push: { notifs: _id },
+      },
+      { new: true, runValidators: true }
+    );
 
-    while (donor.notifs.length >= 10) {
+    while (donor.notifs.length > 10) {
       donor.notifs.reverse();
       donor.notifs.pop();
       donor.notifs.reverse();
     }
-    donor.notifs.push(_id);
+
     if (donor.notif_unseen < 10) {
       donor.notif_unseen = donor.notif_unseen + 1;
     }
@@ -33,17 +39,24 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
 
     pusher.trigger("almquest-channel", `${id}`, {
       message: message,
+      photo: photo ?? "",
       count: donor.notif_unseen,
     });
   } else {
-    const distributor = await Distributor.findById(id);
+    const distributor = await Distributor.findByIdAndUpdate(
+      id,
+      {
+        $push: { notifs: _id },
+      },
+      { new: true, runValidators: true }
+    );
 
-    while (distributor.notifs.length >= 10) {
+    while (distributor.notifs.length > 10) {
       distributor.notifs.reverse();
       distributor.notifs.pop();
       distributor.notifs.reverse();
     }
-    distributor.notifs.push(_id);
+
     if (distributor.notif_unseen < 10) {
       distributor.notif_unseen = distributor.notif_unseen + 1;
     }
@@ -52,6 +65,7 @@ exports.receiveUpdate = asyncHandler(async (req, res, next) => {
 
     pusher.trigger("almquest-channel", `${id}`, {
       message: message,
+      photo: photo ?? "",
       count: distributor.notif_unseen,
     });
   }
