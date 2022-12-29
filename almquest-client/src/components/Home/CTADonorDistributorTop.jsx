@@ -1,8 +1,11 @@
 import React from "react";
 
-const CTADonorDistributorTop = () => {
+const CTADonorDistributorTop = ({ pageRefs }) => {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section
+      className="bg-white dark:bg-gray-900"
+      ref={(el) => (pageRefs.current = { ...pageRefs.current, about: el })}
+    >
       <div className="container flex flex-col items-center px-4 py-12 mx-auto text-center my-4 mb-4">
         <h2 className="text-3xl font-bold tracking-tight text-gray-800 xl:text-4xl dark:text-white">
           About Us
@@ -161,64 +164,60 @@ const CTADonorDistributorTop = () => {
 
       </div> */}
 
-      <section class="bg-white dark:bg-gray-900">
-        <div class="container lg:px-28 py-10 mx-auto">
-          <div class="text-center">
-            <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">
+      <section className="bg-white dark:bg-gray-900">
+        <div className="container lg:px-28 py-10 mx-auto">
+          <div className="text-center">
+            <h1 className="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">
               Join Us in <span className="text-blue-500">Our Quest</span>
             </h1>
 
-            <p class="max-w-lg mx-auto mt-4 text-gray-500">
+            <p className="max-w-lg mx-auto mt-4 text-gray-500">
               We provide this platform for bringing two kinds of people or
               organisation alike together who can fulfil each other's needs.
             </p>
           </div>
 
-          <div class="grid grid-cols-1 gap-8 mt-8 lg:grid-cols-2 mx-4 my-4 px-2 py-2">
+          <div className="grid grid-cols-1 gap-8 mt-8 lg:grid-cols-2 mx-4 my-4 px-2 py-2">
             <div>
               <img
-                class="relative z-10 object-cover w-full rounded-md h-96"
+                className="relative z-10 object-cover w-full rounded-md h-96"
                 src="https://images.pexels.com/photos/6994944/pexels-photo-6994944.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt=""
               />
 
-              <div class="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white shadow dark:bg-gray-900  transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent dark:hover:bg-blue-500">
+              <div className="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white shadow dark:bg-gray-900  transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent dark:hover:bg-blue-500">
                 <a
                   href="/register"
-                  class="font-semibold text-gray-800 dark:text-white md:text-xl  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
+                  className="font-semibold text-gray-800 dark:text-white md:text-xl  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 >
                   Join us as a Donor Now!
                 </a>
 
-                <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm   hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white">
-                  <p>
-                    You can be an Individual or an Organisation or a Food Chain.
-                  </p>
-                  <p> Take the first steps.</p>
+                <p className="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm   hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white">
+                  You can be an Individual or an Organisation or a Food Chain.
+                  <br /> Take the first steps.
                 </p>
               </div>
             </div>
 
             <div>
               <img
-                class="relative z-10 object-cover w-full rounded-md h-96"
+                className="relative z-10 object-cover w-full rounded-md h-96"
                 src="https://images.pexels.com/photos/4393668/pexels-photo-4393668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt=""
               />
 
-              <div class="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white shadow dark:bg-gray-900  transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent dark:hover:bg-blue-500">
+              <div className="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white shadow dark:bg-gray-900  transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent dark:hover:bg-blue-500">
                 <a
                   href="/register"
-                  class="font-semibold text-gray-800 dark:text-white md:text-xl  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
+                  className="font-semibold text-gray-800 dark:text-white md:text-xl  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 >
                   Join us as a Distributor Now!
                 </a>
 
-                <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white">
-                  <p>
-                    You can be an Individual or a Social Service Group or a NGO.
-                  </p>
-                  <p> Take the first steps.</p>
+                <p className="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white">
+                  You can be an Individual or a Social Service Group or a NGO.
+                  <br /> Take the first steps.
                 </p>
               </div>
             </div>

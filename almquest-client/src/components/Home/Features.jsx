@@ -1,8 +1,11 @@
 import React from "react";
 
-const Features = () => {
+const Features = ({ pageRefs }) => {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section
+      className="bg-white dark:bg-gray-900"
+      ref={(el) => (pageRefs.current = { ...pageRefs.current, features: el })}
+    >
       <div className="container lg:px-32 px-6 py-10 mx-auto">
         <div className="lg:flex lg:items-center">
           <div className="w-full space-y-12 lg:w-1/2 ">
