@@ -1,8 +1,13 @@
 import React from "react";
 
-const Testimonials = () => {
+const Testimonials = ({ pageRefs }) => {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section
+      className="bg-white dark:bg-gray-900"
+      ref={(el) =>
+        (pageRefs.current = { ...pageRefs.current, testimonials: el })
+      }
+    >
       <div className="container px-6 lg:px-32 py-10 mx-auto">
         <div className="mt-6 md:flex md:items-center md:justify-between">
           <div>

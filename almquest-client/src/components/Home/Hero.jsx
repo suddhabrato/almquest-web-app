@@ -1,10 +1,12 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import Charitybro from "../../assets/Charity-bro.svg";
 
-const Hero = () => {
+const Hero = ({ pageRefs }) => {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section
+      className="bg-white dark:bg-gray-900"
+      ref={(el) => (pageRefs.current = { ...pageRefs.current, hero: el })}
+    >
       <div className="container px-6 lg:px-32 py-16 mx-auto">
         <div className="items-center lg:flex flex flex-col-reverse lg:flex-row">
           <div className="w-full lg:w-1/2 px-2 mt-6 lg:mt-0">
@@ -18,8 +20,9 @@ const Hero = () => {
                 food or, be the one to get in touch with such donors and
                 distribute the food where its needed. */}
                 In a world where 800 million people who go hungry every single
-                day, we are here to make a change. With AlmQuest you can be assured, that
-                the food you donate will reach the people who need it the most.
+                day, we are here to make a change. With AlmQuest you can be
+                assured, that the food you donate will reach the people who need
+                it the most.
               </p>
 
               <button className="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-blue-600 rounded-md lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
