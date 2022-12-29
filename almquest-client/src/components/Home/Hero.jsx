@@ -17,9 +17,9 @@ const Hero = () => {
                 {/* AlmQuest brings to you the opportunity to be the one to donate
                 food or, be the one to get in touch with such donors and
                 distribute the food where its needed. */}
-                In a world with 800 million people who go hungry every single
-                day, we are here to make a change. With AlmQuest, you get to
-                make a difference in a way that really matters.
+                In a world where 800 million people who go hungry every single
+                day, we are here to make a change. With AlmQuest you can be assured, that
+                the food you donate will reach the people who need it the most.
               </p>
 
               <button className="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-blue-600 rounded-md lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
