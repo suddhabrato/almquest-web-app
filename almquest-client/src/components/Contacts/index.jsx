@@ -15,19 +15,14 @@ const Contacts = () => {
           <div className="flex-1 lg:flex lg:items-center lg:-mx-6">
             <div className="text-white lg:w-1/2 lg:mx-6">
               <h1 className="text-3xl font-semibold capitalize lg:text-4xl">
-                Ultimate design solution
+                Contact Us
               </h1>
 
               <p className="max-w-xl mt-6">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Voluptatem quo aliquid molestiae hic incidunt beatae placeat
-                accusantium! Alias ex quisquam ab tempora. Ratione autem
-                doloremque ducimus numquam doloribus, error sed.
+                If you have any queries regarding how AlmQuest works, feel free to reach out to us.
+                We would love to hear any suggestions that you feel can improve the user experience here at <b>AlmQuest</b>
               </p>
 
-              <button className="px-8 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-50">
-                get in touch
-              </button>
 
               <div className="mt-6 md:mt-8">
                 <h3 className="text-gray-300 ">Follow us</h3>
@@ -116,7 +111,7 @@ const Contacts = () => {
                 </h1>
 
                 <p className="mt-4 text-gray-500 dark:text-gray-400">
-                  Ask us everything and we would love to hear from you
+                  Ask us anything and we would love to hear from you
                 </p>
 
                 <form className="mt-6">
