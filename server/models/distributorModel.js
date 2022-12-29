@@ -64,6 +64,7 @@ const distributorSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.ObjectId,
       ref: "Notification",
+      unique: true,
     },
   ],
 });
