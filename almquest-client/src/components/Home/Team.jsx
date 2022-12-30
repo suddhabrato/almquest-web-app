@@ -11,9 +11,9 @@ const Team = ({ pageRefs }) => {
           Our Development Team
         </h1>
         <div className="flex justify-center mx-auto mt-6">
-          <span className="inline-block w-40 h-1 bg-blue-500 rounded-full"></span>
-          <span className="inline-block w-3 h-1 mx-1 bg-blue-500 rounded-full"></span>
-          <span className="inline-block w-1 h-1 bg-blue-500 rounded-full"></span>
+          <span className="inline-block w-40 h-1 bg-amber-500 rounded-full"></span>
+          <span className="inline-block w-3 h-1 mx-1 bg-amber-500 rounded-full"></span>
+          <span className="inline-block w-1 h-1 bg-amber-500 rounded-full"></span>
         </div>
         <p className="max-w-2xl mx-auto my-6 text-center text-gray-500 dark:text-gray-300">
           We are the team that has ideated and developed AlmQuest with the sole intent of adding some 
@@ -21,7 +21,7 @@ const Team = ({ pageRefs }) => {
         </p>
 
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-4">
-          <div className="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent">
+          <div className="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent">
             <img
               className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300"
               src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
@@ -90,7 +90,7 @@ const Team = ({ pageRefs }) => {
             </div>
           </div>
 
-          <div className="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent">
+          <div className="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent">
             <img
               className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300"
               src="https://images.unsplash.com/photo-1531590878845-12627191e687?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
@@ -159,7 +159,7 @@ const Team = ({ pageRefs }) => {
             </div>
           </div>
 
-          <div className="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent">
+          <div className="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent">
             <img
               className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300"
               src="https://images.unsplash.com/photo-1488508872907-592763824245?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
@@ -229,7 +229,7 @@ const Team = ({ pageRefs }) => {
             </div>
           </div>
 
-          <div className="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent">
+          <div className="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent">
             <img
               className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300"
               src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"

@@ -99,8 +99,8 @@ const Transactions = ({ id }) => {
               Package Details
             </h2>
             {transaction.current_state === "Paired" ? (
-              <button className="mx-2 mt-4 rounded-full max-w-full px-4 py-1.5 border-2 border-blue-500 dark:border-blue-400">
-                <p className="text-blue-500 dark:text-blue-400 truncate font-semibold tracking-wide">
+              <button className="mx-2 mt-4 rounded-full max-w-full px-4 py-1.5 border-2 border-amber-500 dark:border-amber-400">
+                <p className="text-amber-500 dark:text-amber-400 truncate font-semibold tracking-wide">
                   Status: {transaction.current_state}
                 </p>
               </button>
@@ -375,7 +375,7 @@ const Transactions = ({ id }) => {
             <div className="flex justify-end mt-4">
               <a
                 onClick={deletePackageHandler}
-                className="px-3 py-2 text-lg font-medium text-blue-600 dark:text-blue-300 transition-colors duration-300 transform rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="px-3 py-2 text-lg font-medium text-amber-600 dark:text-amber-300 transition-colors duration-300 transform rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 Delete Package
               </a>
