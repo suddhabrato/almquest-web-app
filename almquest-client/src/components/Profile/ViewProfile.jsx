@@ -28,7 +28,7 @@ const ViewProfile = ({
       </p>
       {userType === "distributor" && (
         <div className="mt-4 md:-mt-12 mx-4 flex justify-center md:justify-end">
-          <ActivityToggler id={id} initialActive={distributor.isActive} />
+          <ActivityToggler initialActive={distributor.isActive} />
         </div>
       )}
       <div

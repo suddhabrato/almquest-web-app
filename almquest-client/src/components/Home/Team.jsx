@@ -33,7 +33,7 @@ const Team = ({ pageRefs }) => {
               alt=""
             />
 
-            <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
+            <h1 className="mt-4 text-2xl text-center break-words font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
               aditya das
             </h1>
 
@@ -43,9 +43,7 @@ const Team = ({ pageRefs }) => {
 
             <div className="flex mt-3 -mx-2">
               <a
-                onClick={() =>
-                  (window.location = "mailto:adityabkp1234@gmail.com")
-                }
+                href="mailto:adityabkp1234@gmail.com"
                 className="mx-2 pt-0.5 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="Mail"
               >
@@ -109,7 +107,7 @@ const Team = ({ pageRefs }) => {
               alt=""
             />
 
-            <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
+            <h1 className="mt-4 text-2xl text-center break-words font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
               Suddhabrato Ghosh
             </h1>
 
@@ -119,7 +117,6 @@ const Team = ({ pageRefs }) => {
 
             <div className="flex mt-3 -mx-2">
               <a
-                // onClick={() => window.location = 'mailto:suddhabratoghosh@gmail.com'}
                 href={"mailto:suddhabratoghosh@gmail.com"}
                 className="mx-2 pt-0.5 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="Mail"
@@ -184,9 +181,8 @@ const Team = ({ pageRefs }) => {
               alt=""
             />
 
-            <h1 className="flex flex-row mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
-              <p className="mr-1">Tamonash</p>
-              <p>Bhattacharyya</p>
+            <h1 className="flex text-center break-words flex-row mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
+              Tamonash Bhattacharyya
             </h1>
 
             <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
@@ -260,7 +256,7 @@ const Team = ({ pageRefs }) => {
               alt=""
             />
 
-            <h1 className="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
+            <h1 className="mt-4 text-2xl text-center break-words font-semibold text-gray-700 capitalize dark:text-white group-hover:text-white">
               Anirban Roy
             </h1>
 
