@@ -19,17 +19,17 @@ const Contacts = () => {
               </h1>
 
               <p className="max-w-xl mt-6">
-                If you have any queries regarding how AlmQuest works, feel free to reach out to us.
-                We would love to hear any suggestions that you feel can improve the user experience here at <b>AlmQuest</b>
+                If you have any queries regarding how AlmQuest works, feel free
+                to reach out to us. We would love to hear any suggestions that
+                you feel can improve the user experience here at <b>AlmQuest</b>
               </p>
-
 
               <div className="mt-6 md:mt-8">
                 <h3 className="text-gray-300 ">Follow us</h3>
 
                 <div className="flex mt-4 -mx-1.5 ">
                   <a
-                    className="mx-1.5 text-white transition-colors duration-300 transform hover:text-blue-500"
+                    className="mx-1.5 text-white transition-colors duration-300 transform hover:text-amber-500"
                     href="#"
                   >
                     <svg
@@ -43,7 +43,7 @@ const Contacts = () => {
                   </a>
 
                   <a
-                    className="mx-1.5 text-white transition-colors duration-300 transform hover:text-blue-500"
+                    className="mx-1.5 text-white transition-colors duration-300 transform hover:text-amber-500"
                     href="#"
                   >
                     <svg
@@ -68,7 +68,7 @@ const Contacts = () => {
                   </a>
 
                   <a
-                    className="mx-1.5 text-white transition-colors duration-300 transform hover:text-blue-500"
+                    className="mx-1.5 text-white transition-colors duration-300 transform hover:text-amber-500"
                     href="#"
                   >
                     <svg
@@ -85,7 +85,7 @@ const Contacts = () => {
                   </a>
 
                   <a
-                    className="mx-1.5 text-white transition-colors duration-300 transform hover:text-blue-500"
+                    className="mx-1.5 text-white transition-colors duration-300 transform hover:text-amber-500"
                     href="#"
                   >
                     <svg
@@ -122,7 +122,7 @@ const Contacts = () => {
                     <input
                       type="text"
                       placeholder="John Doe"
-                      className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-amber-400 focus:ring-amber-300 focus:ring-opacity-40 dark:focus:border-amber-300 focus:outline-none focus:ring"
                     />
                   </div>
 
@@ -133,7 +133,7 @@ const Contacts = () => {
                     <input
                       type="email"
                       placeholder="johndoe@example.com"
-                      className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                      className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-amber-400 focus:ring-amber-300 focus:ring-opacity-40 dark:focus:border-amber-300 focus:outline-none focus:ring"
                     />
                   </div>
 
@@ -142,12 +142,12 @@ const Contacts = () => {
                       Message
                     </label>
                     <textarea
-                      className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                      className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-amber-400 focus:ring-amber-300 focus:ring-opacity-40 dark:focus:border-amber-300 focus:outline-none focus:ring"
                       placeholder="Message"
                     ></textarea>
                   </div>
 
-                  <button className="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-50">
+                  <button className="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-amber-600 rounded-md hover:bg-amber-500 focus:outline-none focus:ring focus:ring-amber-400 focus:ring-opacity-50">
                     get in touch
                   </button>
                 </form>

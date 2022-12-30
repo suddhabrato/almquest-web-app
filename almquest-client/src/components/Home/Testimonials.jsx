@@ -16,9 +16,9 @@ const Testimonials = ({ pageRefs }) => {
             </h1>
 
             <div className="flex mx-auto mt-6">
-              <span className="inline-block w-40 h-1 bg-blue-500 rounded-full"></span>
-              <span className="inline-block w-3 h-1 mx-1 bg-blue-500 rounded-full"></span>
-              <span className="inline-block w-1 h-1 bg-blue-500 rounded-full"></span>
+              <span className="inline-block w-40 h-1 bg-amber-500 rounded-full"></span>
+              <span className="inline-block w-3 h-1 mx-1 bg-amber-500 rounded-full"></span>
+              <span className="inline-block w-1 h-1 bg-amber-500 rounded-full"></span>
             </div>
           </div>
         </div>
@@ -51,21 +51,23 @@ const Testimonials = ({ pageRefs }) => {
             </div>
           </div>
 
-          <div className="grid grid-rows-1 place-content-between p-8 bg-blue-500 border border-transparent rounded-lg dark:bg-blue-600">
+          <div className="grid grid-rows-1 place-content-between p-8 bg-amber-500 border border-transparent rounded-lg dark:bg-amber-600">
             <p className="leading-loose text-white">
               “AlmQuest will hopefully help a lot in social development.”.
             </p>
 
             <div className="flex items-end mt-8 -mx-2">
               <img
-                className="object-cover mx-2 rounded-full w-14 shrink-0 h-14 ring-4 ring-blue-200"
+                className="object-cover mx-2 rounded-full w-14 shrink-0 h-14 ring-4 ring-amber-200"
                 src="https://images.unsplash.com/photo-1531590878845-12627191e687?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
                 alt=""
               />
 
               <div className="mx-2">
                 <h1 className="font-semibold text-white">Jeny Doe</h1>
-                <span className="text-sm text-blue-200">Tech Professional</span>
+                <span className="text-sm text-amber-200">
+                  Tech Professional
+                </span>
               </div>
             </div>
           </div>

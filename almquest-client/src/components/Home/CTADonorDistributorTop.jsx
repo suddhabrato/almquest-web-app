@@ -31,7 +31,7 @@ const CTADonorDistributorTop = ({ pageRefs }) => {
 
           <a
             href="/personainfo"
-            className="inline-flex items-center justify-center w-full px-5 py-3 mt-4 overflow-hidden text-white transition-colors duration-300 bg-blue-600 rounded-lg shadow sm:w-auto sm:mx-2 sm:mt-0 hover:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+            className="inline-flex items-center justify-center w-full px-5 py-3 mt-4 overflow-hidden text-white transition-colors duration-300 bg-amber-600 rounded-lg shadow sm:w-auto sm:mx-2 sm:mt-0 hover:bg-amber-500 focus:ring focus:ring-amber-300 focus:ring-opacity-80"
           >
             <svg
               className="w-5 h-5 mx-2"
@@ -54,7 +54,7 @@ const CTADonorDistributorTop = ({ pageRefs }) => {
 
       {/* <div className="container lg:px-32 px-6 py-10 mx-auto">
         <h1 className="text-3xl font-semibold text-center text-gray-800 capitalize lg:text-4xl dark:text-white">
-          Join Us <span className="text-blue-500">In Our Quest</span>
+          Join Us <span className="text-amber-500">In Our Quest</span>
         </h1>
 
         <p className="max-w-2xl mx-auto my-6 text-center text-gray-500 dark:text-gray-300">
@@ -63,7 +63,7 @@ const CTADonorDistributorTop = ({ pageRefs }) => {
         </p>
 
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-2">
-          <div className="px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent">
+          <div className="px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent">
             <div className="flex flex-col items-center">
               <img
                 className="flex-shrink-0 object-cover w-24 h-24 rounded-full sm:mx-4 ring-4 justify-center ring-gray-300"
@@ -89,7 +89,7 @@ const CTADonorDistributorTop = ({ pageRefs }) => {
 
           </div>
 
-          <div className="px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent">
+          <div className="px-12 py-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent">
             <div className="flex flex-col sm:-mx-4 sm:flex-row">
               <img
                 className="flex-shrink-0 object-cover w-24 h-24 rounded-full sm:mx-4 ring-4 ring-gray-300"
@@ -168,7 +168,7 @@ const CTADonorDistributorTop = ({ pageRefs }) => {
         <div className="container lg:px-28 py-10 mx-auto">
           <div className="text-center">
             <h1 className="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">
-              Join Us in <span className="text-blue-500">Our Quest</span>
+              Join Us in <span className="text-amber-500">Our Quest</span>
             </h1>
 
             <p className="max-w-lg mx-auto mt-4 text-gray-500">
@@ -185,7 +185,7 @@ const CTADonorDistributorTop = ({ pageRefs }) => {
                 alt=""
               />
 
-              <div className="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white shadow dark:bg-gray-900  transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent dark:hover:bg-blue-500">
+              <div className="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white shadow dark:bg-gray-900  transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent dark:hover:bg-amber-500">
                 <a
                   href="/register"
                   className="font-semibold text-gray-800 dark:text-white md:text-xl  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
@@ -207,7 +207,7 @@ const CTADonorDistributorTop = ({ pageRefs }) => {
                 alt=""
               />
 
-              <div className="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white shadow dark:bg-gray-900  transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-blue-600 dark:border-gray-700 dark:hover:border-transparent dark:hover:bg-blue-500">
+              <div className="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white shadow dark:bg-gray-900  transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent dark:hover:bg-amber-500">
                 <a
                   href="/register"
                   className="font-semibold text-gray-800 dark:text-white md:text-xl  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
