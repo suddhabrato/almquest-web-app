@@ -4,6 +4,7 @@ import { useState } from "react";
 import NotifTray from "../Notifications/NotifTray";
 import Avatar from "./Avatar";
 import { useUserContext } from "../../../contexts/UserContext";
+import logo from "../../../assets/logo/logo.svg";
 
 const Navbar = ({ pageRefs }) => {
   const location = useLocation();
@@ -75,7 +76,10 @@ const Navbar = ({ pageRefs }) => {
                 className="cursor-pointer mx-4 lg:mx-0 text-2xl font-bold text-gray-800 transition-colors duration-300 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
                 to="/"
               >
-                AlmQuest
+                <span className="flex items-center">
+                  <img className="w-10 h-10 mr-1" src={logo} />
+                  AlmQuest
+                </span>
               </a>
             </div>
 

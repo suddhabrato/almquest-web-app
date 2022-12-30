@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="bg-white dark:bg-gray-900">
       <div className="container flex flex-col items-center justify-between p-6 mx-auto space-y-4 sm:space-y-0 sm:flex-row">
         <a
-          href="#"
+          href="/"
           className="text-2xl font-bold text-gray-800 transition-colors duration-300 dark:text-white hover:text-amber-500 dark:hover:text-amber-400"
         >
           AlmQuest
@@ -50,7 +50,7 @@ const Footer = () => {
           </a>
 
           <a
-            href="https://github.com/suddhabrato/almquest-web-app"
+            href="#"
             className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-amber-500 dark:hover:text-amber-400"
             aria-label="Github"
           >
