@@ -49,7 +49,7 @@ const ProfileCard = () => {
         setPersonalDetails({
           name,
           email,
-          picture,
+          picture: `${picture.slice(0, picture.length - 4)}256-c`,
           location,
           phone,
         });

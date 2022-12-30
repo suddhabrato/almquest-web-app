@@ -27,6 +27,10 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
+    console.log(
+      location.pathname !== "/profile" &&
+        location.pathname.indexOf("transaction") === -1
+    );
     if (
       location.pathname !== "/profile" &&
       location.pathname.indexOf("transaction") === -1
@@ -35,6 +39,8 @@ const App = () => {
       setTimeout(() => {
         setLoading((prev) => false);
       }, 500);
+    } else {
+      setLoading(false);
     }
   }, [location]);
 
