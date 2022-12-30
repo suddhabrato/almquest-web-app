@@ -1,4 +1,8 @@
 import React from "react";
+import sudo from "../../assets/DevelopmentTeam/sudo.jpg"
+import aditya from "../../assets/DevelopmentTeam/aditya.jpg"
+import tamonash from "../../assets/DevelopmentTeam/tamonash.jpg"
+import anirban from "../../assets/DevelopmentTeam/anirban2.jpg"
 
 const Team = ({ pageRefs }) => {
   return (
@@ -24,7 +28,7 @@ const Team = ({ pageRefs }) => {
           <div className="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent">
             <img
               className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300"
-              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+              src={aditya}
               alt=""
             />
 
@@ -38,7 +42,7 @@ const Team = ({ pageRefs }) => {
 
             <div className="flex mt-3 -mx-2">
               <a
-                href="#"
+                onClick={() => window.location = 'mailto:adityabkp1234@gmail.com'}
                 className="mx-2 pt-0.5 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="Mail"
               >
@@ -59,7 +63,7 @@ const Team = ({ pageRefs }) => {
               </a>
 
               <a
-                href="#"
+                href="https://www.linkedin.com/in/aditya-das-86069b202/" target="_blank" rel="noopener noreferrer"
                 className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="LinkedIn"
               >
@@ -74,7 +78,7 @@ const Team = ({ pageRefs }) => {
               </a>
 
               <a
-                href="#"
+                href="https://github.com/aditya3901" target="_blank" rel="noopener noreferrer"
                 className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="Github"
               >
@@ -93,7 +97,8 @@ const Team = ({ pageRefs }) => {
           <div className="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent">
             <img
               className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300"
-              src="https://images.unsplash.com/photo-1531590878845-12627191e687?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+              // src="https://images.unsplash.com/photo-1531590878845-12627191e687?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+              src = {sudo}
               alt=""
             />
 
@@ -107,7 +112,8 @@ const Team = ({ pageRefs }) => {
 
             <div className="flex mt-3 -mx-2">
               <a
-                href="#"
+                // onClick={() => window.location = 'mailto:suddhabratoghosh@gmail.com'}
+                href={"mailto:suddhabratoghosh@gmail.com" }
                 className="mx-2 pt-0.5 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="Mail"
               >
@@ -128,7 +134,7 @@ const Team = ({ pageRefs }) => {
               </a>
 
               <a
-                href="#"
+                 href="https://www.linkedin.com/in/suddhabrato-ghosh/" target="_blank" rel="noopener noreferrer"
                 className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="LinkedIn"
               >
@@ -143,7 +149,7 @@ const Team = ({ pageRefs }) => {
               </a>
 
               <a
-                href="#"
+                href="https://github.com/suddhabrato" target="_blank" rel="noopener noreferrer"
                 className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="Github"
               >
@@ -162,7 +168,8 @@ const Team = ({ pageRefs }) => {
           <div className="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent">
             <img
               className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300"
-              src="https://images.unsplash.com/photo-1488508872907-592763824245?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+              // src="https://images.unsplash.com/photo-1488508872907-592763824245?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+              src={tamonash}
               alt=""
             />
 
@@ -177,7 +184,7 @@ const Team = ({ pageRefs }) => {
 
             <div className="flex mt-3 -mx-2">
               <a
-                href="#"
+                onClick={() => window.location = 'mailto:tamonashbhattacharyya2@gmail.com'}
                 className="mx-2 pt-0.5 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="Mail"
               >
@@ -198,7 +205,7 @@ const Team = ({ pageRefs }) => {
               </a>
 
               <a
-                href="#"
+                href="https://www.linkedin.com/in/tamonash-bhattacharyya-b9a527223/" target="_blank" rel="noopener noreferrer"
                 className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="LinkedIn"
               >
@@ -213,7 +220,7 @@ const Team = ({ pageRefs }) => {
               </a>
 
               <a
-                href="#"
+                href="https://github.com/DevUpTam" target="_blank" rel="noopener noreferrer"
                 className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="Github"
               >
@@ -232,7 +239,7 @@ const Team = ({ pageRefs }) => {
           <div className="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent">
             <img
               className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300"
-              src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+              src={anirban}
               alt=""
             />
 
@@ -246,7 +253,7 @@ const Team = ({ pageRefs }) => {
 
             <div className="flex mt-3 -mx-2">
               <a
-                href="#"
+                onClick={() => window.location = 'mailto:royrik23@gmail.com'}
                 className="mx-2 pt-0.5 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="Mail"
               >
@@ -267,7 +274,7 @@ const Team = ({ pageRefs }) => {
               </a>
 
               <a
-                href="#"
+                href="https://www.linkedin.com/in/wrrikk/" target="_blank" rel="noopener noreferrer"
                 className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="LinkedIn"
               >
@@ -282,7 +289,7 @@ const Team = ({ pageRefs }) => {
               </a>
 
               <a
-                href="#"
+                href="https://github.com/Wrrikk" target="_blank" rel="noopener noreferrer"
                 className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="Github"
               >
