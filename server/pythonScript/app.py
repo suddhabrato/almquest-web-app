@@ -10,8 +10,6 @@ app = Flask(__name__)
 
 
 @app.route('/', methods=['GET', 'POST'])
-
-
 def home():
 	if request.method == 'GET':
 
@@ -30,6 +28,13 @@ def disp(donor_id):
 	process(donor_id)
 	return jsonify({'message': 'Request Acknowledged'})
 
+
+@app.route('/check', methods=['GET'])
+def check():
+	if request.method == 'GET':
+
+		data = "Active"
+		return jsonify({'Status': data})
 
 def process(donor_id):
 	post1 = pair.pair(donor_id)
