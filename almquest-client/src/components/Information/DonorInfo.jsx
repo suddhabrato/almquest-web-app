@@ -11,7 +11,10 @@ const DonorInfo = () => {
             <div className="p-6">
                 <div>
                     <p className="block mt-2 text-2xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600" tabIndex="0">Who is a Donor</p>
-                    <p className="mt-2 text-md text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris egestas quam volutpat viverra. In pretium nec senectus erat. Et malesuada lobortis.</p>
+                    <p className="mt-2 text-md text-gray-600 dark:text-gray-400">
+                        A donor is an individual or an institution such as a restaurant or a food Chain
+                        who may have excess food they can give away which otherwise might have been wasted.
+                    </p>
                 </div>
             </div>
         </div>
