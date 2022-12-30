@@ -1,6 +1,7 @@
 import React from "react";
 import DistributorInfo from "./DistributorInfo";
 import DonorInfo from "./DonorInfo";
+import Meal from "./Meal";
 
 
 const PersonaInfo = () => {
@@ -8,6 +9,7 @@ const PersonaInfo = () => {
         <div>
             <DonorInfo/>
             <DistributorInfo/>
+            <Meal/>
         </div>
     );
 };

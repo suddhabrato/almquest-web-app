@@ -184,20 +184,21 @@ const CTADonorDistributorTop = ({ pageRefs }) => {
                 src="https://images.pexels.com/photos/6994944/pexels-photo-6994944.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt=""
               />
+              <a href="/register">
+                <div className="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white shadow dark:bg-gray-900  transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent dark:hover:bg-amber-500">
+                  <p
+                    className="font-semibold text-gray-800 dark:text-white md:text-xl  group-hover:text-white"
+                  >
+                    Join us as a Donor Now!
+                  </p>
 
-              <div className="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white shadow dark:bg-gray-900  transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent dark:hover:bg-amber-500">
-                <a
-                  href="/register"
-                  className="font-semibold text-gray-800 dark:text-white md:text-xl  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
-                >
-                  Join us as a Donor Now!
-                </a>
+                  <p className="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm   group-hover:text-white">
+                    You can be an Individual or an Organisation or a Food Chain.
+                    <br /> Take the first steps.
+                  </p>
+                </div>
+              </a>
 
-                <p className="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm   hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white">
-                  You can be an Individual or an Organisation or a Food Chain.
-                  <br /> Take the first steps.
-                </p>
-              </div>
             </div>
 
             <div>
@@ -206,20 +207,21 @@ const CTADonorDistributorTop = ({ pageRefs }) => {
                 src="https://images.pexels.com/photos/4393668/pexels-photo-4393668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                 alt=""
               />
+              <a href="/register">
+                <div className="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white shadow dark:bg-gray-900  transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent dark:hover:bg-amber-500">
+                  <p
+                    className="font-semibold text-gray-800 dark:text-white md:text-xl  group-hover:text-white"
+                  >
+                    Join us as a Distributor Now!
+                  </p>
 
-              <div className="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white shadow dark:bg-gray-900  transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent dark:hover:bg-amber-500">
-                <a
-                  href="/register"
-                  className="font-semibold text-gray-800 dark:text-white md:text-xl  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
-                >
-                  Join us as a Distributor Now!
-                </a>
+                  <p className="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm  group-hover:text-white">
+                    You can be an Individual or a Social Service Group or a NGO.
+                    <br /> Take the first steps.
+                  </p>
+                </div>
+              </a>
 
-                <p className="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm  hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white">
-                  You can be an Individual or a Social Service Group or a NGO.
-                  <br /> Take the first steps.
-                </p>
-              </div>
             </div>
           </div>
         </div>

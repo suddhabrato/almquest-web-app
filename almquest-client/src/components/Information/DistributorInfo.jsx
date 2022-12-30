@@ -11,7 +11,11 @@ const DistributorInfo = () => {
             <div className="p-6">
                 <div>
                 <p className="block mt-2 text-2xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600" tabIndex="0">Who is a Distributor</p>
-                    <p className="mt-2 text-md text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris egestas quam volutpat viverra. In pretium nec senectus erat. Et malesuada lobortis.</p>
+                    <p className="mt-2 text-md text-gray-600 dark:text-gray-400">
+                        A Distributor is an individual or a NGO or any other other organisation with the resources
+                        and objective to distribute food in under-priviledged regions where such donations will
+                        have the highest amount of impact.
+                    </p>
                 </div>
             </div>
         </div>
