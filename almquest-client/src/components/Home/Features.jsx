@@ -15,14 +15,14 @@ const Features = ({ pageRefs }) => {
               </h1>
 
               <div className="mt-2">
-                <span className="inline-block w-40 h-1 bg-blue-500 rounded-full"></span>
-                <span className="inline-block w-3 h-1 ml-1 bg-blue-500 rounded-full"></span>
-                <span className="inline-block w-1 h-1 ml-1 bg-blue-500 rounded-full"></span>
+                <span className="inline-block w-40 h-1 bg-amber-500 rounded-full"></span>
+                <span className="inline-block w-3 h-1 ml-1 bg-amber-500 rounded-full"></span>
+                <span className="inline-block w-1 h-1 ml-1 bg-amber-500 rounded-full"></span>
               </div>
             </div>
 
             <div className="md:flex md:items-start md:-mx-4">
-              <span className="inline-block p-2 text-blue-500 bg-blue-100 rounded-xl md:mx-4 dark:text-white dark:bg-blue-500">
+              <span className="inline-block p-2 text-amber-500 bg-amber-100 rounded-xl md:mx-4 dark:text-white dark:bg-amber-500">
                 <svg
                   className="w-6 h-6"
                   fill="none"
@@ -54,7 +54,7 @@ const Features = ({ pageRefs }) => {
             </div>
 
             <div className="md:flex md:items-start md:-mx-4">
-              <span className="inline-block p-2 text-blue-500 bg-blue-100 rounded-xl md:mx-4 dark:text-white dark:bg-blue-500">
+              <span className="inline-block p-2 text-amber-500 bg-amber-100 rounded-xl md:mx-4 dark:text-white dark:bg-amber-500">
                 <svg
                   className="w-6 h-6"
                   viewBox="0 0 24 24"
@@ -82,7 +82,7 @@ const Features = ({ pageRefs }) => {
             </div>
 
             <div className="md:flex md:items-start md:-mx-4">
-              <span className="inline-block p-2 text-blue-500 bg-blue-100 rounded-xl md:mx-4 dark:text-white dark:bg-blue-500">
+              <span className="inline-block p-2 text-amber-500 bg-amber-100 rounded-xl md:mx-4 dark:text-white dark:bg-amber-500">
                 <svg
                   className="w-6 h-6"
                   fill="None"

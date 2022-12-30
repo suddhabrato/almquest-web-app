@@ -15,7 +15,7 @@ const DonatePackageCTA = () => {
 
       <div className="max-w-xl px-6 py-12 lg:max-w-4xl lg:w-3/5">
         <h2 className="text-2xl font-semibold text-gray-800 dark:text-white md:text-3xl">
-          Donate Your Meal<span className="text-blue-500"> Now</span>
+          Donate Your Meal<span className="text-amber-500"> Now</span>
         </h2>
 
         <p className="mt-4 text-gray-500 dark:text-gray-300">
