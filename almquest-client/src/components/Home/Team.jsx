@@ -1,8 +1,8 @@
 import React from "react";
-import sudo from "../../assets/DevelopmentTeam/sudo.jpg"
-import aditya from "../../assets/DevelopmentTeam/aditya.jpg"
-import tamonash from "../../assets/DevelopmentTeam/tamonash.jpg"
-import anirban from "../../assets/DevelopmentTeam/anirban2.jpg"
+import sudo from "../../assets/DevelopmentTeam/sudo.jpg";
+import aditya from "../../assets/DevelopmentTeam/aditya.jpg";
+import tamonash from "../../assets/DevelopmentTeam/tamonash.jpg";
+import anirban from "../../assets/DevelopmentTeam/anirban.jpg";
 
 const Team = ({ pageRefs }) => {
   return (
@@ -20,8 +20,9 @@ const Team = ({ pageRefs }) => {
           <span className="inline-block w-1 h-1 bg-amber-500 rounded-full"></span>
         </div>
         <p className="max-w-2xl mx-auto my-6 text-center text-gray-500 dark:text-gray-300">
-          We are the team that has ideated and developed AlmQuest with the sole intent of adding some 
-          value to the society and hopefully making some lives better. 
+          We are the team that has ideated and developed AlmQuest with the sole
+          intent of adding some value to the society and hopefully making some
+          lives better.
         </p>
 
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-4">
@@ -42,7 +43,9 @@ const Team = ({ pageRefs }) => {
 
             <div className="flex mt-3 -mx-2">
               <a
-                onClick={() => window.location = 'mailto:adityabkp1234@gmail.com'}
+                onClick={() =>
+                  (window.location = "mailto:adityabkp1234@gmail.com")
+                }
                 className="mx-2 pt-0.5 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="Mail"
               >
@@ -63,7 +66,9 @@ const Team = ({ pageRefs }) => {
               </a>
 
               <a
-                href="https://www.linkedin.com/in/aditya-das-86069b202/" target="_blank" rel="noopener noreferrer"
+                href="https://www.linkedin.com/in/aditya-das-86069b202/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="LinkedIn"
               >
@@ -78,7 +83,9 @@ const Team = ({ pageRefs }) => {
               </a>
 
               <a
-                href="https://github.com/aditya3901" target="_blank" rel="noopener noreferrer"
+                href="https://github.com/aditya3901"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="Github"
               >
@@ -98,7 +105,7 @@ const Team = ({ pageRefs }) => {
             <img
               className="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300"
               // src="https://images.unsplash.com/photo-1531590878845-12627191e687?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
-              src = {sudo}
+              src={sudo}
               alt=""
             />
 
@@ -113,7 +120,7 @@ const Team = ({ pageRefs }) => {
             <div className="flex mt-3 -mx-2">
               <a
                 // onClick={() => window.location = 'mailto:suddhabratoghosh@gmail.com'}
-                href={"mailto:suddhabratoghosh@gmail.com" }
+                href={"mailto:suddhabratoghosh@gmail.com"}
                 className="mx-2 pt-0.5 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="Mail"
               >
@@ -134,7 +141,9 @@ const Team = ({ pageRefs }) => {
               </a>
 
               <a
-                 href="https://www.linkedin.com/in/suddhabrato-ghosh/" target="_blank" rel="noopener noreferrer"
+                href="https://www.linkedin.com/in/suddhabrato-ghosh/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="LinkedIn"
               >
@@ -149,7 +158,9 @@ const Team = ({ pageRefs }) => {
               </a>
 
               <a
-                href="https://github.com/suddhabrato" target="_blank" rel="noopener noreferrer"
+                href="https://github.com/suddhabrato"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="Github"
               >
@@ -184,7 +195,9 @@ const Team = ({ pageRefs }) => {
 
             <div className="flex mt-3 -mx-2">
               <a
-                onClick={() => window.location = 'mailto:tamonashbhattacharyya2@gmail.com'}
+                onClick={() =>
+                  (window.location = "mailto:tamonashbhattacharyya2@gmail.com")
+                }
                 className="mx-2 pt-0.5 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="Mail"
               >
@@ -205,7 +218,9 @@ const Team = ({ pageRefs }) => {
               </a>
 
               <a
-                href="https://www.linkedin.com/in/tamonash-bhattacharyya-b9a527223/" target="_blank" rel="noopener noreferrer"
+                href="https://www.linkedin.com/in/tamonash-bhattacharyya-b9a527223/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="LinkedIn"
               >
@@ -220,7 +235,9 @@ const Team = ({ pageRefs }) => {
               </a>
 
               <a
-                href="https://github.com/DevUpTam" target="_blank" rel="noopener noreferrer"
+                href="https://github.com/DevUpTam"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="Github"
               >
@@ -253,7 +270,7 @@ const Team = ({ pageRefs }) => {
 
             <div className="flex mt-3 -mx-2">
               <a
-                onClick={() => window.location = 'mailto:royrik23@gmail.com'}
+                onClick={() => (window.location = "mailto:royrik23@gmail.com")}
                 className="mx-2 pt-0.5 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="Mail"
               >
@@ -274,7 +291,9 @@ const Team = ({ pageRefs }) => {
               </a>
 
               <a
-                href="https://www.linkedin.com/in/wrrikk/" target="_blank" rel="noopener noreferrer"
+                href="https://www.linkedin.com/in/wrrikk/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="LinkedIn"
               >
@@ -289,7 +308,9 @@ const Team = ({ pageRefs }) => {
               </a>
 
               <a
-                href="https://github.com/Wrrikk" target="_blank" rel="noopener noreferrer"
+                href="https://github.com/Wrrikk"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mx-2 text-gray-600 dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-300 group-hover:text-white"
                 aria-label="Github"
               >
