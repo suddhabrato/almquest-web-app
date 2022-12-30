@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Ripple } from "react-preloaders2";
 import { useThemeContext } from "./contexts/ThemeContext";
+
 const App = () => {
   const [loading, setLoading] = useState(true);
   const { darkMode } = useThemeContext();

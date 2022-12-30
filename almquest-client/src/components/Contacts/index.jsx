@@ -1,6 +1,46 @@
 import React from "react";
+import axios from "axios";
+import { useState } from "react";
+import { useAlertContext } from "../../contexts/AlertContext";
 
 const Contacts = () => {
+  const { displayAlert } = useAlertContext();
+  const [query, setQuery] = useState({ name: "", email: "", message: "" });
+
+  const handleChange = (evt) => {
+    setQuery((prev) => ({ ...prev, [evt.target.name]: evt.target.value }));
+  };
+
+  const handleSubmit = async (evt) => {
+    evt.preventDefault();
+    const body = {
+      service_id: "service_ckm1buo",
+      template_id: "template_s1veeg8",
+      user_id: "AVxWmQ4WLHiXQk-Ir",
+      template_params: {
+        user_name: query.name,
+        user_subject: "AlmQuest Query",
+        user_message: query.message,
+        user_email: query.email,
+      },
+    };
+
+    const res = await axios.post(
+      "https://api.emailjs.com/api/v1.0/email/send",
+      body,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    displayAlert(
+      "success",
+      "We love to hear from you",
+      "Thanks for your feedback."
+    );
+    setQuery({ name: "", email: "", message: "" });
+  };
   return (
     <section
       className="min-h-screen bg-cover "
@@ -21,7 +61,8 @@ const Contacts = () => {
               <p className="max-w-xl mt-6">
                 If you have any queries regarding how AlmQuest works, feel free
                 to reach out to us. We would love to hear any suggestions that
-                you feel can improve the user experience here at <b>AlmQuest</b>
+                you feel can improve the user experience here at{" "}
+                <span className="font-semibold">AlmQuest</span>
               </p>
 
               <div className="mt-6 md:mt-8">
@@ -114,12 +155,16 @@ const Contacts = () => {
                   Ask us anything and we would love to hear from you
                 </p>
 
-                <form className="mt-6">
+                <form className="mt-6" onSubmit={handleSubmit}>
                   <div className="flex-1">
                     <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
                       Full Name
                     </label>
                     <input
+                      onChange={handleChange}
+                      required
+                      value={query.name}
+                      name="name"
                       type="text"
                       placeholder="John Doe"
                       className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-amber-400 focus:ring-amber-300 focus:ring-opacity-40 dark:focus:border-amber-300 focus:outline-none focus:ring"
@@ -131,6 +176,10 @@ const Contacts = () => {
                       Email address
                     </label>
                     <input
+                      onChange={handleChange}
+                      required
+                      value={query.email}
+                      name="email"
                       type="email"
                       placeholder="johndoe@example.com"
                       className="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-amber-400 focus:ring-amber-300 focus:ring-opacity-40 dark:focus:border-amber-300 focus:outline-none focus:ring"
@@ -142,12 +191,19 @@ const Contacts = () => {
                       Message
                     </label>
                     <textarea
+                      onChange={handleChange}
+                      required
+                      value={query.message}
+                      name="message"
                       className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-amber-400 focus:ring-amber-300 focus:ring-opacity-40 dark:focus:border-amber-300 focus:outline-none focus:ring"
                       placeholder="Message"
                     ></textarea>
                   </div>
 
-                  <button className="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-amber-600 rounded-md hover:bg-amber-500 focus:outline-none focus:ring focus:ring-amber-400 focus:ring-opacity-50">
+                  <button
+                    type="submit"
+                    className="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-amber-600 rounded-md hover:bg-amber-500 focus:outline-none focus:ring focus:ring-amber-400 focus:ring-opacity-50"
+                  >
                     get in touch
                   </button>
                 </form>

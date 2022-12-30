@@ -31,6 +31,10 @@ input[type='number']::-webkit-inner-spin-button,  input[type='number']::-webkit-
     -webkit-appearance: none;
     margin: 0;
 }
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
 .dark .pac-container {
   border-top: rgb(75 85 99);
   font-family: sans-serif;
