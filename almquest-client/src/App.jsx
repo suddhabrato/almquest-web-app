@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Ripple } from "react-preloaders2";
 import { useThemeContext } from "./contexts/ThemeContext";
+
 const App = () => {
   const [loading, setLoading] = useState(true);
   const { darkMode } = useThemeContext();
@@ -26,6 +27,10 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
+    console.log(
+      location.pathname !== "/profile" &&
+        location.pathname.indexOf("transaction") === -1
+    );
     if (
       location.pathname !== "/profile" &&
       location.pathname.indexOf("transaction") === -1
@@ -34,6 +39,8 @@ const App = () => {
       setTimeout(() => {
         setLoading((prev) => false);
       }, 500);
+    } else {
+      setLoading(false);
     }
   }, [location]);
 
