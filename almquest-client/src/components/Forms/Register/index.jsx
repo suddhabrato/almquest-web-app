@@ -135,14 +135,12 @@ const Register = () => {
       await submitDistributor(body);
     }
     const { name } = await checkUserExist(personalDetails.email);
-    setTimeout(() => {
-      displayAlert(
-        "success",
-        `Successfully registered as a ${userType}!`,
-        "Welcome to the AlmQuest Family " + name.split(" ")[0]
-      );
-      navigate("/", { replace: true });
-    }, 1000);
+    displayAlert(
+      "success",
+      `Successfully registered as a ${userType}!`,
+      "Welcome to the AlmQuest Family, " + name.split(" ")[0] + "!"
+    );
+    navigate("/", { replace: true });
   };
 
   return (

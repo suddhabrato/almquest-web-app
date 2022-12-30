@@ -134,8 +134,8 @@ const Avatar = () => {
                 <hr className="border-gray-200 dark:border-gray-700 mx-2" />
 
                 {user.userType === "donor" && (
-                  <a
-                    href="#"
+                  <Link
+                    to="/profile"
                     className="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
                   >
                     <svg
@@ -154,7 +154,7 @@ const Avatar = () => {
                     </svg>
 
                     <span className="mx-1">Donate Now</span>
-                  </a>
+                  </Link>
                 )}
                 {user.userType === "distributor" && (
                   <a className="flex items-center px-3 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
