@@ -49,7 +49,7 @@ export const UserContextProvider = ({ children }) => {
   useEffect(() => {
     if (user.id !== "") bindToChannel(user.id);
     else channel.unbind();
-  }, [isLoggedIn]);
+  }, [user, isLoggedIn]);
 
   const checkUserExist = async (email) => {
     try {
