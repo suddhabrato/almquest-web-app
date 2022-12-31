@@ -1,12 +1,12 @@
 import React from "react";
-
+import donor from "../../assets/personainfo/donor.jpg";
 
 const DonorInfo = () => {
 
     return (
        
         <div className="mt-8 mb-8 rounded-xl shadow-lg border-gray-100 dark:border-gray-700 border-1 flex-col items-center h-full w-full max-w-4xl p-8 lg:px-12 mx-auto">
-            <img className="object-cover w-full h-64" src="https://images.pexels.com/photos/14760399/pexels-photo-14760399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Article" />
+            <img className="object-cover w-full h-64" src={donor} alt="Article" />
 
             <div className="p-6">
                 <div>
@@ -14,6 +14,8 @@ const DonorInfo = () => {
                     <p className="mt-2 text-md text-gray-600 dark:text-gray-400">
                         A donor is an individual or an institution such as a restaurant or a food Chain
                         who may have excess food they can give away which otherwise might have been wasted.
+                        A Donor can also be someone who wishes to donate the excess food that will be leftover 
+                        to after a big occassion such as a wedding, or an office event.
                     </p>
                 </div>
             </div>
