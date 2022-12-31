@@ -15,7 +15,7 @@ const Alert = () => {
     <div
       className={`${
         showing ? "translate-x-0 opacity-95 " : "opacity-0 translate-x-full"
-      } fixed right-0 sm:right-6 my-4 mx-6 z-10 transition-all duration-500 ease-in-out`}
+      } fixed right-0 sm:right-6 my-4 mx-6 z-50 transition-all duration-500 ease-in-out`}
     >
       {type === "error" && <AlertError msg={msg} title={title} />}
       {type === "info" && <AlertInfo msg={msg} title={title} />}
