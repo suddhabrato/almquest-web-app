@@ -25,8 +25,8 @@ const Hero = ({ pageRefs }) => {
                 it the most.
               </p>
 
-              <button className="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-amber-600 rounded-md lg:w-auto hover:bg-amber-500 focus:outline-none focus:bg-amber-500">
-                Join Us{}
+              <button className="w-full px-6 py-3 mt-6 text-md tracking-wide font-normal text-white capitalize transition-colors duration-300 transform bg-amber-600 rounded-lg lg:w-auto hover:bg-amber-500 focus:outline-none focus:bg-amber-500">
+                Join Us in our quest
               </button>
             </div>
           </div>
