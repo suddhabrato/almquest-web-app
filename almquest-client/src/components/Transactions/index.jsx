@@ -90,6 +90,58 @@ const Transactions = ({ id }) => {
     navigate("/profile");
   };
 
+  const reveiveAcknowledge = async () => {
+    try {
+      const body = {
+        donor_id: transaction.donor_id,
+        distributor_id: transaction.pair.distributor_id,
+        packageId: transaction._id,
+        state: "Received",
+      };
+      console.log(body);
+      const res = await axios.post("/api/distributor/togglePackage", body);
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const distributeAcknowledge = async () => {
+    try {
+      const body = {
+        donor_id: transaction.donor_id,
+        distributor_id: transaction.pair.distributor_id,
+        packageId: transaction._id,
+        state: "Distributed",
+      };
+      console.log(body);
+      const res = await axios.post("/api/distributor/togglePackage", body);
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const receivePackageHandler = async () => {
+    await reveiveAcknowledge();
+    getPackage();
+    displayAlert(
+      "success",
+      "Package Received!",
+      "This package has been marked as received successfully."
+    );
+  };
+
+  const distributePackageHandler = async () => {
+    await distributeAcknowledge();
+    getPackage();
+    displayAlert(
+      "success",
+      "Package Distributed!",
+      "Bravo! Great work on successfully distributing this package!"
+    );
+  };
+
   return (
     <>
       <section className="mx-4">
@@ -98,15 +150,30 @@ const Transactions = ({ id }) => {
             <h2 className="my-2 text-4xl font-semibold text-gray-800 dark:text-white md:mt-0">
               Package Details
             </h2>
-            {transaction.current_state === "Paired" ? (
-              <button className="mx-2 mt-4 rounded-full max-w-full px-4 py-1.5 border-2 border-amber-500 dark:border-amber-400">
-                <p className="text-amber-500 dark:text-amber-400 truncate font-semibold tracking-wide">
+            {transaction.current_state === "Paired" && (
+              <button className="mx-2 mt-4 rounded-full max-w-full px-4 py-1.5 border-2 border-blue-500 dark:border-blue-400">
+                <p className="text-blue-500 dark:text-blue-400 truncate font-semibold tracking-wide">
                   Status: {transaction.current_state}
                 </p>
               </button>
-            ) : (
+            )}
+            {transaction.current_state === "Not Paired" && (
               <button className="mx-2 mt-4 rounded-full max-w-full px-4 py-1.5 border-2 border-gray-500 dark:border-gray-300">
                 <p className="text-gray-500 dark:text-gray-300 truncate font-semibold tracking-wide">
+                  Status: {transaction.current_state}
+                </p>
+              </button>
+            )}
+            {transaction.current_state === "Received" && (
+              <button className="mx-2 mt-4 rounded-full max-w-full px-4 py-1.5 border-2 border-emerald-500 dark:border-emerald-300">
+                <p className="text-emerald-500 dark:text-emerald-300 truncate font-semibold tracking-wide">
+                  Status: {transaction.current_state}
+                </p>
+              </button>
+            )}
+            {transaction.current_state === "Distributed" && (
+              <button className="mx-2 mt-4 rounded-full max-w-full px-4 py-1.5 border-2 border-amber-500 dark:border-amber-400">
+                <p className="text-amber-500 dark:text-amber-400 truncate font-semibold tracking-wide">
                   Status: {transaction.current_state}
                 </p>
               </button>
@@ -119,7 +186,7 @@ const Transactions = ({ id }) => {
               </p>
             </button>
           </div>
-          {transaction.current_state === "Paired" ? (
+          {transaction.current_state !== "Not Paired" && (
             <>
               <div className="grid grid-cols-1 gap-6 mt-8 mb-4 sm:grid-cols-2">
                 <div className="flex items-center text-gray-700 dark:text-gray-200 px-2">
@@ -285,7 +352,8 @@ const Transactions = ({ id }) => {
                 </div>
               </div>
             </>
-          ) : (
+          )}
+          {transaction.current_state === "Not Paired" && (
             <div className="grid grid-cols-1 gap-6 mt-8 sm:grid-cols-2">
               <div className="flex items-center text-gray-700 dark:text-gray-200 px-2">
                 <svg
@@ -372,15 +440,37 @@ const Transactions = ({ id }) => {
           )}
 
           {transaction.current_state === "Not Paired" && (
-            <div className="flex justify-end mt-4">
+            <div className="flex justify-end mt-4 cursor-pointer">
               <a
                 onClick={deletePackageHandler}
-                className="px-3 py-2 text-lg font-medium text-amber-600 dark:text-amber-300 transition-colors duration-300 transform rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
+                className="px-3 py-2 text-lg font-medium text-blue-600 dark:text-blue-300 transition-colors duration-300 transform rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 Delete Package
               </a>
             </div>
           )}
+          {user.userType === "distributor" &&
+            transaction.current_state === "Paired" && (
+              <div className="flex justify-end mt-4 cursor-pointer">
+                <a
+                  onClick={receivePackageHandler}
+                  className="px-3 py-2 text-lg font-medium text-emerald-500 dark:text-emerald-300 transition-colors duration-300 transform rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  Mark as Received
+                </a>
+              </div>
+            )}
+          {user.userType === "distributor" &&
+            transaction.current_state === "Received" && (
+              <div className="flex justify-end mt-4 cursor-pointer">
+                <a
+                  onClick={distributePackageHandler}
+                  className="px-3 py-2 text-lg font-medium text-amber-600 dark:text-amber-300 transition-colors duration-300 transform rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  Mark as Distributed
+                </a>
+              </div>
+            )}
         </div>
       </section>
       <Ripple
