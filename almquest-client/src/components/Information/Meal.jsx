@@ -1,12 +1,12 @@
 import React from "react";
-
+import meal from "../../assets/personainfo/meal.jpg";
 
 const Meal = () => {
 
     return (
        
         <div className="mt-8 mb-8 rounded-xl shadow-lg border-gray-100 dark:border-gray-700 border-1 flex-col items-center h-full w-full max-w-4xl p-8 lg:px-12 mx-auto">
-            <img className="object-cover w-full h-64" src="https://images.pexels.com/photos/14760399/pexels-photo-14760399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Article" />
+            <img className="object-cover w-full h-64" src={meal} alt="Article" />
 
             <div className="p-6">
                 <div>
