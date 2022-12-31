@@ -1,4 +1,5 @@
 import React from "react";
+import manidi from "../../assets/testimonials/manisinidi.jpg"
 
 const Testimonials = ({ pageRefs }) => {
   return (
@@ -53,20 +54,22 @@ const Testimonials = ({ pageRefs }) => {
 
           <div className="grid grid-rows-1 place-content-between p-8 bg-amber-500 border border-transparent rounded-lg dark:bg-amber-600">
             <p className="leading-loose text-white">
-              “AlmQuest will hopefully help a lot in social development.”.
+              “This is an excellent idea for helping the under privileged around us. 
+              Already there are many organisations popping up to help distribute food to the underprivileged. 
+              They can use this platform to connect to the donors. Looking forward to growth of Almquest!”.
             </p>
 
             <div className="flex items-end mt-8 -mx-2">
               <img
                 className="object-cover mx-2 rounded-full w-14 shrink-0 h-14 ring-4 ring-amber-200"
-                src="https://images.unsplash.com/photo-1531590878845-12627191e687?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+                src={manidi}
                 alt=""
               />
 
               <div className="mx-2">
-                <h1 className="font-semibold text-white">Jeny Doe</h1>
+                <h1 className="font-semibold text-white">Manisini Chakraborty</h1>
                 <span className="text-sm text-amber-200">
-                  Tech Professional
+                  SDE at Microsoft
                 </span>
               </div>
             </div>
@@ -75,8 +78,7 @@ const Testimonials = ({ pageRefs }) => {
           <div className="grid grid-rows-1 place-content-between p-8 border rounded-lg dark:border-gray-700">
             <p className="leading-loose text-gray-500 dark:text-gray-400">
               “We are a group of teachers at a High School in a remote area in
-              the Nadia district of West Bengal, India. We have a lot of
-              under-nourished population in the region surrroundingour school.
+              the Nadia district of West Bengal, India.
               Government provided food rations only help some and despite our
               best intention of feeding these people, we never had a food source
               to make that feasible. Well, now with AlmQuest we can do just
