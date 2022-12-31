@@ -49,7 +49,7 @@ const ProfileCard = () => {
         setPersonalDetails({
           name,
           email,
-          picture: `${picture.slice(0, picture.length - 4)}256-c`,
+          picture: `${picture.slice(0, picture.lastIndexOf("s") + 1)}256-c`,
           location,
           phone,
         });
@@ -91,7 +91,7 @@ const ProfileCard = () => {
         <div className="flex justify-center -mt-20 md:mx-12 md:justify-end">
           <img
             className="object-cover w-32 h-32 border-4 border-amber-500 rounded-full dark:border-amber-400"
-            alt="Testimonial avatar"
+            alt="Avatar"
             src={personalDetails.picture}
           />
         </div>

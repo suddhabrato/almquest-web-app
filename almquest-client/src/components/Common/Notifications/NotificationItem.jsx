@@ -40,7 +40,7 @@ const NotificationItem = ({ notif, seen }) => {
           referrerPolicy="no-referrer"
         />
         <p className="mx-2 text-sm text-gray-600 dark:text-white">
-          {notif.state === "Paired" ? (
+          {notif.state === "Paired" && (
             <>
               <span className="font-bold" href="#">
                 Hurray!
@@ -49,12 +49,29 @@ const NotificationItem = ({ notif, seen }) => {
                 ? " We have found a distributor for your package! "
                 : " We have assigned you to a donor! "}
             </>
-          ) : (
+          )}
+          {notif.state === "Not Paired" && (
             <>
               <span className="font-bold" href="#">
                 Oops!
               </span>
               {" Looks like there are no distributors available near you. "}
+            </>
+          )}
+          {notif.state === "Received" && (
+            <>
+              <span className="font-bold" href="#">
+                Yaay!
+              </span>
+              {" Your package(s) has been received by the distributor!"}
+            </>
+          )}
+          {notif.state === "Distributed" && (
+            <>
+              <span className="font-bold" href="#">
+                Woah!
+              </span>
+              {" Your package(s) have been successfully distributed!"}
             </>
           )}
           <span className="font-light opacity-90 mx-1">

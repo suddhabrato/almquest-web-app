@@ -166,7 +166,7 @@ const CTADonorDistributorTop = ({ pageRefs }) => {
 
       <section className="bg-white dark:bg-gray-900">
         <div className="container lg:px-28 py-10 mx-auto">
-          <div className="text-center">
+          <div className="text-center mx-6">
             <h1 className="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white">
               Join Us in <span className="text-amber-500">Our Quest</span>
             </h1>
@@ -186,19 +186,16 @@ const CTADonorDistributorTop = ({ pageRefs }) => {
               />
               <a href="/register">
                 <div className="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white shadow dark:bg-gray-900  transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent dark:hover:bg-amber-500">
-                  <p
-                    className="font-semibold text-gray-800 dark:text-white md:text-xl  group-hover:text-white"
-                  >
+                  <p className="font-semibold text-gray-800 dark:text-white md:text-xl  group-hover:text-white">
                     Join us as a Donor Now!
                   </p>
 
-                  <p className="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm   group-hover:text-white">
+                  <p className="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm  group-hover:text-white">
                     You can be an Individual or an Organisation or a Food Chain.
                     <br /> Take the first steps.
                   </p>
                 </div>
               </a>
-
             </div>
 
             <div>
@@ -209,9 +206,7 @@ const CTADonorDistributorTop = ({ pageRefs }) => {
               />
               <a href="/register">
                 <div className="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white shadow dark:bg-gray-900  transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-amber-600 dark:border-gray-700 dark:hover:border-transparent dark:hover:bg-amber-500">
-                  <p
-                    className="font-semibold text-gray-800 dark:text-white md:text-xl  group-hover:text-white"
-                  >
+                  <p className="font-semibold text-gray-800 dark:text-white md:text-xl  group-hover:text-white">
                     Join us as a Distributor Now!
                   </p>
 
@@ -221,7 +216,6 @@ const CTADonorDistributorTop = ({ pageRefs }) => {
                   </p>
                 </div>
               </a>
-
             </div>
           </div>
         </div>

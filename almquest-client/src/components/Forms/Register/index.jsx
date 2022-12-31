@@ -126,19 +126,19 @@ const Register = () => {
         ...donor,
         ...personalDetails,
       };
-      submitDonor(body);
+      await submitDonor(body);
     } else {
       const body = {
         ...distributor,
         ...personalDetails,
       };
-      submitDistributor(body);
+      await submitDistributor(body);
     }
     const { name } = await checkUserExist(personalDetails.email);
     displayAlert(
       "success",
       `Successfully registered as a ${userType}!`,
-      "Welcome to the AlmQuest Family " + name.split(" ")[0]
+      "Welcome to the AlmQuest Family, " + name.split(" ")[0] + "!"
     );
     navigate("/", { replace: true });
   };
