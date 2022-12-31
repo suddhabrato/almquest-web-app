@@ -195,7 +195,7 @@ const Package = () => {
                   </label>
                   <label className="block mt-2" htmlFor="quantity">
                     <input
-                      type="text"
+                      type="number"
                       name="quantity"
                       id="quantity"
                       value={packageDetails.quantity}
