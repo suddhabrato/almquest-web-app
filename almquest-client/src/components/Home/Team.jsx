@@ -261,7 +261,7 @@ const Team = ({ pageRefs }) => {
             </h1>
 
             <p className="mt-2 text-gray-500 capitalize dark:text-gray-300 group-hover:text-gray-300">
-              Content Writer
+              Web Designer
             </p>
 
             <div className="flex mt-3 -mx-2">
