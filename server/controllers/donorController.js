@@ -52,7 +52,7 @@ exports.donatePackage = asyncHandler(async (req, res, next) => {
 
   // Initiate PyScript
   try {
-    axios.get(`https://almquest-pyserver.onrender.com/pair/${pid}`, {
+    axios.get(`https://almquest-pyserver-f0v5.onrender.com/pair/${pid}`, {
       headers: {
         "Accept-Encoding": "gzip,deflate,compress",
       },
