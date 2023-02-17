@@ -38,6 +38,12 @@ app.post("/api/notifyUpdate", notifController.receiveUpdate);
 app.get("/api/package/:id", factory.getPackageById);
 app.post("/api/notification/:id", notifController.notifSeen);
 
+app.get("/api/mapKey", (req, res, next) => {
+  res.status(200).json({
+    key: "AIzaSyDF9R-INRPf6kyypFFAlRrk4GPyKDKTHJc",
+  });
+});
+
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
